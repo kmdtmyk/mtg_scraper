@@ -4,12 +4,16 @@ GEM
     mini_portile2 (2.3.0)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
+    power_assert (1.1.1)
+    test-unit (3.2.7)
+      power_assert
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   nokogiri (~> 1.8)
+  test-unit (~> 3.2, >= 3.2.7)
 
 BUNDLED WITH
-   1.16.0
+   1.16.1
