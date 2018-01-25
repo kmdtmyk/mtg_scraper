@@ -53,11 +53,25 @@ class WisdomGuild
   def self.meld(html)
   end
 
+  def self.get_layout(html)
+    table = get_table(html)
+    return 'double_faced' if table.css('th.ddc').length > 0
+    return 'split' if table.css('tr:nth-child(1) td').length > 1
+    return 'levelup' if table.css('tr:nth-child(7) td').length == 0
+    return 'flip'if table.css('tr').length > 15
+    return 'normal'
+  end
+
   def self.name_to_url(name)
     return 'http://whisper.wisdom-guild.net/card/' + URI.escape(name)
   end
 
   private
+
+    def self.get_table(html)
+      doc = Nokogiri::HTML.parse(html)
+      doc.css('.wg-whisper-card-detail table')
+    end
 
     def self.parse_name_text(text)
       %r{([^/\n\t]+)\/([^/\n\t]+)[\n\t]*（(.+)）}.match(text)
