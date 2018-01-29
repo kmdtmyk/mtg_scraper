@@ -252,6 +252,55 @@ class WisdomGuildTest < Test::Unit::TestCase
       assert_equal(expect, WisdomGuild.get('AKH204'))
     end
 
+    test 'Land' do
+      expect = [
+        {
+          name: '蒸気孔',
+          english_name: "Steam Vents",
+          furigana: 'じょうきこう',
+          mana_cost: '',
+          legendary: false,
+          types: [
+            { name: '土地' },
+          ],
+          subtypes: [
+            { name: '島', english_name: 'Island' },
+            { name: '山', english_name: 'Mountain' },
+          ],
+          text: "（(Ｔ)：あなたのマナ・プールに(青)か(赤)を加える）\n蒸気孔が戦場に出るに際し、あなたは２点のライフを支払ってもよい。そうしなかった場合、蒸気孔はタップ状態で戦場に出る。",
+          oracle: "（{T}: Add {U} or {R} to your mana pool.）\nAs Steam Vents enters the battlefield, you may pay 2 life. If you don't, Steam Vents enters the battlefield tapped.",
+          flavor_text: "才能により形作られ、狂気により活性化したもの。",
+        },
+      ]
+      assert_equal(expect, WisdomGuild.get('RTR247'))
+
+      expect = [
+        {
+          name: 'ドライアドの東屋',
+          english_name: "Dryad Arbor",
+          furigana: 'どらいあどのあずまや',
+          mana_cost: '',
+          legendary: false,
+          color: '緑',
+          types: [
+            { name: '土地' },
+            { name: 'クリーチャー' },
+          ],
+          subtypes: [
+            { name: '森', english_name: 'Forest' },
+            { name: 'ドライアド', english_name: 'Dryad' },
+          ],
+          text: "（ドライアドの東屋は呪文ではなく、召喚酔いの影響を受け、「(Ｔ)：あなたのマナ・プールに(緑)を加える。」を持つ。）",
+          oracle: "（Dryad Arbor isn't a spell, it's affected by summoning sickness, and it has \"{T}: Add {G} to your mana pool.\"）",
+          size: '1/1',
+          power: 1,
+          toughness: 1,
+          flavor_text: "樹触れるべからず、枝折るべからず、答を望む問いのみを発せよ。――― ドルイドの古老、ヴォン・ヨムから彼女の信徒へ.",
+        },
+      ]
+      assert_equal(expect, WisdomGuild.get('FUT174'))
+    end
+
   end
 
   test 'get_layout' do

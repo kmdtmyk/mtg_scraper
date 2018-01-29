@@ -108,10 +108,11 @@ class WisdomGuild
     end
 
     def self.parse_type_text(text)
-      %r{(伝説の)?(\S+)( — (\S+))?}.match(text)
-      legendary_text = Regexp.last_match(1)
-      type_text = Regexp.last_match(2)
-      subtype_text = Regexp.last_match(4)
+      %r{(〔(.*)〕 )?(伝説の)?(\S+)( — (\S+))?}.match(text)
+      color = Regexp.last_match(2)
+      legendary_text = Regexp.last_match(3)
+      type_text = Regexp.last_match(4)
+      subtype_text = Regexp.last_match(6)
 
       legendary = legendary_text.nil? == false
       types = []
@@ -133,11 +134,17 @@ class WisdomGuild
         end
       end
 
-      {
+      result = {
         legendary: legendary,
         types: types,
         subtypes: subtypes,
       }
+
+      unless color.nil?
+        result[:color] = color
+      end
+
+      result
     end
 
     def self.parse_size_text(text)
