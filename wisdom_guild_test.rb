@@ -90,7 +90,6 @@ class WisdomGuildTest < Test::Unit::TestCase
     end
 
     test 'Sorcery' do
-      html = WisdomGuild.get_html_and_cache('DKA082')
       expect = [
         {
           name: '頭目の乱闘',
