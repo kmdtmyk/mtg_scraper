@@ -111,6 +111,33 @@ class WisdomGuildTest < Test::Unit::TestCase
       assert_equal(expect, WisdomGuild.get('DKA082'))
     end
 
+    test 'Enchantment' do
+      expect = [
+        {
+          name: '拘引',
+          english_name: 'Arrest',
+          furigana: 'こういん',
+          mana_cost: '(２)(白)',
+          legendary: false,
+          types: [
+            {
+              name: 'エンチャント',
+            },
+          ],
+          subtypes: [
+            {
+              name: 'オーラ',
+              english_name: 'Aura',
+            },
+          ],
+          text: "エンチャント（クリーチャー）\nエンチャントされているクリーチャーは攻撃もブロックもできず、その起動型能力を起動できない。",
+          oracle: "Enchant creature\nEnchanted creature can't attack or block, and its activated abilities can't be activated.",
+          flavor_text: "「あんたの罪なら立証してやるわ。うちらが無実の者を拘引するわけないでしょ。」――― 第10管区の拘引者、ラヴィニア.",
+        },
+      ]
+      assert_equal(expect, WisdomGuild.get('RTR003'))
+    end
+
   end
 
   test 'get_layout' do
