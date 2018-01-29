@@ -5,14 +5,14 @@ class WisdomGuildTest < Test::Unit::TestCase
 
   sub_test_case 'Creature' do
 
-    test '殺戮の暴君' do
-      html = WisdomGuild.get_html_and_cache('XLN179')
+    test '順応する跳ね顎' do
+      html = WisdomGuild.get_html_and_cache('GTC113')
       expect = [
         {
-          name: '殺戮の暴君',
-          english_name: 'Carnage Tyrant',
-          furigana: 'さつりくのぼうくん',
-          mana_cost: '(４)(緑)(緑)',
+          name: '順応する跳ね顎',
+          english_name: 'Adaptive Snapjaw',
+          furigana: 'じゅんのうするはねあご',
+          mana_cost: '(４)(緑)',
           legendary: false,
           types: [
             {
@@ -21,16 +21,20 @@ class WisdomGuildTest < Test::Unit::TestCase
           ],
           subtypes: [
             {
-              name: '恐竜',
-              english_name: 'Dinosaur',
+              name: 'トカゲ',
+              english_name: 'Lizard',
+            },
+            {
+              name: 'ビースト',
+              english_name: 'Beast',
             },
           ],
-          text: "殺戮の暴君は打ち消されない。\nトランプル、呪禁",
-          oracle: "Carnage Tyrant can't be countered.\nTrample, hexproof",
-          size: '7/6',
-          power: 7,
-          toughness: 6,
-          flavor_text: '',
+          text: "進化（クリーチャー１体があなたのコントロール下で戦場に出るたび、そのクリーチャーのパワーかタフネスがこのクリーチャーよりも大きい場合、このクリーチャーの上に+1/+1カウンターを１個置く。）",
+          oracle: "Evolve （Whenever a creature enters the battlefield under your control, if that creature has greater power or toughness than this creature, put a +1/+1 counter on this creature.）",
+          size: '6/2',
+          power: 6,
+          toughness: 2,
+          flavor_text: "「あー、カエルがもっと要るな。」 ――― シミックの生術師、グリスタン",
         },
       ]
       assert_equal(expect, WisdomGuild.parse(html))
