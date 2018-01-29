@@ -138,6 +138,52 @@ class WisdomGuildTest < Test::Unit::TestCase
       assert_equal(expect, WisdomGuild.get('RTR003'))
     end
 
+    test 'Artifact' do
+      expect = [
+        {
+          name: 'アクローマの記念碑',
+          english_name: "Akroma's Memorial",
+          furigana: 'あくろーまのきねんひ',
+          mana_cost: '(７)',
+          legendary: true,
+          types: [
+            {
+              name: 'アーティファクト',
+            },
+          ],
+          subtypes: [],
+          text: "あなたがコントロールするクリーチャーは飛行、先制攻撃、警戒、トランプル、速攻、プロテクション（黒）とプロテクション（赤）を持つ。",
+          oracle: "Creatures you control have flying, first strike, vigilance, trample, haste, and protection from black and from red.",
+          flavor_text: "「休息も慈悲も与えぬ。何があってもだ。」 ――― 碑文",
+        },
+      ]
+      assert_equal(expect, WisdomGuild.get('M13200'))
+
+      expect = [
+        {
+          name: '金属製の巨像',
+          english_name: "Metalwork Colossus",
+          furigana: 'きんぞくせいのきょぞう',
+          mana_cost: '(１１)',
+          legendary: false,
+          types: [
+            { name: 'アーティファクト' },
+            { name: 'クリーチャー' },
+          ],
+          subtypes: [
+            { name: '構築物', english_name: 'Construct' },
+          ],
+          text: "金属製の巨像を唱えるためのコストは(Ｘ)少なくなる。Ｘはあなたがコントロールするクリーチャーでないアーティファクトの点数で見たマナ・コストの合計に等しい。\nアーティファクトを２つ生け贄に捧げる：あなたの墓地から金属製の巨像をあなたの手札に戻す。",
+          oracle: "Metalwork Colossus costs {X} less to cast, where X is the total converted mana cost of noncreature artifacts you control.\nSacrifice two artifacts: Return Metalwork Colossus from your graveyard to your hand.",
+          size: '10/10',
+          power: 10,
+          toughness: 10,
+          flavor_text: "",
+        },
+      ]
+      assert_equal(expect, WisdomGuild.get('KLD222'))
+    end
+
   end
 
   test 'get_layout' do
