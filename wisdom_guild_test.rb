@@ -33,7 +33,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           flavor_text: '',
         },
       ]
-      assert_equal(expect, WisdomGuild.normal(html))
+      assert_equal(expect, WisdomGuild.parse(html))
     end
 
   end

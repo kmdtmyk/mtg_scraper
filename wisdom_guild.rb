@@ -15,7 +15,16 @@ class WisdomGuild
     return html
   end
 
-  def self.normal(html)
+  def self.parse(html)
+    layout = get_layout(html)
+    return parse_normal(html) if layout == 'normal'
+    return  parse_double_faced(html) if layout == 'double_faced'
+    return  parse_split(html) if layout == 'split'
+    return  parse_levelup(html) if layout == 'levelup'
+    return  parse_flip(html) if layout == 'flip'
+  end
+
+  def self.parse_normal(html)
     details = []
     doc = Nokogiri::HTML.parse(html)
     doc.css('.wg-whisper-card-detail table').each do |table|
@@ -44,13 +53,16 @@ class WisdomGuild
     details
   end
 
-  def self.aftermath(html)
+  def self.parse_double_faced(html)
   end
 
-  def self.double_faced(html)
+  def self.parse_split(html)
   end
 
-  def self.meld(html)
+  def self.parse_levelup(html)
+  end
+
+  def self.parse_flip(html)
   end
 
   def self.get_layout(html)
