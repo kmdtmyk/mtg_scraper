@@ -293,6 +293,46 @@ class WisdomGuildTest < Test::Unit::TestCase
     test 'Land' do
       expect = [
         {
+          name: '平地',
+          english_name: "Plains",
+          furigana: 'へいち',
+          mana_cost: '',
+          legendary: false,
+          basic: true,
+          types: [
+            { name: '土地' },
+          ],
+          subtypes: [
+            { name: '平地', english_name: 'Plains' },
+          ],
+          text: "(白)",
+          oracle: "W",
+          flavor_text: "",
+        },
+      ]
+      assert_equal(expect, WisdomGuild.get('RIX192'))
+
+      expect = [
+        {
+          name: '荒地',
+          english_name: "Wastes",
+          furigana: 'あれち',
+          mana_cost: '',
+          legendary: false,
+          basic: true,
+          types: [
+            { name: '土地' },
+          ],
+          subtypes: [],
+          text: "(Ｔ)：あなたのマナ・プールに(◇)を加える。",
+          oracle: "{T}: Add {C} to your mana pool.",
+          flavor_text: "",
+        },
+      ]
+      assert_equal(expect, WisdomGuild.get('OGW183'))
+
+      expect = [
+        {
           name: '蒸気孔',
           english_name: "Steam Vents",
           furigana: 'じょうきこう',
