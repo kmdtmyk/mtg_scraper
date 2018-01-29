@@ -40,6 +40,9 @@ class WisdomGuild
     if text_array[5][0] == 'Ｐ／Ｔ'
       detail.merge!(parse_size_text(text_array[5][1]))
       flavor_text = text_array[6][1]
+    elsif text_array[5][0] == '忠誠度'
+      detail.merge!(parse_loyalty_text(text_array[5][1]))
+      flavor_text = text_array[6][1]
     else
       flavor_text = text_array[5][1]
     end
@@ -145,6 +148,13 @@ class WisdomGuild
         size: text,
         power: power,
         toughness: toughness,
+      }
+    end
+
+    def self.parse_loyalty_text(text)
+      {
+        size: text,
+        loyalty: text.to_i,
       }
     end
 

@@ -183,6 +183,52 @@ class WisdomGuildTest < Test::Unit::TestCase
       assert_equal(expect, WisdomGuild.get('KLD222'))
     end
 
+    test 'Planeswalker' do
+      expect = [
+        {
+          name: 'ジェイス・ベレレン',
+          english_name: "Jace Beleren",
+          furigana: 'じぇいすべれれん',
+          mana_cost: '(１)(青)(青)',
+          legendary: true,
+          types: [
+            { name: 'プレインズウォーカー' },
+          ],
+          subtypes: [
+            { name: 'ジェイス', english_name: 'Jace' },
+          ],
+          text: "[+2]：各プレイヤーはカードを１枚引く。\n[-1]：プレイヤー１人を対象とする。そのプレイヤーはカードを１枚引く。\n[-10]：プレイヤー１人を対象とする。そのプレイヤーは、自分のライブラリーのカードを上から２０枚、自分の墓地に置く。",
+          oracle: "+2: Each player draws a card.\n-1: Target player draws a card.\n-10: Target player puts the top twenty cards of his or her library into his or her graveyard.",
+          size: '3',
+          loyalty: 3,
+          flavor_text: "",
+        },
+      ]
+      assert_equal(expect, WisdomGuild.get('M11058'))
+
+      expect = [
+        {
+          name: '自然に仕える者、ニッサ',
+          english_name: "Nissa, Steward of Elements",
+          furigana: 'しぜんにつかえるものにっさ',
+          mana_cost: '(Ｘ)(緑)(青)',
+          legendary: true,
+          types: [
+            { name: 'プレインズウォーカー' },
+          ],
+          subtypes: [
+            { name: 'ニッサ', english_name: 'Nissa' },
+          ],
+          text: "[+2]：占術２を行う。\n[0]：あなたのライブラリーの一番上のカードを見る。それが土地カードであるか、点数で見たマナ・コストが自然に仕える者、ニッサの上に置かれている忠誠(loyalty)カウンターの総数以下であるクリーチャー・カードであるなら、あなたはそのカードを戦場に出してもよい。\n[-6]：あなたがコントロールする土地最大２つを対象とし、それらをアンタップする。ターン終了時まで、それらは飛行と速攻を持つ5/5のエレメンタル(Elemental)・クリーチャーになる。それらは土地でもある。",
+          oracle: "+2: Scry 2.\n0: Look at the top card of your library. If it's a land card or a creature card with converted mana cost less than or equal to the number of loyalty counters on Nissa, Steward of Elements, you may put that card onto the battlefield.\n-6: Untap up to two target lands you control. They become 5/5 Elemental creatures with flying and haste until end of turn. They're still lands.",
+          size: 'X',
+          loyalty: 0,
+          flavor_text: "",
+        },
+      ]
+      assert_equal(expect, WisdomGuild.get('AKH204'))
+    end
+
   end
 
   test 'get_layout' do
