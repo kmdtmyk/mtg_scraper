@@ -69,6 +69,33 @@ class WisdomGuildTest < Test::Unit::TestCase
 
   end
 
+  sub_test_case 'Sorcery' do
+
+    test '頭目の乱闘' do
+      html = WisdomGuild.get_html_and_cache('DKA082')
+      expect = [
+        {
+          name: '頭目の乱闘',
+          english_name: 'Alpha Brawl',
+          furigana: 'とうもくのらんとう',
+          mana_cost: '(６)(赤)(赤)',
+          legendary: false,
+          types: [
+            {
+              name: 'ソーサリー',
+            },
+          ],
+          subtypes: [],
+          text: "対戦相手１人がコントロールするクリーチャー１体を対象とする。それは自身のパワーに等しい点数のダメージを、そのプレイヤーがコントロールする他の各クリーチャーにそれぞれ与える。その後、それらの各クリーチャーは、それぞれのパワーに等しい点数のダメージをそのクリーチャーに与える。",
+          oracle: "Target creature an opponent controls deals damage equal to its power to each other creature that player controls, then each of those creatures deals damage equal to its power to that creature.",
+          flavor_text: "頭目であることは、満月のたびにそれを証明しなければいけないことだ。",
+        },
+      ]
+      assert_equal(expect, WisdomGuild.parse(html))
+    end
+
+  end
+
   test 'get_layout' do
     test_cases = [
       {card: 'XLN179', layout: 'normal', name: '殺戮の暴君'},
