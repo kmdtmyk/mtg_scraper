@@ -3,10 +3,9 @@ require_relative 'wisdom_guild'
 
 class WisdomGuildTest < Test::Unit::TestCase
 
-  sub_test_case 'parse' do
+  sub_test_case 'get' do
 
     test 'Creature' do
-      html = WisdomGuild.get_html_and_cache('GTC113')
       expect = [
         {
           name: '順応する跳ね顎',
@@ -37,9 +36,8 @@ class WisdomGuildTest < Test::Unit::TestCase
           flavor_text: "「あー、カエルがもっと要るな。」 ――― シミックの生術師、グリスタン",
         },
       ]
-      assert_equal(expect, WisdomGuild.parse(html))
+      assert_equal(expect, WisdomGuild.get('GTC113'))
 
-      html = WisdomGuild.get_html_and_cache('AKH136')
       expect = [
         {
           name: '熱烈の神ハゾレト',
@@ -66,11 +64,10 @@ class WisdomGuildTest < Test::Unit::TestCase
           flavor_text: "",
         },
       ]
-      assert_equal(expect, WisdomGuild.parse(html))
+      assert_equal(expect, WisdomGuild.get('AKH136'))
     end
 
     test 'Instant' do
-      html = WisdomGuild.get_html_and_cache('ALA033')
       expect = [
         {
           name: '取り消し',
@@ -89,7 +86,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           flavor_text: "「お前のやりたいことが理屈に逆らってるってことじゃない。 ただ、ものすごく馬鹿げてるってだけだ。」",
         },
       ]
-      assert_equal(expect, WisdomGuild.parse(html))
+      assert_equal(expect, WisdomGuild.get('ALA033'))
     end
 
     test 'Sorcery' do
@@ -112,7 +109,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           flavor_text: "頭目であることは、満月のたびにそれを証明しなければいけないことだ。",
         },
       ]
-      assert_equal(expect, WisdomGuild.parse(html))
+      assert_equal(expect, WisdomGuild.get('DKA082'))
     end
 
   end

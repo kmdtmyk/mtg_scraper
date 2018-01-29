@@ -4,6 +4,11 @@ require_relative 'file_man'
 
 class WisdomGuild
 
+  def self.get(name)
+    html = WisdomGuild.get_html_and_cache(name)
+    WisdomGuild.parse(html)
+  end
+
   def self.get_html_and_cache(name)
     file_path = File.dirname(__FILE__) + "/cache/#{name}.html"
     html = FileMan.read(file_path)
