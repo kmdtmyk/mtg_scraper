@@ -3,9 +3,9 @@ require_relative 'wisdom_guild'
 
 class WisdomGuildTest < Test::Unit::TestCase
 
-  sub_test_case 'Creature' do
+  sub_test_case 'parse' do
 
-    test '順応する跳ね顎' do
+    test 'Creature' do
       html = WisdomGuild.get_html_and_cache('GTC113')
       expect = [
         {
@@ -40,11 +40,7 @@ class WisdomGuildTest < Test::Unit::TestCase
       assert_equal(expect, WisdomGuild.parse(html))
     end
 
-  end
-
-  sub_test_case 'Instant' do
-
-    test '取り消し' do
+    test 'Instant' do
       html = WisdomGuild.get_html_and_cache('ALA033')
       expect = [
         {
@@ -67,11 +63,7 @@ class WisdomGuildTest < Test::Unit::TestCase
       assert_equal(expect, WisdomGuild.parse(html))
     end
 
-  end
-
-  sub_test_case 'Sorcery' do
-
-    test '頭目の乱闘' do
+    test 'Sorcery' do
       html = WisdomGuild.get_html_and_cache('DKA082')
       expect = [
         {
