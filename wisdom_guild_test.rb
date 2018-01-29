@@ -181,6 +181,29 @@ class WisdomGuildTest < Test::Unit::TestCase
         },
       ]
       assert_equal(expect, WisdomGuild.get('KLD222'))
+
+      expect = [
+        {
+          name: '領事の旗艦、スカイソブリン',
+          english_name: "Skysovereign, Consul Flagship",
+          furigana: 'りょうじのきかんすかいそぶりん',
+          mana_cost: '(５)',
+          legendary: true,
+          types: [
+            { name: 'アーティファクト' },
+          ],
+          subtypes: [
+            { name: '機体', english_name: 'Vehicle' },
+          ],
+          text: "飛行\n領事の旗艦、スカイソブリンが戦場に出るか攻撃するたび、対戦相手がコントロールするクリーチャー１体かプレインズウォーカー１体を対象とする。領事の旗艦、スカイソブリンはそれに３点のダメージを与える。\n搭乗３（あなたがコントロールする望む数のクリーチャーを、パワーの合計が３以上になるように選んでタップする：ターン終了時まで、この機体(Vehicle)はアーティファクト・クリーチャーになる。）",
+          oracle: "Flying\nWhenever Skysovereign, Consul Flagship enters the battlefield or attacks, it deals 3 damage to target creature or planeswalker an opponent controls.\nCrew 3 （Tap any number of creatures you control with total power 3 or more: This Vehicle becomes an artifact creature until end of turn.）",
+          size: '6/5',
+          power: 6,
+          toughness: 5,
+          flavor_text: "",
+        },
+      ]
+      assert_equal(expect, WisdomGuild.get('KLD234'))
     end
 
     test 'Planeswalker' do
