@@ -79,10 +79,6 @@ class WisdomGuild
     return 'normal'
   end
 
-  def self.name_to_url(name)
-    return 'http://whisper.wisdom-guild.net/card/' + URI.escape(name)
-  end
-
   private
 
     def self.get_table(html)
@@ -150,6 +146,10 @@ class WisdomGuild
         power: power,
         toughness: toughness,
       }
+    end
+
+    def self.name_to_url(name)
+      return 'http://whisper.wisdom-guild.net/card/' + URI.escape(name)
     end
 
 end
