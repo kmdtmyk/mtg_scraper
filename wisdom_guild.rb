@@ -34,13 +34,19 @@ class WisdomGuild
       detail.merge!(parse_name_text(name_text))
       type_text = table.css('tr:nth-child(3) td:nth-child(2)').inner_text
       detail.merge!(parse_type_text(type_text))
-      size_text = table.css('tr:nth-child(6) td:nth-child(2)').inner_text
-      detail.merge!(parse_size_text(size_text))
+
+      label6 = table.css('tr:nth-child(6) th:nth-child(1)').inner_text
+      if label6 == 'Ｐ／Ｔ'
+        size_text = table.css('tr:nth-child(6) td:nth-child(2)').inner_text
+        detail.merge!(parse_size_text(size_text))
+        flavor_text = table.css('tr:nth-child(7) td:nth-child(2)').inner_text
+      else
+        flavor_text = table.css('tr:nth-child(6) td:nth-child(2)').inner_text
+      end
 
       mana_cost = table.css('tr:nth-child(2) td:nth-child(2)').inner_text
       text = table.css('tr:nth-child(4) td:nth-child(2)').inner_text
       oracle = table.css('tr:nth-child(5) td:nth-child(2)').inner_text
-      flavor_text = table.css('tr:nth-child(7) td:nth-child(2)').inner_text
 
       detail.merge!({
         mana_cost: mana_cost,
@@ -102,15 +108,26 @@ class WisdomGuild
       legendary_text = Regexp.last_match(1)
       type_text = Regexp.last_match(2)
       subtype_text = Regexp.last_match(4)
+
       legendary = legendary_text.nil? == false
-      types = type_text.split('・').map{|type| {name: type}}
-      subtypes = subtype_text.split('・').map{|subtype|
-        %r{(\S+)\((\S+)\)}.match(subtype)
-        {
-          name: Regexp.last_match(1),
-          english_name: Regexp.last_match(2),
-        }
-      }
+      types = []
+      subtypes = []
+
+      unless type_text.nil?
+        type_text.split('・').each do |type|
+          types << {name: type}
+        end
+      end
+
+      unless subtype_text.nil?
+        subtype_text.split('・').each do |subtype|
+          %r{(\S+)\((\S+)\)}.match(subtype)
+          subtypes << {
+            name: Regexp.last_match(1),
+            english_name: Regexp.last_match(2),
+          }
+        end
+      end
 
       {
         legendary: legendary,

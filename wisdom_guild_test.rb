@@ -38,6 +38,33 @@ class WisdomGuildTest < Test::Unit::TestCase
 
   end
 
+  sub_test_case 'Instant' do
+
+    test '取り消し' do
+      html = WisdomGuild.get_html_and_cache('ALA033')
+      expect = [
+        {
+          name: '取り消し',
+          english_name: 'Cancel',
+          furigana: 'とりけし',
+          mana_cost: '(１)(青)(青)',
+          legendary: false,
+          types: [
+            {
+              name: 'インスタント',
+            },
+          ],
+          subtypes: [],
+          text: "呪文１つを対象とし、それを打ち消す。",
+          oracle: "Counter target spell.",
+          flavor_text: "「お前のやりたいことが理屈に逆らってるってことじゃない。 ただ、ものすごく馬鹿げてるってだけだ。」",
+        },
+      ]
+      assert_equal(expect, WisdomGuild.parse(html))
+    end
+
+  end
+
   test 'get_layout' do
     test_cases = [
       {card: 'XLN179', layout: 'normal', name: '殺戮の暴君'},
