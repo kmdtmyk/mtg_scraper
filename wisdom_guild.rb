@@ -138,7 +138,7 @@ class WisdomGuild
     end
 
     def self.parse_size_text(text)
-      %r{(\d+)/(\d+)}.match(text)
+      %r{(.*)/(.*)}.match(text)
       power = Regexp.last_match(1).to_i
       toughness = Regexp.last_match(2).to_i
       {

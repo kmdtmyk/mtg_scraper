@@ -65,6 +65,29 @@ class WisdomGuildTest < Test::Unit::TestCase
         },
       ]
       assert_equal(expect, WisdomGuild.get('AKH136'))
+
+      expect = [
+        {
+          name: 'タルモゴイフ',
+          english_name: 'Tarmogoyf',
+          furigana: 'たるもごいふ',
+          mana_cost: '(１)(緑)',
+          legendary: false,
+          types: [
+            { name: 'クリーチャー' },
+          ],
+          subtypes: [
+            { name: 'ルアゴイフ', english_name: 'Lhurgoyf' },
+          ],
+          text: "タルモゴイフのパワーは、すべての墓地にあるカードのカード・タイプの数に等しく、タフネスはその点数に１を加えた点数に等しい。",
+          oracle: "Tarmogoyf's power is equal to the number of card types among cards in all graveyards and its toughness is equal to that number plus 1.",
+          size: '*/1+*',
+          power: 0,
+          toughness: 1,
+          flavor_text: "",
+        },
+      ]
+      assert_equal(expect, WisdomGuild.get('FUT153'))
     end
 
     test 'Instant' do
