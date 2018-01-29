@@ -134,6 +134,25 @@ class WisdomGuildTest < Test::Unit::TestCase
         },
       ]
       assert_equal(expect, WisdomGuild.get('DKA082'))
+
+      expect = [
+        {
+          name: "祖先の幻視",
+          english_name: "Ancestral Vision",
+          furigana: "そせんのげんし",
+          mana_cost: "",
+          legendary: false,
+          color: '青',
+          types: [
+            { name: 'ソーサリー' },
+          ],
+          subtypes: [],
+          text: "待機４ ― (青)（このカードをあなたの手札から唱えるのではなく、(青)を支払うとともにそれを時間(time)カウンターが４個置かれた状態で追放する。あなたのアップキープの開始時に、時間カウンターを１個取り除く。最後の１個を取り除いたとき、それをそのマナ・コストを支払うことなく唱える。）\nプレイヤー１人を対象とする。そのプレイヤーはカードを３枚引く。",
+          oracle: "Suspend 4 --- {U} （Rather than cast this card from your hand, pay {U} and exile it with four time counters on it. At the beginning of your upkeep, remove a time counter. When the last is removed, cast it without paying its mana cost.）\nTarget player draws three cards.",
+          flavor_text: "",
+        },
+      ]
+      assert_equal(expect, WisdomGuild.get('IMA042'))
     end
 
     test 'Enchantment' do
