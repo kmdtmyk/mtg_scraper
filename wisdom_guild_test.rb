@@ -95,6 +95,25 @@ class WisdomGuildTest < Test::Unit::TestCase
         },
       ]
       assert_equal(expect, WisdomGuild.get('ALA033'))
+
+      expect = [
+        {
+          name: '否定の契約',
+          english_name: "Pact of Negation",
+          furigana: "ひていのけいやく",
+          mana_cost: '(０)',
+          color: '青',
+          legendary: false,
+          types: [
+            { name: 'インスタント' },
+          ],
+          subtypes: [],
+          text: "呪文１つを対象とし、それを打ち消す。\nあなたの次のアップキープの開始時に(３)(青)(青)を支払う。そうしない場合、あなたはこのゲームに敗北する。",
+          oracle: "Counter target spell.\nAt the beginning of your next upkeep, pay {3}{U}{U}. If you don't, you lose the game.",
+          flavor_text: "常に裏切りを予測する者が落胆することはまず無い。",
+        },
+      ]
+      assert_equal(expect, WisdomGuild.get('FUT042'))
     end
 
     test 'Sorcery' do
