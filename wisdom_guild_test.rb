@@ -38,6 +38,35 @@ class WisdomGuildTest < Test::Unit::TestCase
         },
       ]
       assert_equal(expect, WisdomGuild.parse(html))
+
+      html = WisdomGuild.get_html_and_cache('AKH136')
+      expect = [
+        {
+          name: '熱烈の神ハゾレト',
+          english_name: 'Hazoret the Fervent',
+          furigana: 'ねつれつのかみはぞれと',
+          mana_cost: '(３)(赤)',
+          legendary: true,
+          types: [
+            {
+              name: 'クリーチャー',
+            },
+          ],
+          subtypes: [
+            {
+              name: '神',
+              english_name: 'God',
+            },
+          ],
+          text: "破壊不能、速攻\nあなたの手札のカードが１枚以下でないかぎり、熱烈の神ハゾレトでは攻撃したりブロックしたりできない。\n(２)(赤),カード１枚を捨てる：熱烈の神ハゾレトは各対戦相手にそれぞれ２点のダメージを与える。",
+          oracle: "Indestructible, haste\nHazoret the Fervent can't attack or block unless you have one or fewer cards in hand.\n{2}{R}, Discard a card: Hazoret deals 2 damage to each opponent.",
+          size: '5/4',
+          power: 5,
+          toughness: 4,
+          flavor_text: "",
+        },
+      ]
+      assert_equal(expect, WisdomGuild.parse(html))
     end
 
     test 'Instant' do
