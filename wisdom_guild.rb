@@ -65,6 +65,37 @@ class WisdomGuild
   end
 
   def self.parse_split(html)
+    table = get_table(html)
+    text_array = table_to_array(table)
+
+    (text_array[0].length - 1).times.map do |i|
+      col = i + 1
+      detail = {}
+      detail.merge!(parse_name_text(text_array[0][col]))
+      detail.merge!(parse_type_text(text_array[2][col]))
+
+      if text_array[5][0] == 'Ｐ／Ｔ'
+        detail.merge!(parse_size_text(text_array[5][col]))
+        flavor_text = text_array[6][col]
+      elsif text_array[5][0] == '忠誠度'
+        detail.merge!(parse_loyalty_text(text_array[5][col]))
+        flavor_text = text_array[6][col]
+      else
+        flavor_text = text_array[5][col]
+      end
+
+      mana_cost = text_array[1][col]
+      text = text_array[3][col]
+      oracle = text_array[4][col]
+
+      detail.merge!({
+        mana_cost: mana_cost,
+        text: text,
+        oracle: oracle,
+        flavor_text: flavor_text,
+      })
+      detail
+    end
   end
 
   def self.parse_levelup(html)

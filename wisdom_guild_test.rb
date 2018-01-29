@@ -379,6 +379,104 @@ class WisdomGuildTest < Test::Unit::TestCase
       assert_equal(expect, WisdomGuild.get('FUT174'))
     end
 
+    test 'split' do
+      expect = [
+        {
+          name: '火',
+          english_name: "Fire",
+          furigana: 'ひ',
+          mana_cost: '(１)(赤)',
+          legendary: false,
+          types: [
+            { name: 'インスタント' },
+          ],
+          subtypes: [],
+          text: "１つか２つのクリーチャーとプレイヤーの組み合わせを対象とする。火は、それらに２点のダメージを望むように割り振って与える。",
+          oracle: "Fire deals 2 damage divided as you choose among one or two target creatures and/or players.",
+          flavor_text: "",
+        },
+        {
+          name: '氷',
+          english_name: "Ice",
+          furigana: 'こおり',
+          mana_cost: '(１)(青)',
+          legendary: false,
+          types: [
+            { name: 'インスタント' },
+          ],
+          subtypes: [],
+          text: "パーマネント１つを対象とし、それをタップする。\nカードを１枚引く。",
+          oracle: "Tap target permanent.\nDraw a card.",
+          flavor_text: "",
+        },
+      ]
+      assert_equal(expect, WisdomGuild.get('APC128'))
+
+      expect = [
+        {
+          name: '摩耗',
+          english_name: "Wear",
+          furigana: 'まもう',
+          mana_cost: '(１)(赤)',
+          legendary: false,
+          types: [
+            { name: 'インスタント' },
+          ],
+          subtypes: [],
+          text: "アーティファクト１つを対象とし、それを破壊する。\n融合（あなたはこのカードの片方の半分または両方の半分をあなたの手札から唱えてもよい。）",
+          oracle: "Destroy target artifact.\nFuse （You may cast one or both halves of this card from your hand.）",
+          flavor_text: "",
+        },
+        {
+          name: '損耗',
+          english_name: "Tear",
+          furigana: 'そんもう',
+          mana_cost: '(白)',
+          legendary: false,
+          types: [
+            { name: 'インスタント' },
+          ],
+          subtypes: [],
+          text: "エンチャント１つを対象とし、それを破壊する。\n融合（あなたはこのカードの片方の半分または両方の半分をあなたの手札から唱えてもよい。）",
+          oracle: "Destroy target enchantment.\nFuse （You may cast one or both halves of this card from your hand.）",
+          flavor_text: "",
+        },
+      ]
+      assert_equal(expect, WisdomGuild.get('DGM135'))
+
+      expect = [
+        {
+          name: '木端',
+          english_name: "Cut",
+          furigana: 'こっぱ',
+          mana_cost: '(１)(赤)',
+          legendary: false,
+          types: [
+            { name: 'ソーサリー' },
+          ],
+          subtypes: [],
+          text: "クリーチャー１体を対象とする。木端はそれに４点のダメージを与える。",
+          oracle: "Cut deals 4 damage to target creature.",
+          flavor_text: "",
+        },
+        {
+          name: '微塵',
+          english_name: "Ribbons",
+          furigana: 'みじん',
+          mana_cost: '(Ｘ)(黒)(黒)',
+          legendary: false,
+          types: [
+            { name: 'ソーサリー' },
+          ],
+          subtypes: [],
+          text: "余波（この呪文はあなたの墓地からのみ唱えられる。その後、これを追放する。）\n各対戦相手はそれぞれＸ点のライフを失う。",
+          oracle: "Aftermath （Cast this spell only from your graveyard. Then exile it.）\nEach opponent loses X life.",
+          flavor_text: "",
+        },
+      ]
+      assert_equal(expect, WisdomGuild.get('AKH223'))
+    end
+
   end
 
   test 'get_layout' do
