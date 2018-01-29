@@ -12,51 +12,45 @@ class WisdomGuild
     url = name_to_url(name)
     html = HtmlMan.get(url)
     FileMan.write(file_path, html)
-    return html
+    html
   end
 
   def self.parse(html)
     layout = get_layout(html)
     return parse_normal(html) if layout == 'normal'
-    return  parse_double_faced(html) if layout == 'double_faced'
-    return  parse_split(html) if layout == 'split'
-    return  parse_levelup(html) if layout == 'levelup'
-    return  parse_flip(html) if layout == 'flip'
+    return parse_double_faced(html) if layout == 'double_faced'
+    return parse_split(html) if layout == 'split'
+    return parse_levelup(html) if layout == 'levelup'
+    return parse_flip(html) if layout == 'flip'
   end
 
   def self.parse_normal(html)
-    details = []
-    doc = Nokogiri::HTML.parse(html)
-    doc.css('.wg-whisper-card-detail table').each do |table|
-      detail = {}
+    table = get_table(html)
+    text_array = table_to_array(table)
 
-      name_text = table.css('tr:nth-child(1) td:nth-child(2)').inner_text
-      detail.merge!(parse_name_text(name_text))
-      type_text = table.css('tr:nth-child(3) td:nth-child(2)').inner_text
-      detail.merge!(parse_type_text(type_text))
+    detail = {}
+    detail.merge!(parse_name_text(text_array[0][1]))
+    detail.merge!(parse_type_text(text_array[2][1]))
 
-      label6 = table.css('tr:nth-child(6) th:nth-child(1)').inner_text
-      if label6 == 'Ｐ／Ｔ'
-        size_text = table.css('tr:nth-child(6) td:nth-child(2)').inner_text
-        detail.merge!(parse_size_text(size_text))
-        flavor_text = table.css('tr:nth-child(7) td:nth-child(2)').inner_text
-      else
-        flavor_text = table.css('tr:nth-child(6) td:nth-child(2)').inner_text
-      end
-
-      mana_cost = table.css('tr:nth-child(2) td:nth-child(2)').inner_text
-      text = table.css('tr:nth-child(4) td:nth-child(2)').inner_text
-      oracle = table.css('tr:nth-child(5) td:nth-child(2)').inner_text
-
-      detail.merge!({
-        mana_cost: mana_cost,
-        text: text,
-        oracle: oracle,
-        flavor_text: flavor_text,
-      })
-      details.push(detail)
+    if text_array[5][0] == 'Ｐ／Ｔ'
+      detail.merge!(parse_size_text(text_array[5][1]))
+      flavor_text = text_array[6][1]
+    else
+      flavor_text = text_array[5][1]
     end
-    details
+
+    mana_cost = text_array[1][1]
+    text = text_array[3][1]
+    oracle = text_array[4][1]
+
+    detail.merge!({
+      mana_cost: mana_cost,
+      text: text,
+      oracle: oracle,
+      flavor_text: flavor_text,
+    })
+
+    [detail]
   end
 
   def self.parse_double_faced(html)
@@ -89,6 +83,12 @@ class WisdomGuild
     def self.get_table(html)
       doc = Nokogiri::HTML.parse(html)
       doc.css('.wg-whisper-card-detail table')
+    end
+
+    def self.table_to_array(table)
+      table.css('tr').map do |tr|
+        tr.css('th, td').map{ |td| td.inner_text }
+      end
     end
 
     def self.parse_name_text(text)
