@@ -99,6 +99,55 @@ class WisdomGuild
   end
 
   def self.parse_levelup(html)
+    table = get_table(html)
+    text_array = table_to_array(table)
+
+    #一部のtr開始タグが抜けている対応
+    if text_array.length < 17
+      table.css('td').each_with_index do |td, index|
+        text_array.insert(7, ['テキスト', td.inner_text]) if index == 6
+        text_array.insert(11, ['テキスト', td.inner_text]) if index == 9
+      end
+    end
+
+    detail = {}
+    detail.merge!(parse_name_text(text_array[0][1]))
+    detail.merge!(parse_type_text(text_array[2][1]))
+    detail.merge!(parse_size_text(text_array[5][1]))
+
+    level1 = parse_level_text(text_array[6][0])
+    level2 = parse_level_text(text_array[10][0])
+
+    mana_cost = text_array[1][1]
+    text = [
+      text_array[3][1],
+      'Lv ' + level1,
+      text_array[9][1],
+      text_array[7][1],
+      'Lv ' + level2,
+      text_array[13][1],
+      text_array[11][1],
+    ].join("\n")
+    oracle = [
+      text_array[4][1],
+      'LEVEL ' + level1,
+      text_array[9][1],
+      text_array[8][1],
+      'LEVEL ' + level2,
+      text_array[13][1],
+      text_array[12][1],
+    ].join("\n")
+    flavor_text = text_array[14][1]
+
+    detail.merge!({
+      mana_cost: mana_cost,
+      text: text,
+      oracle: oracle,
+      flavor_text: flavor_text,
+    })
+
+
+    [detail]
   end
 
   def self.parse_flip(html)
@@ -199,6 +248,11 @@ class WisdomGuild
         size: text,
         loyalty: text.to_i,
       }
+    end
+
+    def self.parse_level_text(text)
+      %r{Lv(\S*)}.match(text)
+      Regexp.last_match(1)
     end
 
     def self.name_to_url(name)

@@ -477,6 +477,32 @@ class WisdomGuildTest < Test::Unit::TestCase
       assert_equal(expect, WisdomGuild.get('AKH223'))
     end
 
+    test 'levelup' do
+      expect = [
+        {
+          name: 'グール・ドラズの暗殺者',
+          english_name: "Guul Draz Assassin",
+          furigana: 'ぐーるどらずのあんさつしゃ',
+          mana_cost: '(黒)',
+          legendary: false,
+          types: [
+            { name: 'クリーチャー' },
+          ],
+          subtypes: [
+            { name: '吸血鬼', english_name: 'Vampire' },
+            { name: '暗殺者', english_name: 'Assassin' },
+          ],
+          text: "Ｌｖアップ(１)(黒)（(１)(黒)：この上にＬｖ(level)カウンターを１個置く。Ｌｖアップはソーサリーとしてのみ行う。）\nLv 2-3\n2/2\n(黒),(Ｔ)：クリーチャー１体を対象とする。それはターン終了時まで-2/-2の修整を受ける。\nLv 4+\n4/4\n(黒),(Ｔ)：クリーチャー１体を対象とする。それはターン終了時まで-4/-4の修整を受ける。",
+          oracle: "Level up {1}{B} （{1}{B}: Put a level counter on this. Level up only as a sorcery.）\nLEVEL 2-3\n2/2\n{B}, {T}: Target creature gets -2/-2 until end of turn.\nLEVEL 4+\n4/4\n{B}, {T}: Target creature gets -4/-4 until end of turn.",
+          size: '1/1',
+          power: 1,
+          toughness: 1,
+          flavor_text: "",
+        },
+      ]
+      assert_equal(expect, WisdomGuild.get('ROE112'))
+    end
+
   end
 
   test 'get_layout' do
