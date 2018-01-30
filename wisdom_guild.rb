@@ -32,33 +32,7 @@ class WisdomGuild
   def self.parse_normal(html)
     table = get_table(html)
     text_array = table_to_array(table)
-
-    detail = {}
-    detail.merge!(parse_name_text(text_array[0][1]))
-    detail.merge!(parse_type_text(text_array[2][1]))
-
-    if text_array[5][0] == 'Ｐ／Ｔ'
-      detail.merge!(parse_size_text(text_array[5][1]))
-      flavor_text = text_array[6][1]
-    elsif text_array[5][0] == '忠誠度'
-      detail.merge!(parse_loyalty_text(text_array[5][1]))
-      flavor_text = text_array[6][1]
-    else
-      flavor_text = text_array[5][1]
-    end
-
-    mana_cost = text_array[1][1]
-    text = text_array[3][1]
-    oracle = text_array[4][1]
-
-    detail.merge!({
-      mana_cost: mana_cost,
-      text: text,
-      oracle: oracle,
-      flavor_text: flavor_text,
-    })
-
-    [detail]
+    [parse_text_array(text_array)]
   end
 
   def self.parse_double_faced(html)
@@ -67,35 +41,11 @@ class WisdomGuild
   def self.parse_split(html)
     table = get_table(html)
     text_array = table_to_array(table)
-
-    (text_array[0].length - 1).times.map do |i|
-      col = i + 1
-      detail = {}
-      detail.merge!(parse_name_text(text_array[0][col]))
-      detail.merge!(parse_type_text(text_array[2][col]))
-
-      if text_array[5][0] == 'Ｐ／Ｔ'
-        detail.merge!(parse_size_text(text_array[5][col]))
-        flavor_text = text_array[6][col]
-      elsif text_array[5][0] == '忠誠度'
-        detail.merge!(parse_loyalty_text(text_array[5][col]))
-        flavor_text = text_array[6][col]
-      else
-        flavor_text = text_array[5][col]
-      end
-
-      mana_cost = text_array[1][col]
-      text = text_array[3][col]
-      oracle = text_array[4][col]
-
-      detail.merge!({
-        mana_cost: mana_cost,
-        text: text,
-        oracle: oracle,
-        flavor_text: flavor_text,
-      })
-      detail
-    end
+    (text_array[0].length - 1).times
+      .map{|i|
+        text_array[0..6].map{ |row| [row[0], row[i + 1]] }
+      }
+      .map{ |array| parse_text_array(array) }
   end
 
   def self.parse_levelup(html)
@@ -110,16 +60,18 @@ class WisdomGuild
       end
     end
 
-    detail = {}
-    detail.merge!(parse_name_text(text_array[0][1]))
-    detail.merge!(parse_type_text(text_array[2][1]))
-    detail.merge!(parse_size_text(text_array[5][1]))
+    detail = parse_text_array [
+      text_array[0],
+      text_array[1],
+      text_array[2],
+      text_array[5],
+      text_array[14],
+    ]
 
     level1 = parse_level_text(text_array[6][0])
     level2 = parse_level_text(text_array[10][0])
 
-    mana_cost = text_array[1][1]
-    text = [
+    detail[:text] = [
       text_array[3][1],
       'Lv ' + level1,
       text_array[9][1],
@@ -128,7 +80,8 @@ class WisdomGuild
       text_array[13][1],
       text_array[11][1],
     ].join("\n")
-    oracle = [
+
+    detail[:oracle] = [
       text_array[4][1],
       'LEVEL ' + level1,
       text_array[9][1],
@@ -137,15 +90,6 @@ class WisdomGuild
       text_array[13][1],
       text_array[12][1],
     ].join("\n")
-    flavor_text = text_array[14][1]
-
-    detail.merge!({
-      mana_cost: mana_cost,
-      text: text,
-      oracle: oracle,
-      flavor_text: flavor_text,
-    })
-
 
     [detail]
   end
@@ -153,26 +97,16 @@ class WisdomGuild
   def self.parse_flip(html)
     table = get_table(html)
     text_array = table_to_array(table)
-    2.times.map do |i|
-      offset = i * 8
-      detail = {}
-      detail.merge!(parse_name_text(text_array[0 + offset][1]))
-      detail.merge!(parse_type_text(text_array[2 + offset][1]))
-      if i == 1 and text_array.length == 16
-        flavor_text = text_array[5 + offset][1]
-      else
-        detail.merge!(parse_size_text(text_array[5 + offset][1]))
-        flavor_text = text_array[6 + offset][1]
-      end
-      mana_cost = text_array[1][1]
-      text = text_array[3 + offset][1]
-      oracle = text_array[4 + offset][1]
-      detail.merge!({
-        mana_cost: mana_cost,
-        text: text,
-        oracle: oracle,
-        flavor_text: flavor_text,
-      })
+    if text_array.length == 17
+      [
+        parse_text_array(text_array[0..7]),
+        parse_text_array(text_array[8..15]),
+      ]
+    else
+      [
+        parse_text_array(text_array[0..7]),
+        parse_text_array(text_array[8..14]),
+      ]
     end
   end
 
@@ -208,6 +142,32 @@ class WisdomGuild
         english_name: english_name,
         furigana: furigana,
       }
+    end
+
+    def self.parse_text_array(array)
+      result = {}
+      array.each do |row|
+        name = row[0]
+        value = row[1]
+        if name == 'カード名'
+          result.merge!(parse_name_text(value))
+        elsif name == 'マナコスト'
+          result[:mana_cost] = value
+        elsif name == 'タイプ'
+          result.merge!(parse_type_text(value))
+        elsif name == 'テキスト'
+          result[:text] = value
+        elsif name == 'オラクル'
+          result[:oracle] = value
+        elsif name == 'Ｐ／Ｔ'
+          result.merge!(parse_size_text(value))
+        elsif name == '忠誠度'
+          result.merge!(parse_loyalty_text(value))
+        elsif name == 'フレーバ'
+          result[:flavor_text] = value
+        end
+      end
+      result
     end
 
     def self.parse_type_text(text)
