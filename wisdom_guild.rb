@@ -36,6 +36,7 @@ class WisdomGuild
   end
 
   def self.parse_double_faced(html)
+    parse_double_faced_or_flip(html)
   end
 
   def self.parse_split(html)
@@ -95,19 +96,7 @@ class WisdomGuild
   end
 
   def self.parse_flip(html)
-    table = get_table(html)
-    text_array = table_to_array(table)
-    if text_array.length == 17
-      [
-        parse_text_array(text_array[0..7]),
-        parse_text_array(text_array[8..15]),
-      ]
-    else
-      [
-        parse_text_array(text_array[0..7]),
-        parse_text_array(text_array[8..14]),
-      ]
-    end
+    parse_double_faced_or_flip(html)
   end
 
   def self.get_layout(html)
@@ -115,7 +104,7 @@ class WisdomGuild
     return 'double_faced' if table.css('th.ddc').length > 0
     return 'split' if table.css('tr:nth-child(1) td').length > 1
     return 'levelup' if table.css('tr:nth-child(7) td').length == 0
-    return 'flip'if table.css('tr').length > 15
+    return 'flip' if table.css('tr').length > 15
     return 'normal'
   end
 
@@ -132,6 +121,16 @@ class WisdomGuild
       end
     end
 
+    def self.parse_double_faced_or_flip(html)
+      table = get_table(html)
+      text_array = table_to_array(table)
+      second_name_index = text_array[1..-1].index{ |name, value| name == 'カード名' } + 1
+      [
+        parse_text_array(text_array[0..second_name_index - 1]),
+        parse_text_array(text_array[second_name_index..-2]),
+      ]
+    end
+
     def self.parse_name_text(text)
       %r{([^/\n\t]+)\/([^/\n\t]+)[\n\t]*（(.+)）}.match(text)
       name = Regexp.last_match(1)
@@ -146,9 +145,7 @@ class WisdomGuild
 
     def self.parse_text_array(array)
       result = {}
-      array.each do |row|
-        name = row[0]
-        value = row[1]
+      array.each do |name, value|
         if name == 'カード名'
           result.merge!(parse_name_text(value))
         elsif name == 'マナコスト'

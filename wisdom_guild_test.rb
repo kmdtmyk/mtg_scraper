@@ -669,6 +669,174 @@ class WisdomGuildTest < Test::Unit::TestCase
       assert_equal(expect, WisdomGuild.get('SOK035'))
     end
 
+    test 'double_faced' do
+      expect = [
+        {
+          name: '秘密を掘り下げる者',
+          english_name: "Delver of Secrets",
+          furigana: 'ひみつをほりさげるもの',
+          mana_cost: '(青)',
+          supertypes: [],
+          types: [
+            { name: 'クリーチャー' },
+          ],
+          subtypes: [
+            { name: '人間', english_name: 'Human' },
+            { name: 'ウィザード', english_name: 'Wizard' },
+          ],
+          text: "あなたのアップキープの開始時に、あなたのライブラリーの一番上のカードを見る。あなたはそのカードを公開してもよい。これによりインスタント・カードかソーサリー・カードが公開された場合、秘密を掘り下げる者を変身させる。",
+          oracle: "At the beginning of your upkeep, look at the top card of your library. You may reveal that card. If an instant or sorcery card is revealed this way, transform Delver of Secrets.",
+          size: '1/1',
+          power: 1,
+          toughness: 1,
+          flavor_text: "",
+        },
+        {
+          name: '昆虫の逸脱者',
+          english_name: "Insectile Aberration",
+          furigana: 'こんちゅうのいつだつしゃ',
+          mana_cost: '',
+          color: '青',
+          supertypes: [],
+          types: [
+            { name: 'クリーチャー' },
+          ],
+          subtypes: [
+            { name: '人間', english_name: 'Human' },
+            { name: '昆虫', english_name: 'Insect' },
+          ],
+          text: "飛行",
+          oracle: "Flying",
+          size: '3/2',
+          power: 3,
+          toughness: 2,
+          flavor_text: "",
+        },
+      ]
+      assert_equal(expect, WisdomGuild.get('ISD051'))
+
+      expect = [
+        {
+          name: 'ヴリンの神童、ジェイス',
+          english_name: "Jace, Vryn's Prodigy",
+          furigana: 'う゛りんのしんどうじぇいす',
+          mana_cost: '(１)(青)',
+          supertypes: [
+            { name: '伝説の' },
+          ],
+          types: [
+            { name: 'クリーチャー' },
+          ],
+          subtypes: [
+            { name: '人間', english_name: 'Human' },
+            { name: 'ウィザード', english_name: 'Wizard' },
+          ],
+          text: "(Ｔ)：カードを１枚引き、その後カードを１枚捨てる。あなたの墓地にカードが５枚以上あるなら、ヴリンの神童、ジェイスを追放し、その後、これを変身させた状態でオーナーのコントロール下で戦場に戻す。",
+          oracle: "{T}: Draw a card, then discard a card. If there are five or more cards in your graveyard, exile Jace, Vryn's Prodigy, then return him to the battlefield transformed under his owner's control.",
+          size: '0/2',
+          power: 0,
+          toughness: 2,
+          flavor_text: "",
+        },
+        {
+          name: '束縛なきテレパス、ジェイス',
+          english_name: "Jace, Telepath Unbound",
+          furigana: 'そくばくなきてれぱすじぇいす',
+          mana_cost: '',
+          color: '青',
+          supertypes: [
+            { name: '伝説の' },
+          ],
+          types: [
+            { name: 'プレインズウォーカー' },
+          ],
+          subtypes: [
+            { name: 'ジェイス', english_name: 'Jace' },
+          ],
+          text: "[+1]：クリーチャーを最大１体まで対象とする。あなたの次のターンまで、それは-2/-0の修整を受ける。\n[-3]：あなたの墓地にある、インスタント・カード１枚かソーサリー・カード１枚を対象とする。このターン、あなたはそれを唱えてもよい。このターンにそのカードがあなたの墓地に置かれるなら、代わりにそれを追放する。\n[-9]：あなたは「あなたが呪文を１つ唱えるたび、対戦相手１人を対象とする。そのプレイヤーは自分のライブラリーの一番上から５枚のカードを自分の墓地に置く。」を持つ紋章を得る。",
+          oracle: "+1: Up to one target creature gets -2/-0 until your next turn.\n-3: You may cast target instant or sorcery card from your graveyard this turn. If that card would be put into your graveyard this turn, exile it instead.\n-9: You get an emblem with \"Whenever you cast a spell, target opponent puts the top five cards of his or her library into his or her graveyard.\"",
+          size: '5',
+          loyalty: 5,
+          flavor_text: "",
+        },
+      ]
+      assert_equal(expect, WisdomGuild.get('ORI060'))
+
+      expect = [
+        {
+          name: '驚恐の目覚め',
+          english_name: "Startled Awake",
+          furigana: 'きょうきょうのめざめ',
+          mana_cost: '(２)(青)(青)',
+          supertypes: [],
+          types: [
+            { name: 'ソーサリー' },
+          ],
+          subtypes: [],
+          text: "対戦相手１人を対象とする。そのプレイヤーは、自分のライブラリーの一番上から１３枚のカードを自分の墓地に置く。\n(３)(青)(青)：あなたの墓地から驚恐の目覚めを変身させた状態で戦場に出す。この能力は、あなたがソーサリーを唱えられるときにのみ起動できる。",
+          oracle: "Target opponent puts the top thirteen cards of his or her library into his or her graveyard.\n{3}{U}{U}: Put Startled Awake from your graveyard onto the battlefield transformed. Activate this ability only any time you could cast a sorcery.",
+          flavor_text: "",
+        },
+        {
+          name: '絶え間ない悪夢',
+          english_name: "Persistent Nightmare",
+          furigana: 'たえまないあくむ',
+          mana_cost: '',
+          color: '青',
+          supertypes: [],
+          types: [
+            { name: 'クリーチャー' },
+          ],
+          subtypes: [
+            { name: 'ナイトメア', english_name: 'Nightmare' },
+          ],
+          text: "潜伏（このクリーチャーは、これより大きなパワーを持つクリーチャーによってはブロックされない。）\n絶え間ない悪夢がプレイヤー１人に戦闘ダメージを与えたとき、これをオーナーの手札に戻す。",
+          oracle: "Skulk （This creature can't be blocked by creatures with greater power.）\nWhen Persistent Nightmare deals combat damage to a player, return it to its owner's hand.",
+          size: '1/1',
+          power: 1,
+          toughness: 1,
+          flavor_text: "",
+        },
+      ]
+      assert_equal(expect, WisdomGuild.get('SOI088'))
+
+      expect = [
+        {
+          name: 'イトリモクの成長儀式',
+          english_name: "Growing Rites of Itlimoc",
+          furigana: 'いとりもくのせいちょうぎしき',
+          mana_cost: '(２)(緑)',
+          supertypes: [
+            { name: '伝説の' },
+          ],
+          types: [
+            { name: 'エンチャント' },
+          ],
+          subtypes: [],
+          text: "イトリモクの成長儀式が戦場に出たとき、あなたのライブラリーの一番上からカードを４枚見る。あなたはその中からクリーチャー・カード１枚を公開してあなたの手札に加えてもよい。残りをあなたのライブラリーの一番下に望む順番で置く。\nあなたの終了ステップの開始時に、あなたがクリーチャーを４体以上コントロールしている場合、イトリモクの成長儀式を変身させる。",
+          oracle: "When Growing Rites of Itlimoc enters the battlefield, look at the top four cards of your library. You may reveal a creature card from among them and put it into your hand. Put the rest on the bottom of your library in any order.\nAt the beginning of your end step, if you control four or more creatures, transform Growing Rites of Itlimoc.",
+          flavor_text: "",
+        },
+        {
+          name: '太陽の揺籃の地、イトリモク',
+          english_name: "Itlimoc, Cradle of the Sun",
+          furigana: 'たいようのようらんのちいとりもく',
+          mana_cost: '',
+          supertypes: [
+            { name: '伝説の' },
+          ],
+          types: [
+            { name: '土地' },
+          ],
+          subtypes: [],
+          text: "（《イトリモクの成長儀式/Growing Rites of Itlimoc》から変身する。）\n(Ｔ)：あなたのマナ・プールに(緑)を加える。\n(Ｔ)：あなたのマナ・プールに、あなたがコントロールしているクリーチャー１体につき(緑)を加える。",
+          oracle: "（Transforms from Growing Rites of Itlimoc.）\n{T}: Add {G} to your mana pool.\n{T}: Add {G} to your mana pool for each creature you control.",
+          flavor_text: "",
+        },
+      ]
+      assert_equal(expect, WisdomGuild.get('XLN191'))
+    end
+
   end
 
   test 'get_layout' do
