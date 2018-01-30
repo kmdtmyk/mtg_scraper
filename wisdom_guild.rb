@@ -195,9 +195,12 @@ class WisdomGuild
       type_text = Regexp.last_match(5)
       subtype_text = Regexp.last_match(7)
 
-      legendary = legendary_text.nil? == false
+      supertypes = []
       types = []
       subtypes = []
+
+      supertypes << { name: '伝説の' } unless legendary_text.nil?
+      supertypes << { name: '基本' } unless basic_text.nil?
 
       unless type_text.nil?
         type_text.split('・').each do |type|
@@ -216,17 +219,13 @@ class WisdomGuild
       end
 
       result = {
-        legendary: legendary,
+        supertypes: supertypes,
         types: types,
         subtypes: subtypes,
       }
 
       unless color.nil?
         result[:color] = color
-      end
-
-      unless basic_text.nil?
-        result[:basic] = true
       end
 
       result

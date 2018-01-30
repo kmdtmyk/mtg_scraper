@@ -12,7 +12,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           english_name: 'Adaptive Snapjaw',
           furigana: 'じゅんのうするはねあご',
           mana_cost: '(４)(緑)',
-          legendary: false,
+          supertypes: [],
           types: [
             { name: 'クリーチャー' },
           ],
@@ -36,7 +36,9 @@ class WisdomGuildTest < Test::Unit::TestCase
           english_name: 'Hazoret the Fervent',
           furigana: 'ねつれつのかみはぞれと',
           mana_cost: '(３)(赤)',
-          legendary: true,
+          supertypes: [
+            { name: '伝説の' },
+          ],
           types: [
             { name: 'クリーチャー' },
           ],
@@ -59,7 +61,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           english_name: 'Tarmogoyf',
           furigana: 'たるもごいふ',
           mana_cost: '(１)(緑)',
-          legendary: false,
+          supertypes: [],
           types: [
             { name: 'クリーチャー' },
           ],
@@ -84,7 +86,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           english_name: 'Cancel',
           furigana: 'とりけし',
           mana_cost: '(１)(青)(青)',
-          legendary: false,
+          supertypes: [],
           types: [
             { name: 'インスタント' },
           ],
@@ -103,7 +105,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           furigana: "ひていのけいやく",
           mana_cost: '(０)',
           color: '青',
-          legendary: false,
+          supertypes: [],
           types: [
             { name: 'インスタント' },
           ],
@@ -123,7 +125,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           english_name: 'Alpha Brawl',
           furigana: 'とうもくのらんとう',
           mana_cost: '(６)(赤)(赤)',
-          legendary: false,
+          supertypes: [],
           types: [
             { name: 'ソーサリー' },
           ],
@@ -141,8 +143,8 @@ class WisdomGuildTest < Test::Unit::TestCase
           english_name: "Ancestral Vision",
           furigana: "そせんのげんし",
           mana_cost: "",
-          legendary: false,
           color: '青',
+          supertypes: [],
           types: [
             { name: 'ソーサリー' },
           ],
@@ -162,7 +164,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           english_name: 'Arrest',
           furigana: 'こういん',
           mana_cost: '(２)(白)',
-          legendary: false,
+          supertypes: [],
           types: [
             { name: 'エンチャント' },
           ],
@@ -184,7 +186,9 @@ class WisdomGuildTest < Test::Unit::TestCase
           english_name: "Akroma's Memorial",
           furigana: 'あくろーまのきねんひ',
           mana_cost: '(７)',
-          legendary: true,
+          supertypes: [
+            { name: '伝説の' },
+          ],
           types: [
             { name: 'アーティファクト' },
           ],
@@ -202,7 +206,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           english_name: "Metalwork Colossus",
           furigana: 'きんぞくせいのきょぞう',
           mana_cost: '(１１)',
-          legendary: false,
+          supertypes: [],
           types: [
             { name: 'アーティファクト' },
             { name: 'クリーチャー' },
@@ -226,7 +230,9 @@ class WisdomGuildTest < Test::Unit::TestCase
           english_name: "Skysovereign, Consul Flagship",
           furigana: 'りょうじのきかんすかいそぶりん',
           mana_cost: '(５)',
-          legendary: true,
+          supertypes: [
+            { name: '伝説の' },
+          ],
           types: [
             { name: 'アーティファクト' },
           ],
@@ -251,7 +257,9 @@ class WisdomGuildTest < Test::Unit::TestCase
           english_name: "Jace Beleren",
           furigana: 'じぇいすべれれん',
           mana_cost: '(１)(青)(青)',
-          legendary: true,
+          supertypes: [
+            { name: '伝説の' },
+          ],
           types: [
             { name: 'プレインズウォーカー' },
           ],
@@ -273,7 +281,9 @@ class WisdomGuildTest < Test::Unit::TestCase
           english_name: "Nissa, Steward of Elements",
           furigana: 'しぜんにつかえるものにっさ',
           mana_cost: '(Ｘ)(緑)(青)',
-          legendary: true,
+          supertypes: [
+            { name: '伝説の' },
+          ],
           types: [
             { name: 'プレインズウォーカー' },
           ],
@@ -297,8 +307,9 @@ class WisdomGuildTest < Test::Unit::TestCase
           english_name: "Plains",
           furigana: 'へいち',
           mana_cost: '',
-          legendary: false,
-          basic: true,
+          supertypes: [
+            { name: '基本' },
+          ],
           types: [
             { name: '土地' },
           ],
@@ -318,8 +329,9 @@ class WisdomGuildTest < Test::Unit::TestCase
           english_name: "Wastes",
           furigana: 'あれち',
           mana_cost: '',
-          legendary: false,
-          basic: true,
+          supertypes: [
+            { name: '基本' },
+          ],
           types: [
             { name: '土地' },
           ],
@@ -337,7 +349,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           english_name: "Steam Vents",
           furigana: 'じょうきこう',
           mana_cost: '',
-          legendary: false,
+          supertypes: [],
           types: [
             { name: '土地' },
           ],
@@ -358,8 +370,8 @@ class WisdomGuildTest < Test::Unit::TestCase
           english_name: "Dryad Arbor",
           furigana: 'どらいあどのあずまや',
           mana_cost: '',
-          legendary: false,
           color: '緑',
+          supertypes: [],
           types: [
             { name: '土地' },
             { name: 'クリーチャー' },
@@ -386,7 +398,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           english_name: "Fire",
           furigana: 'ひ',
           mana_cost: '(１)(赤)',
-          legendary: false,
+          supertypes: [],
           types: [
             { name: 'インスタント' },
           ],
@@ -400,7 +412,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           english_name: "Ice",
           furigana: 'こおり',
           mana_cost: '(１)(青)',
-          legendary: false,
+          supertypes: [],
           types: [
             { name: 'インスタント' },
           ],
@@ -418,7 +430,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           english_name: "Wear",
           furigana: 'まもう',
           mana_cost: '(１)(赤)',
-          legendary: false,
+          supertypes: [],
           types: [
             { name: 'インスタント' },
           ],
@@ -432,7 +444,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           english_name: "Tear",
           furigana: 'そんもう',
           mana_cost: '(白)',
-          legendary: false,
+          supertypes: [],
           types: [
             { name: 'インスタント' },
           ],
@@ -450,7 +462,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           english_name: "Cut",
           furigana: 'こっぱ',
           mana_cost: '(１)(赤)',
-          legendary: false,
+          supertypes: [],
           types: [
             { name: 'ソーサリー' },
           ],
@@ -464,7 +476,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           english_name: "Ribbons",
           furigana: 'みじん',
           mana_cost: '(Ｘ)(黒)(黒)',
-          legendary: false,
+          supertypes: [],
           types: [
             { name: 'ソーサリー' },
           ],
@@ -484,7 +496,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           english_name: "Guul Draz Assassin",
           furigana: 'ぐーるどらずのあんさつしゃ',
           mana_cost: '(黒)',
-          legendary: false,
+          supertypes: [],
           types: [
             { name: 'クリーチャー' },
           ],
