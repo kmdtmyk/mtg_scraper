@@ -177,6 +177,26 @@ class WisdomGuildTest < Test::Unit::TestCase
         },
       ]
       assert_equal(expect, WisdomGuild.get('RTR003'))
+
+      expect = [
+        {
+          name: '不思議のバザール',
+          english_name: 'Bazaar of Wonders',
+          furigana: 'ふしぎのばざーる',
+          mana_cost: '(３)(青)(青)',
+          supertypes: [
+            { name: 'ワールド' },
+          ],
+          types: [
+            { name: 'エンチャント' },
+          ],
+          subtypes: [],
+          text: "不思議のバザールが戦場に出たとき、すべての墓地にあるすべてのカードを追放する。\nプレイヤーが呪文を唱えるたび、それと同じ名前を持つカードがいずれかの墓地にあるか同じ名前を持つトークンでないパーマネントが戦場にある場合、それを打ち消す。",
+          oracle: "When Bazaar of Wonders enters the battlefield, exile all cards from all graveyards.\nWhenever a player casts a spell, counter it if a card with the same name is in a graveyard or a nontoken permanent with the same name is on the battlefield.",
+          flavor_text: "",
+        },
+      ]
+      assert_equal(expect, WisdomGuild.get('MIR055'))
     end
 
     test 'Artifact' do
@@ -389,6 +409,50 @@ class WisdomGuildTest < Test::Unit::TestCase
         },
       ]
       assert_equal(expect, WisdomGuild.get('FUT174'))
+
+      expect = [
+        {
+          name: '暗黒の深部',
+          english_name: "Dark Depths",
+          furigana: 'あんこくのしんぶ',
+          mana_cost: '',
+          supertypes: [
+            { name: '伝説の' },
+            { name: '氷雪' },
+          ],
+          types: [
+            { name: '土地' },
+          ],
+          subtypes: [],
+          text: "暗黒の深部はその上に氷(ice)カウンターが１０個置かれた状態で戦場に出る。\n(３)：暗黒の深部から氷カウンターを１個取り除く。\n暗黒の深部の上に氷カウンターが１個も置かれていないとき、それを生け贄に捧げる。そうした場合、飛行と破壊不能を持つ《マリット・レイジ/Marit Lage》という名前の黒の20/20の伝説のアバター(Avatar)・クリーチャー・トークンを１体生成する。",
+          oracle: "Dark Depths enters the battlefield with ten ice counters on it.\n{3}: Remove an ice counter from Dark Depths.\nWhen Dark Depths has no ice counters on it, sacrifice it. If you do, create a legendary 20/20 black Avatar creature token with flying and indestructible named Marit Lage.",
+          flavor_text: "",
+        },
+      ]
+      assert_equal(expect, WisdomGuild.get('CSP145'))
+
+      expect = [
+        {
+          name: '冠雪の平地',
+          english_name: "Snow-Covered Plains",
+          furigana: 'かんせつのへいち',
+          mana_cost: '',
+          supertypes: [
+            { name: '基本' },
+            { name: '氷雪' },
+          ],
+          types: [
+            { name: '土地' },
+          ],
+          subtypes: [
+            { name: '平地', english_name: 'Plains' },
+          ],
+          text: "(白)",
+          oracle: "W",
+          flavor_text: "",
+        },
+      ]
+      assert_equal(expect, WisdomGuild.get('CSP151'))
     end
 
     test 'split' do

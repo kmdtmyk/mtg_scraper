@@ -188,19 +188,20 @@ class WisdomGuild
     end
 
     def self.parse_type_text(text)
-      %r{(〔(.*)〕 )?(伝説の)?(基本)?(\S+)( — (\S+))?}.match(text)
+      %r{(〔(.*)〕 )?(伝説の|基本|氷雪|持続|精鋭|宿主|ワールド・)*(\S+)( — (\S+))?}.match(text)
       color = Regexp.last_match(2)
-      legendary_text = Regexp.last_match(3)
-      basic_text = Regexp.last_match(4)
-      type_text = Regexp.last_match(5)
-      subtype_text = Regexp.last_match(7)
+      supertype_text = Regexp.last_match(3)
+      type_text = Regexp.last_match(4)
+      subtype_text = Regexp.last_match(6)
 
       supertypes = []
       types = []
       subtypes = []
 
-      supertypes << { name: '伝説の' } unless legendary_text.nil?
-      supertypes << { name: '基本' } unless basic_text.nil?
+      supertypes << { name: '伝説の' } if %r{伝説の}.match(text)
+      supertypes << { name: '基本' } if %r{基本}.match(text)
+      supertypes << { name: '氷雪' } if %r{氷雪}.match(text)
+      supertypes << { name: 'ワールド' } if %r{ワールド}.match(text)
 
       unless type_text.nil?
         type_text.split('・').each do |type|
