@@ -151,6 +151,29 @@ class WisdomGuild
   end
 
   def self.parse_flip(html)
+    table = get_table(html)
+    text_array = table_to_array(table)
+    2.times.map do |i|
+      offset = i * 8
+      detail = {}
+      detail.merge!(parse_name_text(text_array[0 + offset][1]))
+      detail.merge!(parse_type_text(text_array[2 + offset][1]))
+      if i == 1 and text_array.length == 16
+        flavor_text = text_array[5 + offset][1]
+      else
+        detail.merge!(parse_size_text(text_array[5 + offset][1]))
+        flavor_text = text_array[6 + offset][1]
+      end
+      mana_cost = text_array[1][1]
+      text = text_array[3 + offset][1]
+      oracle = text_array[4 + offset][1]
+      detail.merge!({
+        mana_cost: mana_cost,
+        text: text,
+        oracle: oracle,
+        flavor_text: flavor_text,
+      })
+    end
   end
 
   def self.get_layout(html)

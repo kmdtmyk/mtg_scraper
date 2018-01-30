@@ -579,6 +579,96 @@ class WisdomGuildTest < Test::Unit::TestCase
       assert_equal(expect, WisdomGuild.get('ROE112'))
     end
 
+    test 'flip' do
+      expect = [
+        {
+          name: '呪師の弟子',
+          english_name: "Jushi Apprentice",
+          furigana: 'じゅしのでし',
+          mana_cost: '(１)(青)',
+          supertypes: [],
+          types: [
+            { name: 'クリーチャー' },
+          ],
+          subtypes: [
+            { name: '人間', english_name: 'Human' },
+            { name: 'ウィザード', english_name: 'Wizard' },
+          ],
+          text: "(２)(青),(Ｔ)：カードを１枚引く。あなたの手札にカードが９枚以上ある場合、呪師の弟子を反転する。",
+          oracle: "{2}{U}, {T}: Draw a card. If you have nine or more cards in hand, flip Jushi Apprentice.",
+          size: '1/2',
+          power: 1,
+          toughness: 2,
+          flavor_text: "",
+        },
+        {
+          name: '暴く者、智也',
+          english_name: "Tomoya the Revealer",
+          furigana: 'あばくものともや',
+          mana_cost: '(１)(青)',
+          supertypes: [
+            { name: '伝説の' },
+          ],
+          types: [
+            { name: 'クリーチャー' },
+          ],
+          subtypes: [
+            { name: '人間', english_name: 'Human' },
+            { name: 'ウィザード', english_name: 'Wizard' },
+          ],
+          text: "(３)(青)(青),(Ｔ)：プレイヤー１人を対象とする。そのプレイヤーはカードをＸ枚引く。Ｘはあなたの手札のカードの枚数に等しい。",
+          oracle: "{3}{U}{U}, {T}: Target player draws X cards, where X is the number of cards in your hand.",
+          size: '2/3',
+          power: 2,
+          toughness: 3,
+          flavor_text: "",
+        },
+      ]
+      assert_equal(expect, WisdomGuild.get('CHK070'))
+
+      expect = [
+        {
+          name: '上位の空民、エラヨウ',
+          english_name: "Erayo, Soratami Ascendant",
+          furigana: 'じょういのそらたみえらよう',
+          mana_cost: '(１)(青)',
+          supertypes: [
+            { name: '伝説の' },
+          ],
+          types: [
+            { name: 'クリーチャー' },
+          ],
+          subtypes: [
+            { name: 'ムーンフォーク', english_name: 'Moonfolk' },
+            { name: 'モンク', english_name: 'Monk' },
+          ],
+          text: "飛行\nいずれかのターンに４つ目の呪文が唱えられるたび、上位の空民、エラヨウを反転する。",
+          oracle: "Flying\nWhenever the fourth spell of a turn is cast, flip Erayo, Soratami Ascendant.",
+          size: '1/1',
+          power: 1,
+          toughness: 1,
+          flavor_text: "",
+        },
+        {
+          name: 'エラヨウの本質',
+          english_name: "Erayo's Essence",
+          furigana: 'えらようのほんしつ',
+          mana_cost: '(１)(青)',
+          supertypes: [
+            { name: '伝説の' },
+          ],
+          types: [
+            { name: 'エンチャント' },
+          ],
+          subtypes: [],
+          text: "対戦相手１人が各ターンの最初の呪文を唱えるたび、その呪文を打ち消す。",
+          oracle: "Whenever an opponent casts his or her first spell each turn, counter that spell.",
+          flavor_text: "",
+        },
+      ]
+      assert_equal(expect, WisdomGuild.get('SOK035'))
+    end
+
   end
 
   test 'get_layout' do
