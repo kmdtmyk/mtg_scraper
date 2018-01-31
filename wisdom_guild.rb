@@ -163,6 +163,7 @@ class WisdomGuild
           result.merge!(parse_loyalty_text(value))
         elsif name == 'フレーバ'
           result[:flavor_text] = value
+        elsif name == 'デザイン'
         elsif name == 'イラスト'
           result[:artist] = value
         elsif name == 'セット等'

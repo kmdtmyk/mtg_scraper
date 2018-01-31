@@ -80,6 +80,32 @@ class WisdomGuildTest < Test::Unit::TestCase
         },
       ]
       assert_equal(expect, WisdomGuild.get('FUT153'))
+
+      expect = [
+        {
+          name: "解き放たれし者、オブ・ニクシリス",
+          english_name: "Ob Nixilis, Unshackled",
+          furigana: "ときはなたれしものおぶにくしりす",
+          mana_cost: '(４)(黒)(黒)',
+          supertypes: [
+            { name: '伝説の' },
+          ],
+          types: [
+            { name: 'クリーチャー' },
+          ],
+          subtypes: [
+            { name: 'デーモン', english_name: 'Demon' },
+          ],
+          text: "飛行、トランプル\n対戦相手１人が自分のライブラリーを探すたび、そのプレイヤーはクリーチャーを１体生け贄に捧げ、１０点のライフを失う。\n他のクリーチャーが１体死亡するたび、解き放たれし者、オブ・ニクシリスの上に+1/+1カウンターを１個置く。",
+          oracle: "Flying, trample\nWhenever an opponent searches his or her library, that player sacrifices a creature and loses 10 life.\nWhenever another creature dies, put a +1/+1 counter on Ob Nixilis, Unshackled.",
+          size: '4/4',
+          power: 4,
+          toughness: 4,
+          flavor_text: "",
+          artist: "Karl Kopinski",
+        },
+      ]
+      assert_equal(expect, WisdomGuild.get('M15110'))
     end
 
     test 'Instant' do
