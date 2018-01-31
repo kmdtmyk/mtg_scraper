@@ -26,6 +26,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           power: 6,
           toughness: 2,
           flavor_text: "「あー、カエルがもっと要るな。」 ――― シミックの生術師、グリスタン",
+          artist: "Tomasz Jedruszek",
         },
       ]
       assert_equal(expect, WisdomGuild.get('GTC113'))
@@ -51,6 +52,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           power: 5,
           toughness: 4,
           flavor_text: "",
+          artist: "Chase Stone",
         },
       ]
       assert_equal(expect, WisdomGuild.get('AKH136'))
@@ -74,6 +76,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           power: 0,
           toughness: 1,
           flavor_text: "",
+          artist: "Justin Murray",
         },
       ]
       assert_equal(expect, WisdomGuild.get('FUT153'))
@@ -94,6 +97,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           text: "呪文１つを対象とし、それを打ち消す。",
           oracle: "Counter target spell.",
           flavor_text: "「お前のやりたいことが理屈に逆らってるってことじゃない。 ただ、ものすごく馬鹿げてるってだけだ。」",
+          artist: "David Palumbo",
         },
       ]
       assert_equal(expect, WisdomGuild.get('ALA033'))
@@ -115,6 +119,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           text: "呪文１つを対象とし、それを打ち消す。\nあなたの次のアップキープの開始時に(３)(青)(青)を支払う。そうしない場合、あなたはこのゲームに敗北する。",
           oracle: "Counter target spell.\nAt the beginning of your next upkeep, pay {3}{U}{U}. If you don't, you lose the game.",
           flavor_text: "常に裏切りを予測する者が落胆することはまず無い。",
+          artist: "Jason Chan",
         },
       ]
       assert_equal(expect, WisdomGuild.get('FUT042'))
@@ -135,6 +140,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           text: "対戦相手１人がコントロールするクリーチャー１体を対象とする。それは自身のパワーに等しい点数のダメージを、そのプレイヤーがコントロールする他の各クリーチャーにそれぞれ与える。その後、それらの各クリーチャーは、それぞれのパワーに等しい点数のダメージをそのクリーチャーに与える。",
           oracle: "Target creature an opponent controls deals damage equal to its power to each other creature that player controls, then each of those creatures deals damage equal to its power to that creature.",
           flavor_text: "頭目であることは、満月のたびにそれを証明しなければいけないことだ。",
+          artist: "Randy Gallegos",
         },
       ]
       assert_equal(expect, WisdomGuild.get('DKA082'))
@@ -156,6 +162,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           text: "待機４ ― (青)（このカードをあなたの手札から唱えるのではなく、(青)を支払うとともにそれを時間(time)カウンターが４個置かれた状態で追放する。あなたのアップキープの開始時に、時間カウンターを１個取り除く。最後の１個を取り除いたとき、それをそのマナ・コストを支払うことなく唱える。）\nプレイヤー１人を対象とする。そのプレイヤーはカードを３枚引く。",
           oracle: "Suspend 4 --- {U} （Rather than cast this card from your hand, pay {U} and exile it with four time counters on it. At the beginning of your upkeep, remove a time counter. When the last is removed, cast it without paying its mana cost.）\nTarget player draws three cards.",
           flavor_text: "",
+          artist: "John Avon",
         },
       ]
       assert_equal(expect, WisdomGuild.get('IMA042'))
@@ -178,6 +185,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           text: "エンチャント（クリーチャー）\nエンチャントされているクリーチャーは攻撃もブロックもできず、その起動型能力を起動できない。",
           oracle: "Enchant creature\nEnchanted creature can't attack or block, and its activated abilities can't be activated.",
           flavor_text: "「あんたの罪なら立証してやるわ。うちらが無実の者を拘引するわけないでしょ。」――― 第10管区の拘引者、ラヴィニア.",
+          artist: "Greg Staples",
         },
       ]
       assert_equal(expect, WisdomGuild.get('RTR003'))
@@ -198,6 +206,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           text: "不思議のバザールが戦場に出たとき、すべての墓地にあるすべてのカードを追放する。\nプレイヤーが呪文を唱えるたび、それと同じ名前を持つカードがいずれかの墓地にあるか同じ名前を持つトークンでないパーマネントが戦場にある場合、それを打ち消す。",
           oracle: "When Bazaar of Wonders enters the battlefield, exile all cards from all graveyards.\nWhenever a player casts a spell, counter it if a card with the same name is in a graveyard or a nontoken permanent with the same name is on the battlefield.",
           flavor_text: "",
+          artist: "Liz Danforth",
         },
       ]
       assert_equal(expect, WisdomGuild.get('MIR055'))
@@ -220,6 +229,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           text: "あなたがコントロールするクリーチャーは飛行、先制攻撃、警戒、トランプル、速攻、プロテクション（黒）とプロテクション（赤）を持つ。",
           oracle: "Creatures you control have flying, first strike, vigilance, trample, haste, and protection from black and from red.",
           flavor_text: "「休息も慈悲も与えぬ。何があってもだ。」 ――― 碑文",
+          artist: "Dan Scott",
         },
       ]
       assert_equal(expect, WisdomGuild.get('M13200'))
@@ -244,6 +254,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           power: 10,
           toughness: 10,
           flavor_text: "",
+          artist: "Jaime Jones",
         },
       ]
       assert_equal(expect, WisdomGuild.get('KLD222'))
@@ -269,6 +280,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           power: 6,
           toughness: 5,
           flavor_text: "",
+          artist: "Jung Park",
         },
       ]
       assert_equal(expect, WisdomGuild.get('KLD234'))
@@ -295,6 +307,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           size: '3',
           loyalty: 3,
           flavor_text: "",
+          artist: "Aleksi Briclot",
         },
       ]
       assert_equal(expect, WisdomGuild.get('M11058'))
@@ -319,6 +332,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           size: 'X',
           loyalty: 0,
           flavor_text: "",
+          artist: "Howard Lyon",
         },
       ]
       assert_equal(expect, WisdomGuild.get('AKH204'))
@@ -343,6 +357,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           text: "(白)",
           oracle: "W",
           flavor_text: "",
+          artist: "Dimitar",
         },
       ]
       assert_equal(expect, WisdomGuild.get('RIX192'))
@@ -363,6 +378,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           text: "(Ｔ)：あなたのマナ・プールに(◇)を加える。",
           oracle: "{T}: Add {C} to your mana pool.",
           flavor_text: "",
+          artist: "Jason Felix",
         },
       ]
       assert_equal(expect, WisdomGuild.get('OGW183'))
@@ -384,6 +400,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           text: "（(Ｔ)：あなたのマナ・プールに(青)か(赤)を加える）\n蒸気孔が戦場に出るに際し、あなたは２点のライフを支払ってもよい。そうしなかった場合、蒸気孔はタップ状態で戦場に出る。",
           oracle: "（{T}: Add {U} or {R} to your mana pool.）\nAs Steam Vents enters the battlefield, you may pay 2 life. If you don't, Steam Vents enters the battlefield tapped.",
           flavor_text: "才能により形作られ、狂気により活性化したもの。",
+          artist: "Yeong-Hao Han",
         },
       ]
       assert_equal(expect, WisdomGuild.get('RTR247'))
@@ -412,6 +429,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           power: 1,
           toughness: 1,
           flavor_text: "樹触れるべからず、枝折るべからず、答を望む問いのみを発せよ。――― ドルイドの古老、ヴォン・ヨムから彼女の信徒へ.",
+          artist: "Eric Fortune",
         },
       ]
       assert_equal(expect, WisdomGuild.get('FUT174'))
@@ -433,6 +451,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           text: "暗黒の深部はその上に氷(ice)カウンターが１０個置かれた状態で戦場に出る。\n(３)：暗黒の深部から氷カウンターを１個取り除く。\n暗黒の深部の上に氷カウンターが１個も置かれていないとき、それを生け贄に捧げる。そうした場合、飛行と破壊不能を持つ《マリット・レイジ/Marit Lage》という名前の黒の20/20の伝説のアバター(Avatar)・クリーチャー・トークンを１体生成する。",
           oracle: "Dark Depths enters the battlefield with ten ice counters on it.\n{3}: Remove an ice counter from Dark Depths.\nWhen Dark Depths has no ice counters on it, sacrifice it. If you do, create a legendary 20/20 black Avatar creature token with flying and indestructible named Marit Lage.",
           flavor_text: "",
+          artist: "Stephan Martiniere",
         },
       ]
       assert_equal(expect, WisdomGuild.get('CSP145'))
@@ -456,6 +475,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           text: "(白)",
           oracle: "W",
           flavor_text: "",
+          artist: "Mark Romanoski",
         },
       ]
       assert_equal(expect, WisdomGuild.get('CSP151'))
@@ -476,6 +496,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           text: "１つか２つのクリーチャーとプレイヤーの組み合わせを対象とする。火は、それらに２点のダメージを望むように割り振って与える。",
           oracle: "Fire deals 2 damage divided as you choose among one or two target creatures and/or players.",
           flavor_text: "",
+          artist: "David Martin",
         },
         {
           name: '氷',
@@ -490,6 +511,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           text: "パーマネント１つを対象とし、それをタップする。\nカードを１枚引く。",
           oracle: "Tap target permanent.\nDraw a card.",
           flavor_text: "",
+          artist: "Franz Vohwinkel",
         },
       ]
       assert_equal(expect, WisdomGuild.get('APC128'))
@@ -508,6 +530,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           text: "アーティファクト１つを対象とし、それを破壊する。\n融合（あなたはこのカードの片方の半分または両方の半分をあなたの手札から唱えてもよい。）",
           oracle: "Destroy target artifact.\nFuse （You may cast one or both halves of this card from your hand.）",
           flavor_text: "",
+          artist: "Ryan Pancoast",
         },
         {
           name: '損耗',
@@ -522,6 +545,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           text: "エンチャント１つを対象とし、それを破壊する。\n融合（あなたはこのカードの片方の半分または両方の半分をあなたの手札から唱えてもよい。）",
           oracle: "Destroy target enchantment.\nFuse （You may cast one or both halves of this card from your hand.）",
           flavor_text: "",
+          artist: "Ryan Pancoast",
         },
       ]
       assert_equal(expect, WisdomGuild.get('DGM135'))
@@ -540,6 +564,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           text: "クリーチャー１体を対象とする。木端はそれに４点のダメージを与える。",
           oracle: "Cut deals 4 damage to target creature.",
           flavor_text: "",
+          artist: "Raymond Swanland",
         },
         {
           name: '微塵',
@@ -554,6 +579,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           text: "余波（この呪文はあなたの墓地からのみ唱えられる。その後、これを追放する。）\n各対戦相手はそれぞれＸ点のライフを失う。",
           oracle: "Aftermath （Cast this spell only from your graveyard. Then exile it.）\nEach opponent loses X life.",
           flavor_text: "",
+          artist: "Raymond Swanland",
         },
       ]
       assert_equal(expect, WisdomGuild.get('AKH223'))
@@ -580,6 +606,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           power: 1,
           toughness: 1,
           flavor_text: "",
+          artist: "James Ryman",
         },
       ]
       assert_equal(expect, WisdomGuild.get('ROE112'))
@@ -606,6 +633,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           power: 1,
           toughness: 2,
           flavor_text: "",
+          artist: "Glen Angus",
         },
         {
           name: '暴く者、智也',
@@ -628,6 +656,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           power: 2,
           toughness: 3,
           flavor_text: "",
+          artist: "Glen Angus",
         },
       ]
       assert_equal(expect, WisdomGuild.get('CHK070'))
@@ -654,6 +683,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           power: 1,
           toughness: 1,
           flavor_text: "",
+          artist: "Matt Cavotta",
         },
         {
           name: 'エラヨウの本質',
@@ -670,6 +700,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           text: "対戦相手１人が各ターンの最初の呪文を唱えるたび、その呪文を打ち消す。",
           oracle: "Whenever an opponent casts his or her first spell each turn, counter that spell.",
           flavor_text: "",
+          artist: "Matt Cavotta",
         },
       ]
       assert_equal(expect, WisdomGuild.get('SOK035'))
@@ -696,6 +727,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           power: 1,
           toughness: 1,
           flavor_text: "",
+          artist: "Nils Hamm",
         },
         {
           name: '昆虫の逸脱者',
@@ -719,6 +751,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           power: 3,
           toughness: 2,
           flavor_text: "",
+          artist: "Nils Hamm",
         },
       ]
       assert_equal(expect, WisdomGuild.get('ISD051'))
@@ -745,6 +778,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           power: 0,
           toughness: 2,
           flavor_text: "",
+          artist: "Jaime Jones",
         },
         {
           name: '束縛なきテレパス、ジェイス',
@@ -768,6 +802,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           size: '5',
           loyalty: 5,
           flavor_text: "",
+          artist: "Jaime Jones",
         },
       ]
       assert_equal(expect, WisdomGuild.get('ORI060'))
@@ -786,6 +821,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           text: "対戦相手１人を対象とする。そのプレイヤーは、自分のライブラリーの一番上から１３枚のカードを自分の墓地に置く。\n(３)(青)(青)：あなたの墓地から驚恐の目覚めを変身させた状態で戦場に出す。この能力は、あなたがソーサリーを唱えられるときにのみ起動できる。",
           oracle: "Target opponent puts the top thirteen cards of his or her library into his or her graveyard.\n{3}{U}{U}: Put Startled Awake from your graveyard onto the battlefield transformed. Activate this ability only any time you could cast a sorcery.",
           flavor_text: "",
+          artist: "Sean Sevestre",
         },
         {
           name: '絶え間ない悪夢',
@@ -808,6 +844,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           power: 1,
           toughness: 1,
           flavor_text: "",
+          artist: "Sean Sevestre",
         },
       ]
       assert_equal(expect, WisdomGuild.get('SOI088'))
@@ -828,6 +865,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           text: "イトリモクの成長儀式が戦場に出たとき、あなたのライブラリーの一番上からカードを４枚見る。あなたはその中からクリーチャー・カード１枚を公開してあなたの手札に加えてもよい。残りをあなたのライブラリーの一番下に望む順番で置く。\nあなたの終了ステップの開始時に、あなたがクリーチャーを４体以上コントロールしている場合、イトリモクの成長儀式を変身させる。",
           oracle: "When Growing Rites of Itlimoc enters the battlefield, look at the top four cards of your library. You may reveal a creature card from among them and put it into your hand. Put the rest on the bottom of your library in any order.\nAt the beginning of your end step, if you control four or more creatures, transform Growing Rites of Itlimoc.",
           flavor_text: "",
+          artist: "Grzegorz Rutkowski",
         },
         {
           name: '太陽の揺籃の地、イトリモク',
@@ -844,6 +882,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           text: "（《イトリモクの成長儀式/Growing Rites of Itlimoc》から変身する。）\n(Ｔ)：あなたのマナ・プールに(緑)を加える。\n(Ｔ)：あなたのマナ・プールに、あなたがコントロールしているクリーチャー１体につき(緑)を加える。",
           oracle: "（Transforms from Growing Rites of Itlimoc.）\n{T}: Add {G} to your mana pool.\n{T}: Add {G} to your mana pool for each creature you control.",
           flavor_text: "",
+          artist: "Grzegorz Rutkowski",
         },
       ]
       assert_equal(expect, WisdomGuild.get('XLN191'))
@@ -868,6 +907,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           size: '3',
           loyalty: 3,
           flavor_text: "",
+          artist: "Winona Nelson",
         },
         {
           name: '月の抱擁、アーリン',
@@ -890,6 +930,7 @@ class WisdomGuildTest < Test::Unit::TestCase
           text: "[+1]：ターン終了時まで、あなたがコントロールするクリーチャーは+1/+1の修整を受けるとともにトランプルを得る。\n[-1]：クリーチャー１体かプレイヤー１人を対象とする。月の抱擁、アーリンはそれに３点のダメージを与える。月の抱擁、アーリンを変身させる。\n[-6]：あなたは「あなたがコントロールするクリーチャーは、速攻と『(Ｔ)：クリーチャー１体かプレイヤー１人を対象とする。このクリーチャーはそれに自身のパワーに等しい点数のダメージを与える。』を持つ。」を持つ紋章を得る。",
           oracle: "+1: Creatures you control get +1/+1 and gain trample until end of turn.\n-1: Arlinn, Embraced by the Moon deals 3 damage to target creature or player. Transform Arlinn, Embraced by the Moon.\n-6: You get an emblem with \"Creatures you control have haste and ‘{T}: This creature deals damage equal to its power to target creature or player.'\"",
           flavor_text: "",
+          artist: "Winona Nelson",
         },
       ]
       assert_equal(expect, WisdomGuild.get('SOI243'))

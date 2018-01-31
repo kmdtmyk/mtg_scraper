@@ -67,6 +67,7 @@ class WisdomGuild
       text_array[2],
       text_array[5],
       text_array[14],
+      text_array[15],
     ]
 
     level1 = parse_level_text(text_array[6][0])
@@ -162,6 +163,10 @@ class WisdomGuild
           result.merge!(parse_loyalty_text(value))
         elsif name == 'フレーバ'
           result[:flavor_text] = value
+        elsif name == 'イラスト'
+          result[:artist] = value
+        elsif name == 'セット等'
+        elsif name == '再録'
         end
       end
       result
