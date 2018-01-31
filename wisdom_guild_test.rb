@@ -104,7 +104,9 @@ class WisdomGuildTest < Test::Unit::TestCase
           english_name: "Pact of Negation",
           furigana: "ひていのけいやく",
           mana_cost: '(０)',
-          color: '青',
+          colors: [
+            { name: '青' },
+          ],
           supertypes: [],
           types: [
             { name: 'インスタント' },
@@ -143,7 +145,9 @@ class WisdomGuildTest < Test::Unit::TestCase
           english_name: "Ancestral Vision",
           furigana: "そせんのげんし",
           mana_cost: "",
-          color: '青',
+          colors: [
+            { name: '青' },
+          ],
           supertypes: [],
           types: [
             { name: 'ソーサリー' },
@@ -390,7 +394,9 @@ class WisdomGuildTest < Test::Unit::TestCase
           english_name: "Dryad Arbor",
           furigana: 'どらいあどのあずまや',
           mana_cost: '',
-          color: '緑',
+          colors: [
+            { name: '緑' },
+          ],
           supertypes: [],
           types: [
             { name: '土地' },
@@ -696,7 +702,9 @@ class WisdomGuildTest < Test::Unit::TestCase
           english_name: "Insectile Aberration",
           furigana: 'こんちゅうのいつだつしゃ',
           mana_cost: '',
-          color: '青',
+          colors: [
+            { name: '青' },
+          ],
           supertypes: [],
           types: [
             { name: 'クリーチャー' },
@@ -743,7 +751,9 @@ class WisdomGuildTest < Test::Unit::TestCase
           english_name: "Jace, Telepath Unbound",
           furigana: 'そくばくなきてれぱすじぇいす',
           mana_cost: '',
-          color: '青',
+          colors: [
+            { name: '青' },
+          ],
           supertypes: [
             { name: '伝説の' },
           ],
@@ -782,7 +792,9 @@ class WisdomGuildTest < Test::Unit::TestCase
           english_name: "Persistent Nightmare",
           furigana: 'たえまないあくむ',
           mana_cost: '',
-          color: '青',
+          colors: [
+            { name: '青' },
+          ],
           supertypes: [],
           types: [
             { name: 'クリーチャー' },
@@ -835,6 +847,52 @@ class WisdomGuildTest < Test::Unit::TestCase
         },
       ]
       assert_equal(expect, WisdomGuild.get('XLN191'))
+
+      expect = [
+        {
+          name: 'アーリン・コード',
+          english_name: "Arlinn Kord",
+          furigana: 'あーりんこーど',
+          mana_cost: '(２)(赤)(緑)',
+          supertypes: [
+            { name: '伝説の' },
+          ],
+          types: [
+            { name: 'プレインズウォーカー' },
+          ],
+          subtypes: [
+            { name: 'アーリン', english_name: 'Arlinn' },
+          ],
+          text: "[+1]：クリーチャーを最大１体まで対象とする。ターン終了時まで、それは+2/+2の修整を受けるとともに警戒と速攻を得る。\n[0]：緑の2/2の狼(Wolf)クリーチャー・トークンを１体生成する。アーリン・コードを変身させる。",
+          oracle: "+1: Until end of turn, up to one target creature gets +2/+2 and gains vigilance and haste.\n0: Create a 2/2 green Wolf creature token. Transform Arlinn Kord.",
+          size: '3',
+          loyalty: 3,
+          flavor_text: "",
+        },
+        {
+          name: '月の抱擁、アーリン',
+          english_name: "Arlinn, Embraced by the Moon",
+          furigana: 'つきのほうようあーりん',
+          mana_cost: '',
+          colors: [
+            { name: '赤' },
+            { name: '緑' },
+          ],
+          supertypes: [
+            { name: '伝説の' },
+          ],
+          types: [
+            { name: 'プレインズウォーカー' },
+          ],
+          subtypes: [
+            { name: 'アーリン', english_name: 'Arlinn' },
+          ],
+          text: "[+1]：ターン終了時まで、あなたがコントロールするクリーチャーは+1/+1の修整を受けるとともにトランプルを得る。\n[-1]：クリーチャー１体かプレイヤー１人を対象とする。月の抱擁、アーリンはそれに３点のダメージを与える。月の抱擁、アーリンを変身させる。\n[-6]：あなたは「あなたがコントロールするクリーチャーは、速攻と『(Ｔ)：クリーチャー１体かプレイヤー１人を対象とする。このクリーチャーはそれに自身のパワーに等しい点数のダメージを与える。』を持つ。」を持つ紋章を得る。",
+          oracle: "+1: Creatures you control get +1/+1 and gain trample until end of turn.\n-1: Arlinn, Embraced by the Moon deals 3 damage to target creature or player. Transform Arlinn, Embraced by the Moon.\n-6: You get an emblem with \"Creatures you control have haste and ‘{T}: This creature deals damage equal to its power to target creature or player.'\"",
+          flavor_text: "",
+        },
+      ]
+      assert_equal(expect, WisdomGuild.get('SOI243'))
     end
 
   end

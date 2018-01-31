@@ -169,7 +169,7 @@ class WisdomGuild
 
     def self.parse_type_text(text)
       %r{(〔(.*)〕 )?(伝説の|基本|氷雪|持続|精鋭|宿主|ワールド・)*(\S+)( — (\S+))?}.match(text)
-      color = Regexp.last_match(2)
+      color_text = Regexp.last_match(2)
       supertype_text = Regexp.last_match(3)
       type_text = Regexp.last_match(4)
       subtype_text = Regexp.last_match(6)
@@ -205,8 +205,10 @@ class WisdomGuild
         subtypes: subtypes,
       }
 
-      unless color.nil?
-        result[:color] = color
+      unless color_text.nil?
+        result[:colors] = color_text.split('/').map do |color|
+          { name: color }
+        end
       end
 
       result
