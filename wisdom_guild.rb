@@ -169,6 +169,7 @@ class WisdomGuild
         result[:artist] = value
       elsif name == 'セット等'
       elsif name == '再録'
+      elsif name == '絵違い'
       end
     end
     result
