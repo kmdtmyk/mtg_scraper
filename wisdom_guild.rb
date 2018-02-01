@@ -4,13 +4,17 @@ require_relative 'file_man'
 
 class WisdomGuild
 
+  def self.cached?(name)
+    File.exist?(name_to_file_path(name))
+  end
+
   def self.get(name)
     html = WisdomGuild.get_html_and_cache(name)
     WisdomGuild.parse(html)
   end
 
   def self.get_html_and_cache(name)
-    file_path = File.dirname(__FILE__) + "/cache/#{name}.html"
+    file_path = name_to_file_path(name)
     html = FileMan.read(file_path)
     return html unless html.nil?
 
@@ -245,6 +249,10 @@ class WisdomGuild
 
     def self.name_to_url(name)
       return 'http://whisper.wisdom-guild.net/card/' + URI.escape(name)
+    end
+
+    def self.name_to_file_path(name)
+      File.dirname(__FILE__) + "/cache/#{name}.html"
     end
 
 end
