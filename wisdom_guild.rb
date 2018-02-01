@@ -8,8 +8,8 @@ class WisdomGuild
   end
 
   def self.get(name)
-    html = WisdomGuild.get_html_and_cache(name)
-    WisdomGuild.parse(html)
+    html = get_html_and_cache(name)
+    parse_html(html)
   end
 
   def self.get_html_and_cache(name)
@@ -23,7 +23,7 @@ class WisdomGuild
     html
   end
 
-  def self.parse(html)
+  def self.parse_html(html)
     layout = get_layout(html)
     return parse_normal(html) if layout == 'normal'
     return parse_double_faced(html) if layout == 'double_faced'
