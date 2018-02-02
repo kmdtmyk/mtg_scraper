@@ -149,6 +149,28 @@ class WisdomGuildTest < Test::Unit::TestCase
         },
       ]
       assert_equal(expect, WisdomGuild.get('FUT042'))
+
+      expect = [
+        {
+          name: "タール火",
+          english_name: "Tarfire",
+          furigana: "たーるび",
+          mana_cost: "(赤)",
+          supertypes: [],
+          types: [
+            { name: '部族' },
+            { name: 'インスタント' },
+          ],
+          subtypes: [
+            { name: 'ゴブリン', english_name: 'Goblin' }
+          ],
+          text: "クリーチャー１体かプレイヤー１人を対象とする。タール火はそれに２点のダメージを与える。",
+          oracle: "Tarfire deals 2 damage to target creature or player.",
+          flavor_text: "「芋虫婆が目から煤をぬぐうと、そこには素晴らしい物があった。火のおかげで、なんとも美味そうな匂いをたてるヤギがそこにあったのさ。」――― 芋虫婆のお話.",
+          artist: "Omar Rayyan",
+        },
+      ]
+      assert_equal(expect, WisdomGuild.get('LRW194'))
     end
 
     test 'Sorcery' do
@@ -192,6 +214,28 @@ class WisdomGuildTest < Test::Unit::TestCase
         },
       ]
       assert_equal(expect, WisdomGuild.get('IMA042'))
+
+      expect = [
+        {
+          name: "全ては塵",
+          english_name: "All Is Dust",
+          furigana: "すべてはちり",
+          mana_cost: "(７)",
+          supertypes: [],
+          types: [
+            { name: '部族' },
+            { name: 'ソーサリー' },
+          ],
+          subtypes: [
+            { name: 'エルドラージ', english_name: 'Eldrazi' }
+          ],
+          text: "各プレイヤーは、自分がコントロールするすべての有色のパーマネントを生け贄に捧げる。",
+          oracle: "Each player sacrifices all colored permanents he or she controls.",
+          flavor_text: "「エルドラージが目覚めたからって悪いことばかりじゃないさ。お前さんの人生が後悔の無い完璧に満たされたやつだったんならな。」――― オンドゥの遺物狩り、ジャヴァド・ナスリン.",
+          artist: "Jason Felix",
+        },
+      ]
+      assert_equal(expect, WisdomGuild.get('ROE001'))
     end
 
     test 'Enchantment' do
@@ -236,6 +280,28 @@ class WisdomGuildTest < Test::Unit::TestCase
         },
       ]
       assert_equal(expect, WisdomGuild.get('MIR055'))
+
+      expect = [
+        {
+          name: "苦花",
+          english_name: "Bitterblossom",
+          furigana: "にがばな",
+          mana_cost: "(１)(黒)",
+          supertypes: [],
+          types: [
+            { name: '部族' },
+            { name: 'エンチャント' },
+          ],
+          subtypes: [
+            { name: 'フェアリー', english_name: 'Faerie' }
+          ],
+          text: "あなたのアップキープの開始時に、あなたは１点のライフを失い、飛行を持つ黒の1/1のフェアリー(Faerie)・ならず者(Rogue)クリーチャー・トークンを１体生成する。",
+          oracle: "At the beginning of your upkeep, you lose 1 life and create a 1/1 black Faerie Rogue creature token with flying.",
+          flavor_text: "ローウィンの短い夕刻の間、ある種のスミレが悪戯な香りを漂わせる花を咲かすのに十分な時間、太陽は地平線上に留まる。",
+          artist: "Rebecca Guay",
+        },
+      ]
+      assert_equal(expect, WisdomGuild.get('MOR058'))
     end
 
     test 'Artifact' do
@@ -310,6 +376,29 @@ class WisdomGuildTest < Test::Unit::TestCase
         },
       ]
       assert_equal(expect, WisdomGuild.get('KLD234'))
+
+      expect = [
+        {
+          name: "黒曜石の戦斧",
+          english_name: "Obsidian Battle-Axe",
+          furigana: "こくようせきのせんぷ",
+          mana_cost: "(３)",
+          supertypes: [],
+          types: [
+            { name: '部族' },
+            { name: 'アーティファクト' },
+          ],
+          subtypes: [
+            { name: '戦士', english_name: 'Warrior' },
+            { name: '装備品', english_name: 'Equipment' },
+          ],
+          text: "装備しているクリーチャーは+2/+1の修整を受けるとともに速攻を持つ。\n戦士(Warrior)クリーチャーが１体戦場に出るたび、あなたは黒曜石の戦斧をそれにつけてもよい。\n装備(３)",
+          oracle: "Equipped creature gets +2/+1 and has haste.\nWhenever a Warrior creature enters the battlefield, you may attach Obsidian Battle-Axe to it.\nEquip {3}",
+          flavor_text: "それは戦士の怒りに火をつける火種だ。",
+          artist: "Jeff Easley",
+        },
+      ]
+      assert_equal(expect, WisdomGuild.get('MOR144'))
     end
 
     test 'Planeswalker' do

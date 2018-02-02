@@ -151,22 +151,22 @@ class WisdomGuild
       if name == 'カード名'
         result.merge!(parse_name_text(value))
       elsif name == 'マナコスト'
-        result[:mana_cost] = value
+        result[:mana_cost] = value.strip
       elsif name == 'タイプ'
         result.merge!(parse_type_text(value))
       elsif name == 'テキスト'
-        result[:text] = value
+        result[:text] = value.strip
       elsif name == 'オラクル'
-        result[:oracle] = value
+        result[:oracle] = value.strip
       elsif name == 'Ｐ／Ｔ'
         result.merge!(parse_size_text(value))
       elsif name == '忠誠度'
         result.merge!(parse_loyalty_text(value))
       elsif name == 'フレーバ'
-        result[:flavor_text] = value
+        result[:flavor_text] = value.strip
       elsif name == 'デザイン'
       elsif name == 'イラスト'
-        result[:artist] = value
+        result[:artist] = value.strip
       elsif name == 'セット等'
       elsif name == '再録'
       elsif name == '絵違い'
@@ -192,8 +192,9 @@ class WisdomGuild
     supertypes << { name: 'ワールド' } if %r{ワールド}.match(text)
 
     unless type_text.nil?
+      type_text.gsub!('部族', '部族・') if %r{部族[^・]}.match(type_text)
       type_text.split('・').each do |type|
-        types << {name: type}
+        types << { name: type }
       end
     end
 
