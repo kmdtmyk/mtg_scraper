@@ -166,7 +166,7 @@ class WisdomGuild
         result[:flavor_text] = value.strip
       elsif name == 'デザイン'
       elsif name == 'イラスト'
-        result[:artist] = value.strip
+        result.merge!(parse_artist_text(value))
       elsif name == 'セット等'
       elsif name == '再録'
       elsif name == '絵違い'
@@ -244,6 +244,12 @@ class WisdomGuild
   def self.parse_level_text(text)
     %r{Lv(\S*)}.match(text)
     Regexp.last_match(1)
+  end
+
+  def self.parse_artist_text(text)
+    {
+      artists: text.strip.split(' & ').map{ |name| { english_name: name } }
+    }
   end
 
   def self.name_to_url(name)
