@@ -225,10 +225,9 @@ class WisdomGuild
 
   def self.parse_size_text(text)
     %r{(.*)/(.*)}.match(text)
-    power = Regexp.last_match(1).to_i
-    toughness = Regexp.last_match(2).to_i
+    power = Regexp.last_match(1)
+    toughness = Regexp.last_match(2)
     {
-      size: text,
       power: power,
       toughness: toughness,
     }
@@ -236,8 +235,7 @@ class WisdomGuild
 
   def self.parse_loyalty_text(text)
     {
-      size: text,
-      loyalty: text.to_i,
+      loyalty: text.strip,
     }
   end
 
