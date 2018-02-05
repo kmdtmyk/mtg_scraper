@@ -9,7 +9,23 @@ class WisdomGuild
 
   def self.get(name)
     html = get_html_and_cache(name)
-    parse_html(html)
+
+    doc = Nokogiri::HTML.parse(html)
+    title_text = doc.css('.wg-title').inner_text
+    %r{([^/\n\t]+)\/([^/\n\t]+)[\n\t]*}.match(title_text)
+
+    name = Regexp.last_match(1)
+    english_name = Regexp.last_match(2)
+    gatherer = doc.css('[target="_GATHERER"]')
+    multiverseid = gatherer[0][:href].split('multiverseid=')[-1].to_i
+
+    details = parse_details(html)
+    {
+      name: name,
+      english_name: english_name,
+      multiverseid: multiverseid,
+      details: details
+    }
   end
 
   def self.get_html_and_cache(name)
@@ -23,7 +39,7 @@ class WisdomGuild
     html
   end
 
-  def self.parse_html(html)
+  def self.parse_details(html)
     layout = get_layout(html)
     return parse_normal(html) if layout == 'normal'
     return parse_double_faced(html) if layout == 'double_faced'
