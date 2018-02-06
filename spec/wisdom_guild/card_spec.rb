@@ -10,6 +10,38 @@ RSpec.describe 'Card' do
     expect(card.multiverseid).to eq(207891)
   end
 
+  it 'to_hash' do
+    card = WisdomGuild::Card.new('UDS065')
+    expect(card.to_hash).to match(
+      name: "ファイレクシアの抹殺者",
+      english_name: "Phyrexian Negator",
+      multiverseid: 207891,
+      details: [
+        {
+          name: 'ファイレクシアの抹殺者',
+          english_name: 'Phyrexian Negator',
+          furigana: 'ふぁいれくしあのまっさつしゃ',
+          mana_cost: '(２)(黒)',
+          supertypes: [],
+          types: [
+            { name: 'クリーチャー' },
+          ],
+          subtypes: [
+            { name: 'ホラー', english_name: 'Horror' },
+          ],
+          text: "トランプル\nファイレクシアの抹殺者にダメージが与えられるたび、その点数と同じ数のパーマネントを生け贄に捧げる。",
+          oracle: "Trample\nWhenever Phyrexian Negator is dealt damage, sacrifice that many permanents.",
+          power: "5",
+          toughness: "5",
+          flavor_text: "彼らは終わらせるために存在しているんだ。",
+          artists: [
+            { english_name: "John Zeleznik" },
+          ],
+        },
+      ],
+    )
+  end
+
   describe 'details' do
 
     describe 'Creature' do

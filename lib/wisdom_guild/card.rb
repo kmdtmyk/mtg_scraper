@@ -22,6 +22,15 @@ module WisdomGuild
       card[:details].each{ |detail| @details << Detail.new(detail) }
     end
 
+    def to_hash
+      {
+        name: @name,
+        english_name: @english_name,
+        multiverseid: @multiverseid,
+        details: @details.map{ |detail| detail.to_hash },
+      }
+    end
+
     def self.cached?(name)
       File.exist?(name_to_file_path(name))
     end
