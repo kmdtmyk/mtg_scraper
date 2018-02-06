@@ -98,7 +98,10 @@ module WisdomGuild
       end
 
       def fetch_html
-        sleep @@interval unless @@last_time.nil?
+        unless @@last_time.nil?
+          sleep_time = @@interval - (Time.now - @@last_time)
+          sleep sleep_time if 0 < sleep_time
+        end
         @html = HtmlUtil.get(@url)
         @@last_time = Time.now
         write_cache
