@@ -1,5 +1,6 @@
 require 'nokogiri'
 require 'wisdom_guild/detail'
+require 'wisdom_guild/parse'
 require 'wisdom_guild/file_util'
 require 'wisdom_guild/html_util'
 
@@ -133,6 +134,11 @@ module WisdomGuild
       [detail]
     end
 
+    def self.parse_level_text(text)
+      %r{Lv(\S*)}.match(text)
+      Regexp.last_match(1)
+    end
+
     def self.parse_flip(html)
       parse_double_faced_or_flip(html)
     end
@@ -167,121 +173,34 @@ module WisdomGuild
       ]
     end
 
-    def self.parse_name_text(text)
-      %r{([^/\n\t]+)\/([^/\n\t]+)[\n\t]*（(.+)）}.match(text)
-      name = Regexp.last_match(1)
-      english_name = Regexp.last_match(2)
-      furigana = Regexp.last_match(3)
-      {
-        name: name,
-        english_name: english_name,
-        furigana: furigana,
-      }
-    end
-
     def self.parse_text_array(array)
       result = {}
       array.each do |name, value|
         if name == 'カード名'
-          result.merge!(parse_name_text(value))
+          result.merge!(Parse.name(value))
         elsif name == 'マナコスト'
-          result[:mana_cost] = value.strip
+          result.merge!(Parse.mana_cost(value))
         elsif name == 'タイプ'
-          result.merge!(parse_type_text(value))
+          result.merge!(Parse.type(value))
         elsif name == 'テキスト'
-          result[:text] = value.strip
+          result.merge!(Parse.text(value))
         elsif name == 'オラクル'
-          result[:oracle] = value.strip
+          result.merge!(Parse.oracle(value))
         elsif name == 'Ｐ／Ｔ'
-          result.merge!(parse_size_text(value))
+          result.merge!(Parse.size(value))
         elsif name == '忠誠度'
-          result.merge!(parse_loyalty_text(value))
+          result.merge!(Parse.loyalty(value))
         elsif name == 'フレーバ'
-          result[:flavor_text] = value.strip
+          result.merge!(Parse.flavor_text(value))
         elsif name == 'デザイン'
         elsif name == 'イラスト'
-          result.merge!(parse_artist_text(value))
+          result.merge!(Parse.artist(value))
         elsif name == 'セット等'
         elsif name == '再録'
         elsif name == '絵違い'
         end
       end
       result
-    end
-
-    def self.parse_type_text(text)
-      %r{(〔(.*)〕 )?(伝説の|基本|氷雪|持続|精鋭|宿主|ワールド・)*(\S+)( — (\S+))?}.match(text)
-      color_text = Regexp.last_match(2)
-      supertype_text = Regexp.last_match(3)
-      type_text = Regexp.last_match(4)
-      subtype_text = Regexp.last_match(6)
-
-      supertypes = []
-      types = []
-      subtypes = []
-
-      supertypes << { name: '伝説の' } if %r{伝説の}.match(text)
-      supertypes << { name: '基本' } if %r{基本}.match(text)
-      supertypes << { name: '氷雪' } if %r{氷雪}.match(text)
-      supertypes << { name: 'ワールド' } if %r{ワールド}.match(text)
-
-      unless type_text.nil?
-        type_text.gsub!('部族', '部族・') if %r{部族[^・]}.match(type_text)
-        type_text.split('・').each do |type|
-          types << { name: type }
-        end
-      end
-
-      unless subtype_text.nil?
-        subtype_text.split('・').each do |subtype|
-          %r{(\S+)\((\S+)\)}.match(subtype)
-          subtypes << {
-            name: Regexp.last_match(1),
-            english_name: Regexp.last_match(2),
-          }
-        end
-      end
-
-      result = {
-        supertypes: supertypes,
-        types: types,
-        subtypes: subtypes,
-      }
-
-      unless color_text.nil?
-        result[:colors] = color_text.split('/').map do |color|
-          { name: color }
-        end
-      end
-
-      result
-    end
-
-    def self.parse_size_text(text)
-      %r{(.*)/(.*)}.match(text)
-      power = Regexp.last_match(1)
-      toughness = Regexp.last_match(2)
-      {
-        power: power,
-        toughness: toughness,
-      }
-    end
-
-    def self.parse_loyalty_text(text)
-      {
-        loyalty: text.strip,
-      }
-    end
-
-    def self.parse_level_text(text)
-      %r{Lv(\S*)}.match(text)
-      Regexp.last_match(1)
-    end
-
-    def self.parse_artist_text(text)
-      {
-        artists: text.strip.split(' & ').map{ |name| { english_name: name } }
-      }
     end
 
     def self.name_to_url(name)
