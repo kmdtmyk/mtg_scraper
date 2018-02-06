@@ -4,9 +4,9 @@ module WisdomGuild
 
     def self.name(text)
       %r{([^/\n\t]+)\/([^/\n\t]+)[\n\t]*（(.+)）}.match(text)
-      name = Regexp.last_match(1)
-      english_name = Regexp.last_match(2)
-      furigana = Regexp.last_match(3)
+      name = Regexp.last_match(1).strip
+      english_name = Regexp.last_match(2).strip
+      furigana = Regexp.last_match(3).strip
       {
         name: name,
         english_name: english_name,
