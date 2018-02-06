@@ -56,7 +56,7 @@ module WisdomGuild
 
     def error?
       return @error unless @error.nil?
-       @error = doc.css('h1').inner_text == 'エラー'
+       @error = doc.css('.wg-whisper-card-detail table').empty?
     end
 
     def to_hash
