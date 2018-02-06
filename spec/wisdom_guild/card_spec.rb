@@ -12,7 +12,7 @@ RSpec.describe 'Card' do
 
   it 'to_hash' do
     card = WisdomGuild::Card.new('UDS065')
-    expect(card.to_hash).to match(
+    expect(card.to_hash).to eq(
       name: "ファイレクシアの抹殺者",
       english_name: "Phyrexian Negator",
       multiverseid: 207891,
@@ -49,7 +49,7 @@ RSpec.describe 'Card' do
 
         card = WisdomGuild::Card.new('10E039')
         expect(card.details.length).to eq(1)
-        expect(card.details.first.to_hash).to match({
+        expect(card.details.first.to_hash).to eq({
           name: 'セラの天使',
           english_name: 'Serra Angel',
           furigana: 'せらのてんし',
@@ -74,7 +74,7 @@ RSpec.describe 'Card' do
         card = WisdomGuild::Card.new('AVR106')
         detail = card.details.first
         expect(detail.name).to eq('グリセルブランド')
-        expect(detail.supertypes).to match([
+        expect(detail.supertypes).to eq([
           { name: '伝説の' },
         ])
 
@@ -87,7 +87,7 @@ RSpec.describe 'Card' do
         card = WisdomGuild::Card.new('M11003')
         detail = card.details.first
         expect(detail.name).to eq('アジャニの群れ仲間')
-        expect(detail.subtypes).to match([
+        expect(detail.subtypes).to eq([
           { name: '猫', english_name: 'Cat' },
           { name: '兵士', english_name: 'Soldier' },
         ])
@@ -96,7 +96,7 @@ RSpec.describe 'Card' do
       it 'levelup' do
         card = WisdomGuild::Card.new('ROE112')
         expect(card.details.length).to eq(1)
-        expect(card.details.first.to_hash).to match({
+        expect(card.details.first.to_hash).to eq({
           name: 'グール・ドラズの暗殺者',
           english_name: "Guul Draz Assassin",
           furigana: 'ぐーるどらずのあんさつしゃ',
@@ -123,7 +123,7 @@ RSpec.describe 'Card' do
       it 'flip' do
         card = WisdomGuild::Card.new('CHK070')
         expect(card.details.length).to eq(2)
-        expect(card.details[0].to_hash).to match({
+        expect(card.details[0].to_hash).to eq({
           name: '呪師の弟子',
           english_name: "Jushi Apprentice",
           furigana: 'じゅしのでし',
@@ -145,7 +145,7 @@ RSpec.describe 'Card' do
             { english_name: "Glen Angus" },
           ],
         })
-        expect(card.details[1].to_hash).to match({
+        expect(card.details[1].to_hash).to eq({
           name: '暴く者、智也',
           english_name: "Tomoya the Revealer",
           furigana: 'あばくものともや',
@@ -172,7 +172,7 @@ RSpec.describe 'Card' do
 
         card = WisdomGuild::Card.new('SOK035')
         expect(card.details.length).to eq(2)
-        expect(card.details[0].to_hash).to match({
+        expect(card.details[0].to_hash).to eq({
           name: '上位の空民、エラヨウ',
           english_name: "Erayo, Soratami Ascendant",
           furigana: 'じょういのそらたみえらよう',
@@ -196,7 +196,7 @@ RSpec.describe 'Card' do
             { english_name: "Matt Cavotta" },
           ],
         })
-        expect(card.details[1].to_hash).to match({
+        expect(card.details[1].to_hash).to eq({
           name: 'エラヨウの本質',
           english_name: "Erayo's Essence",
           furigana: 'えらようのほんしつ',
@@ -220,7 +220,7 @@ RSpec.describe 'Card' do
       it 'double_faced' do
         card = WisdomGuild::Card.new('ISD051')
         expect(card.details.length).to eq(2)
-        expect(card.details[0].to_hash).to match({
+        expect(card.details[0].to_hash).to eq({
           name: '秘密を掘り下げる者',
           english_name: "Delver of Secrets",
           furigana: 'ひみつをほりさげるもの',
@@ -242,7 +242,7 @@ RSpec.describe 'Card' do
             { english_name: "Nils Hamm" },
           ],
         })
-        expect(card.details[1].to_hash).to match({
+        expect(card.details[1].to_hash).to eq({
           name: '昆虫の逸脱者',
           english_name: "Insectile Aberration",
           furigana: 'こんちゅうのいつだつしゃ',
@@ -270,7 +270,7 @@ RSpec.describe 'Card' do
 
         card = WisdomGuild::Card.new('ORI060')
         expect(card.details.length).to eq(2)
-        expect(card.details[0].to_hash).to match({
+        expect(card.details[0].to_hash).to eq({
           name: 'ヴリンの神童、ジェイス',
           english_name: "Jace, Vryn's Prodigy",
           furigana: 'う゛りんのしんどうじぇいす',
@@ -294,7 +294,7 @@ RSpec.describe 'Card' do
             { english_name: "Jaime Jones" },
           ],
         })
-        expect(card.details[1].to_hash).to match({
+        expect(card.details[1].to_hash).to eq({
           name: '束縛なきテレパス、ジェイス',
           english_name: "Jace, Telepath Unbound",
           furigana: 'そくばくなきてれぱすじぇいす',
@@ -326,7 +326,7 @@ RSpec.describe 'Card' do
     it 'Instant' do
       card = WisdomGuild::Card.new('ALA033')
       expect(card.details.length).to eq(1)
-      expect(card.details.first.to_hash).to match({
+      expect(card.details.first.to_hash).to eq({
         name: '取り消し',
         english_name: 'Cancel',
         furigana: 'とりけし',
@@ -347,18 +347,18 @@ RSpec.describe 'Card' do
       card = WisdomGuild::Card.new('FUT042')
       detail = card.details.first
       expect(detail.name).to eq('否定の契約')
-      expect(detail.colors).to match([
+      expect(detail.colors).to eq([
         { name: '青' },
       ])
 
       card = WisdomGuild::Card.new('LRW194')
       detail = card.details.first
       expect(detail.name).to eq('タール火')
-      expect(detail.types).to match([
+      expect(detail.types).to eq([
         { name: '部族' },
         { name: 'インスタント' },
       ])
-      expect(detail.subtypes).to match([
+      expect(detail.subtypes).to eq([
         { name: 'ゴブリン', english_name: 'Goblin' }
       ])
     end
@@ -368,7 +368,7 @@ RSpec.describe 'Card' do
       it 'normal' do
         card = WisdomGuild::Card.new('THS107')
         expect(card.details.length).to eq(1)
-        expect(card.details.first.to_hash).to match({
+        expect(card.details.first.to_hash).to eq({
           name: '思考囲い',
           english_name: 'Thoughtseize',
           furigana: 'しこうがこい',
@@ -389,25 +389,25 @@ RSpec.describe 'Card' do
         card = WisdomGuild::Card.new('TSP048')
         detail = card.details.first
         expect(detail.name).to eq('祖先の幻視')
-        expect(detail.colors).to match([
+        expect(detail.colors).to eq([
           { name: '青' },
         ])
 
         card = WisdomGuild::Card.new('ROE001')
         detail = card.details.first
         expect(detail.name).to eq('全ては塵')
-        expect(detail.types).to match([
+        expect(detail.types).to eq([
           { name: '部族' },
           { name: 'ソーサリー' },
         ])
-        expect(detail.subtypes).to match([
+        expect(detail.subtypes).to eq([
           { name: 'エルドラージ', english_name: 'Eldrazi' }
         ])
 
         card = WisdomGuild::Card.new('M10128')
         detail = card.details.first
         expect(detail.name).to eq('燃え立つ調査')
-        expect(detail.artists).to match([
+        expect(detail.artists).to eq([
           { english_name: "Zoltan Boros" },
           { english_name: "Gabor Szikszai" },
         ])
@@ -416,7 +416,7 @@ RSpec.describe 'Card' do
       it 'double_faced' do
         card = WisdomGuild::Card.new('SOI088')
         expect(card.details.length).to eq(2)
-        expect(card.details[0].to_hash).to match({
+        expect(card.details[0].to_hash).to eq({
           name: '驚恐の目覚め',
           english_name: "Startled Awake",
           furigana: 'きょうきょうのめざめ',
@@ -433,7 +433,7 @@ RSpec.describe 'Card' do
             { english_name: "Sean Sevestre" },
           ],
         })
-        expect(card.details[1].to_hash).to match({
+        expect(card.details[1].to_hash).to eq({
           name: '絶え間ない悪夢',
           english_name: "Persistent Nightmare",
           furigana: 'たえまないあくむ',
@@ -466,7 +466,7 @@ RSpec.describe 'Card' do
       it 'normal' do
         card = WisdomGuild::Card.new('ULG110')
         expect(card.details.length).to eq(1)
-        expect(card.details.first.to_hash).to match({
+        expect(card.details.first.to_hash).to eq({
           name: '怨恨',
           english_name: 'Rancor',
           furigana: 'えんこん',
@@ -489,18 +489,18 @@ RSpec.describe 'Card' do
         card = WisdomGuild::Card.new('MIR055')
         detail = card.details.first
         expect(detail.name).to eq('不思議のバザール')
-        expect(detail.supertypes).to match([
+        expect(detail.supertypes).to eq([
           { name: 'ワールド' },
         ])
 
         card = WisdomGuild::Card.new('MOR058')
         detail = card.details.first
         expect(detail.name).to eq('苦花')
-        expect(detail.types).to match([
+        expect(detail.types).to eq([
           { name: '部族' },
           { name: 'エンチャント' },
         ])
-        expect(detail.subtypes).to match([
+        expect(detail.subtypes).to eq([
           { name: 'フェアリー', english_name: 'Faerie' }
         ])
       end
@@ -508,7 +508,7 @@ RSpec.describe 'Card' do
       it 'double_faced' do
         card = WisdomGuild::Card.new('XLN191')
         expect(card.details.length).to eq(2)
-        expect(card.details[0].to_hash).to match({
+        expect(card.details[0].to_hash).to eq({
           name: 'イトリモクの成長儀式',
           english_name: "Growing Rites of Itlimoc",
           furigana: 'いとりもくのせいちょうぎしき',
@@ -527,7 +527,7 @@ RSpec.describe 'Card' do
             { english_name: "Grzegorz Rutkowski" },
           ],
         })
-        expect(card.details[1].to_hash).to match({
+        expect(card.details[1].to_hash).to eq({
           name: '太陽の揺籃の地、イトリモク',
           english_name: "Itlimoc, Cradle of the Sun",
           furigana: 'たいようのようらんのちいとりもく',
@@ -555,7 +555,7 @@ RSpec.describe 'Card' do
       it 'normal' do
         card = WisdomGuild::Card.new('LRW261')
         expect(card.details.length).to eq(1)
-        expect(card.details.first.to_hash).to match({
+        expect(card.details.first.to_hash).to eq({
           name: 'バネ葉の太鼓',
           english_name: 'Springleaf Drum',
           furigana: 'ばねはのたいこ',
@@ -576,35 +576,35 @@ RSpec.describe 'Card' do
         card = WisdomGuild::Card.new('KLD222')
         detail = card.details.first
         expect(detail.name).to eq('金属製の巨像')
-        expect(detail.types).to match([
+        expect(detail.types).to eq([
           { name: 'アーティファクト' },
           { name: 'クリーチャー' },
         ])
-        expect(detail.subtypes).to match([
+        expect(detail.subtypes).to eq([
           { name: '構築物', english_name: 'Construct' },
         ])
 
         card = WisdomGuild::Card.new('KLD234')
         detail = card.details.first
         expect(detail.name).to eq('領事の旗艦、スカイソブリン')
-        expect(detail.supertypes).to match([
+        expect(detail.supertypes).to eq([
           { name: '伝説の' },
         ])
-        expect(detail.types).to match([
+        expect(detail.types).to eq([
           { name: 'アーティファクト' },
         ])
-        expect(detail.subtypes).to match([
+        expect(detail.subtypes).to eq([
           { name: '機体', english_name: 'Vehicle' },
         ])
 
         card = WisdomGuild::Card.new('MOR144')
         detail = card.details.first
         expect(detail.name).to eq('黒曜石の戦斧')
-        expect(detail.types).to match([
+        expect(detail.types).to eq([
           { name: '部族' },
           { name: 'アーティファクト' },
         ])
-        expect(detail.subtypes).to match([
+        expect(detail.subtypes).to eq([
           { name: '戦士', english_name: 'Warrior' },
           { name: '装備品', english_name: 'Equipment' },
         ])
@@ -613,7 +613,7 @@ RSpec.describe 'Card' do
       it 'double_faced' do
         card = WisdomGuild::Card.new('DKA147')
         expect(card.details.length).to eq(2)
-        expect(card.details[0].to_hash).to match({
+        expect(card.details[0].to_hash).to eq({
           name: '束縛の刃、エルブラス',
           english_name: "Elbrus, the Binding Blade",
           furigana: 'そくばくのやいばえるぶらす',
@@ -634,7 +634,7 @@ RSpec.describe 'Card' do
             { english_name: "Eric Deschamps" },
           ],
         })
-        expect(card.details[1].to_hash).to match({
+        expect(card.details[1].to_hash).to eq({
           name: '解き放たれたウィゼンガー',
           english_name: "Withengar Unbound",
           furigana: 'ときはなたれたうぃぜんがー',
@@ -669,7 +669,7 @@ RSpec.describe 'Card' do
       it 'normal' do
         card = WisdomGuild::Card.new('M11058')
         expect(card.details.length).to eq(1)
-        expect(card.details.first.to_hash).to match({
+        expect(card.details.first.to_hash).to eq({
           name: 'ジェイス・ベレレン',
           english_name: 'Jace Beleren',
           furigana: 'じぇいすべれれん',
@@ -701,7 +701,7 @@ RSpec.describe 'Card' do
       it 'double_faced' do
         card = WisdomGuild::Card.new('SOI243')
         expect(card.details.length).to eq(2)
-        expect(card.details[0].to_hash).to match({
+        expect(card.details[0].to_hash).to eq({
           name: 'アーリン・コード',
           english_name: "Arlinn Kord",
           furigana: 'あーりんこーど',
@@ -723,7 +723,7 @@ RSpec.describe 'Card' do
             { english_name: "Winona Nelson" },
           ],
         })
-        expect(card.details[1].to_hash).to match({
+        expect(card.details[1].to_hash).to eq({
           name: '月の抱擁、アーリン',
           english_name: "Arlinn, Embraced by the Moon",
           furigana: 'つきのほうようあーりん',
@@ -755,7 +755,7 @@ RSpec.describe 'Card' do
     it 'Land' do
       card = WisdomGuild::Card.new('RIX192')
       expect(card.details.length).to eq(1)
-      expect(card.details.first.to_hash).to match({
+      expect(card.details.first.to_hash).to eq({
         name: '平地',
         english_name: "Plains",
         furigana: 'へいち',
@@ -779,7 +779,7 @@ RSpec.describe 'Card' do
 
       card = WisdomGuild::Card.new('FUT174')
       expect(card.details.length).to eq(1)
-      expect(card.details.first.to_hash).to match({
+      expect(card.details.first.to_hash).to eq({
         name: 'ドライアドの東屋',
         english_name: "Dryad Arbor",
         furigana: 'どらいあどのあずまや',
