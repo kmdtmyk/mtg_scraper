@@ -1,6 +1,5 @@
 require 'nokogiri'
 require 'wisdom_guild/detail'
-require 'wisdom_guild/parse_text'
 require 'wisdom_guild/parse_html'
 require 'wisdom_guild/file_util'
 require 'wisdom_guild/html_util'
