@@ -18,29 +18,21 @@ module WisdomGuild
 
     def name
       return nil if error?
-      return @name unless @name.nil?
-      parse_html
       @name
     end
 
     def english_name
       return nil if error?
-      return @english_name unless @english_name.nil?
-      parse_html
       @english_name
     end
 
     def multiverseid
       return nil if error?
-      return @multiverseid unless @multiverseid.nil?
-      parse_html
       @multiverseid
     end
 
     def details
       return nil if error?
-      return @details unless @details.nil?
-      parse_html
       @details
     end
 
