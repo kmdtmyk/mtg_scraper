@@ -9,11 +9,9 @@ RSpec.describe 'Parse' do
       english_name: 'Serra Angel',
       furigana: 'せらのてんし',
     )
-
-    expect(WisdomGuild::ParseText.name(' タルモゴイフ / Tarmogoyf （ たるもごいふ ）')).to eq(
-      name: 'タルモゴイフ',
-      english_name: 'Tarmogoyf',
-      furigana: 'たるもごいふ',
+    expect(WisdomGuild::ParseText.name('甲鱗のワーム/Scaled Wurm')).to eq(
+      name: '甲鱗のワーム',
+      english_name: 'Scaled Wurm',
     )
   end
 

@@ -3,15 +3,15 @@ module WisdomGuild
   class ParseText
 
     def self.name(text)
-      %r{([^/\n\t]+)\/([^/\n\t]+)[\n\t]*（(.+)）}.match(text)
-      name = Regexp.last_match(1).strip
-      english_name = Regexp.last_match(2).strip
-      furigana = Regexp.last_match(3).strip
-      {
-        name: name,
-        english_name: english_name,
-        furigana: furigana,
-      }
+      %r{([^/\n\t]+)\/([^/\n\t（）]+)[\s]*(（(.+)）)?}.match(text)
+      name_text = Regexp.last_match(1)
+      english_name_text = Regexp.last_match(2)
+      furigana_text = Regexp.last_match(4)
+      result = {}
+      result[:name] = name_text.strip
+      result[:english_name] = english_name_text.strip
+      result[:furigana] = furigana_text.strip unless furigana_text.nil?
+      result
     end
 
     def self.mana_cost(text)

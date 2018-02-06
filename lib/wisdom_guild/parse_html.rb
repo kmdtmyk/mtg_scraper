@@ -14,24 +14,18 @@ module WisdomGuild
       return result if error
 
       result.merge!(parse_header(html))
-      details = parse_details(html)
-      result[:details] = details
+      result[:details] = parse_details(html)
       result
     end
 
     def self.parse_header(html)
+      result = {}
       doc = Nokogiri::HTML.parse(html)
       title_text = doc.css('.wg-title').inner_text
-      %r{([^/\n\t]+)\/([^/\n\t]+)[\n\t]*}.match(title_text)
-      name = Regexp.last_match(1)
-      english_name = Regexp.last_match(2)
+      result.merge!(ParseText.name(title_text))
       gatherer = doc.css('[target="_GATHERER"]')
-      multiverseid = gatherer[0][:href].split('multiverseid=')[-1].to_i
-      {
-        name: name,
-        english_name: english_name,
-        multiverseid: multiverseid,
-      }
+      result[:multiverseid] = gatherer[0][:href].split('multiverseid=')[-1].to_i
+      result
     end
 
     def self.parse_details(html)
