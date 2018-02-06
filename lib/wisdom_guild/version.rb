@@ -1,3 +1,4 @@
 module WisdomGuild
-  VERSION = "0.0.0"
+  NAME = 'wisdom_guild'
+  VERSION = '0.0.0'
 end

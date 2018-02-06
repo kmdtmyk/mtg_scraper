@@ -1,3 +1,5 @@
+require 'fileutils'
+
 module WisdomGuild
 
   class FileUtil
@@ -13,11 +15,17 @@ module WisdomGuild
     def self.write(path, text)
       dirname = File.dirname(path)
       unless Dir.exist?(dirname)
-        Dir.mkdir(dirname)
+        FileUtils.mkdir_p(dirname)
       end
       File.open(path, 'w') do |f|
         f.puts(text)
       end
+    end
+
+    def self.cache_dir
+      name = WisdomGuild::NAME
+      spec = Gem::Specification.find_by_name(name)
+      gem_root = spec.gem_dir + "/tmp/#{name}/cache"
     end
 
   end

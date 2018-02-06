@@ -286,7 +286,7 @@ module WisdomGuild
     end
 
     def self.name_to_file_path(name)
-      File.dirname(__FILE__) + "/cache/#{name}.html"
+      FileUtil.cache_dir + "/#{name}.html"
     end
 
   end
