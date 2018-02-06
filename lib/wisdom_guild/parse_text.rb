@@ -1,6 +1,6 @@
 module WisdomGuild
 
-  class Parse
+  class ParseText
 
     def self.name(text)
       %r{([^/\n\t]+)\/([^/\n\t]+)[\n\t]*（(.+)）}.match(text)
