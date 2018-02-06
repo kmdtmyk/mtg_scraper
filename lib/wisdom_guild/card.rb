@@ -8,28 +8,94 @@ module WisdomGuild
 
   class Card
 
-    attr_reader :name
-    attr_reader :english_name
-    attr_reader :multiverseid
-    attr_reader :details
+    @@interval = 5
+    @@last_time = nil
 
     def initialize(name)
-      card = Card::get(name)
-      @name = card[:name]
-      @english_name = card[:english_name]
-      @multiverseid = card[:multiverseid]
-      @details = []
-      card[:details].each{ |detail| @details << Detail.new(detail) }
+      @url = Card::name_to_url(name)
+      @cache_path = Card::name_to_file_path(name)
+    end
+
+    def name
+      return @name unless @name.nil?
+      get_header_attribute
+      @name
+    end
+
+    def english_name
+      return @english_name unless @english_name.nil?
+      get_header_attribute
+      @english_name
+    end
+
+    def multiverseid
+      return @multiverseid unless @multiverseid.nil?
+      get_header_attribute
+      @multiverseid
+    end
+
+    def details
+      return @details unless @details.nil?
+      get_details
+      @details
+    end
+
+    def doc
+      @doc = Nokogiri::HTML.parse(html)
+    end
+
+    def html
+      return @html unless @html.nil?
+      return read_cache if cached?
+      fetch_html
+    end
+
+    def cached?
+      File.exist?(@cache_path)
     end
 
     def to_hash
       {
-        name: @name,
-        english_name: @english_name,
-        multiverseid: @multiverseid,
-        details: @details.map{ |detail| detail.to_hash },
+        name: name,
+        english_name: english_name,
+        multiverseid: multiverseid,
+        details: details.map{ |detail| detail.to_hash },
       }
     end
+
+    private
+
+      def get_header_attribute
+        title_text = doc.css('.wg-title').inner_text
+        %r{([^/\n\t]+)\/([^/\n\t]+)[\n\t]*}.match(title_text)
+
+        @name = Regexp.last_match(1)
+        @english_name = Regexp.last_match(2)
+        gatherer = doc.css('[target="_GATHERER"]')
+        @multiverseid = gatherer[0][:href].split('multiverseid=')[-1].to_i
+      end
+
+      def get_details
+        details = Card.parse_details(html)
+        @details = []
+        details.each{ |detail| @details << Detail.new(detail) }
+      end
+
+      def read_cache
+        @html = FileUtil.read(@cache_path)
+      end
+
+      def write_cache
+        FileUtil.write(@cache_path, @html)
+      end
+
+      def fetch_html
+        sleep @@interval unless @@last_time.nil?
+        @html = HtmlUtil.get(@url)
+        @@last_time = Time.now
+        write_cache
+        @html
+      end
 
     def self.cached?(name)
       File.exist?(name_to_file_path(name))
