@@ -7,7 +7,10 @@ module WisdomGuild
 
   class Card
 
-    attr_reader :name, :english_name, :multiverseid, :details
+    attr_reader :name
+    attr_reader :english_name
+    attr_reader :multiverseid
+    attr_reader :details
 
     def initialize(name)
       card = Card::get(name)
