@@ -8,8 +8,8 @@ module WisdomGuild
     def self.parse(html)
       result = {}
       doc = Nokogiri::HTML.parse(html)
-      detail_table = get_detail_table(html)
-      error = detail_table.empty?
+      table = get_detail_table(html)
+      error = table.empty?
       result[:error] = error
       return result if error
 
@@ -52,7 +52,7 @@ module WisdomGuild
     end
 
     def self.parse_normal(html)
-      table = get_table(html)
+      table = get_detail_table(html)
       text_array = table_to_array(table)
       [parse_text_array(text_array)]
     end
@@ -62,7 +62,7 @@ module WisdomGuild
     end
 
     def self.parse_split(html)
-      table = get_table(html)
+      table = get_detail_table(html)
       text_array = table_to_array(table)
       (text_array[0].length - 1).times
         .map{|i|
@@ -72,7 +72,7 @@ module WisdomGuild
     end
 
     def self.parse_levelup(html)
-      table = get_table(html)
+      table = get_detail_table(html)
       text_array = table_to_array(table)
 
       #一部のtr開始タグが抜けている対応
@@ -128,17 +128,12 @@ module WisdomGuild
     end
 
     def self.get_layout(html)
-      table = get_table(html)
+      table = get_detail_table(html)
       return 'double_faced' if table.css('th.ddc').length > 0
       return 'split' if table.css('tr:nth-child(1) td').length > 1
       return 'levelup' if table.css('tr:nth-child(7) td').length == 0
       return 'flip' if table.css('tr').length > 15
       return 'normal'
-    end
-
-    def self.get_table(html)
-      doc = Nokogiri::HTML.parse(html)
-      doc.css('.wg-whisper-card-detail table')
     end
 
     def self.table_to_array(table)
@@ -148,7 +143,7 @@ module WisdomGuild
     end
 
     def self.parse_double_faced_or_flip(html)
-      table = get_table(html)
+      table = get_detail_table(html)
       text_array = table_to_array(table)
       second_name_index = text_array[1..-1].index{ |name, value| name == 'カード名' } + 1
       [
