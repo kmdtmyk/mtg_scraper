@@ -1,9 +1,21 @@
 require 'open-uri'
 require 'nokogiri'
+require 'wisdom_guild/detail'
 
 module WisdomGuild
 
   class Card
+
+    attr_reader :name, :english_name, :multiverseid, :details
+
+    def initialize(name)
+      card = Card::get(name)
+      @name = card[:name]
+      @english_name = card[:english_name]
+      @multiverseid = card[:multiverseid]
+      @details = []
+      card[:details].each{ |detail| @details << Detail.new(detail) }
+    end
 
     def self.cached?(name)
       File.exist?(name_to_file_path(name))
