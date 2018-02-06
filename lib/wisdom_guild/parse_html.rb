@@ -1,5 +1,5 @@
 require 'nokogiri'
-require 'wisdom_guild/parse_html'
+require 'wisdom_guild/parse_text'
 
 module WisdomGuild
 
