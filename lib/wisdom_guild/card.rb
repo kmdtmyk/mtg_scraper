@@ -17,24 +17,28 @@ module WisdomGuild
     end
 
     def name
+      return nil if error?
       return @name unless @name.nil?
       get_header_attribute
       @name
     end
 
     def english_name
+      return nil if error?
       return @english_name unless @english_name.nil?
       get_header_attribute
       @english_name
     end
 
     def multiverseid
+      return nil if error?
       return @multiverseid unless @multiverseid.nil?
       get_header_attribute
       @multiverseid
     end
 
     def details
+      return nil if error?
       return @details unless @details.nil?
       get_details
       @details
@@ -54,6 +58,11 @@ module WisdomGuild
       File.exist?(@cache_path)
     end
 
+    def error?
+      return @error unless @error.nil?
+       @error = doc.css('h1').inner_text == 'エラー'
+    end
+
     def to_hash
       {
         name: name,
@@ -68,7 +77,6 @@ module WisdomGuild
       def get_header_attribute
         title_text = doc.css('.wg-title').inner_text
         %r{([^/\n\t]+)\/([^/\n\t]+)[\n\t]*}.match(title_text)
-
         @name = Regexp.last_match(1)
         @english_name = Regexp.last_match(2)
         gatherer = doc.css('[target="_GATHERER"]')

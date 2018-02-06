@@ -5,6 +5,7 @@ RSpec.describe 'Card' do
 
   it 'attributes' do
     card = WisdomGuild::Card.new('UDS065')
+    expect(card.error?).to eq(false)
     expect(card.name).to eq('ファイレクシアの抹殺者')
     expect(card.english_name).to eq('Phyrexian Negator')
     expect(card.multiverseid).to eq(207891)
@@ -831,6 +832,15 @@ RSpec.describe 'Card' do
       ])
     end
 
+  end
+
+  it 'invalid card name' do
+    card = WisdomGuild::Card.new('invalid_card_name')
+    expect(card.error?).to eq(true)
+    expect(card.name).to eq(nil)
+    expect(card.english_name).to eq(nil)
+    expect(card.multiverseid).to eq(nil)
+    expect(card.details).to eq(nil)
   end
 
 end
