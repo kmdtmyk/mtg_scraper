@@ -13,8 +13,8 @@ module WisdomGuild
     @@last_time = nil
 
     def initialize(name)
-      @url = Card::name_to_url(name)
-      @cache_path = Card::name_to_file_path(name)
+      @url = 'http://whisper.wisdom-guild.net/card/' + URI.escape(name)
+      @cache_path = FileUtil.cache_dir + "/#{name}.html"
     end
 
     def name
@@ -72,11 +72,6 @@ module WisdomGuild
 
     private
 
-      def doc
-        return @doc unless @doc.nil?
-        @doc = Nokogiri::HTML.parse(html)
-      end
-
       def parse_html
         result = ParseHtml.parse(html)
         @error = result[:error]
@@ -105,14 +100,6 @@ module WisdomGuild
         write_cache
         @html
       end
-
-    def self.name_to_url(name)
-      'http://whisper.wisdom-guild.net/card/' + URI.escape(name)
-    end
-
-    def self.name_to_file_path(name)
-      FileUtil.cache_dir + "/#{name}.html"
-    end
 
   end
 
