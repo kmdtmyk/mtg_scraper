@@ -1,6 +1,7 @@
-require 'open-uri'
 require 'nokogiri'
 require 'wisdom_guild/detail'
+require 'wisdom_guild/file_util'
+require 'wisdom_guild/html_util'
 
 module WisdomGuild
 
@@ -288,38 +289,6 @@ module WisdomGuild
       File.dirname(__FILE__) + "/cache/#{name}.html"
     end
 
-    class FileUtil
-
-      def self.read(path)
-        begin
-          return File.read(path)
-        rescue Exception => e
-          return nil
-        end
-      end
-
-      def self.write(path, text)
-        dirname = File.dirname(path)
-        unless Dir.exist?(dirname)
-          Dir.mkdir(dirname)
-        end
-        File.open(path, 'w') do |f|
-          f.puts(text)
-        end
-      end
-
-    end
-
-    class HtmlUtil
-
-      def self.get(url)
-        html = open(url) do |f|
-          f.read
-        end
-        html
-      end
-
-    end
   end
 
 end
