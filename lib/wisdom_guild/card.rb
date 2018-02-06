@@ -44,10 +44,6 @@ module WisdomGuild
       @details
     end
 
-    def doc
-      @doc = Nokogiri::HTML.parse(html)
-    end
-
     def html
       return @html unless @html.nil?
       return read_cache if cached?
@@ -73,6 +69,10 @@ module WisdomGuild
     end
 
     private
+
+      def doc
+        @doc = Nokogiri::HTML.parse(html)
+      end
 
       def get_header_attribute
         title_text = doc.css('.wg-title').inner_text
