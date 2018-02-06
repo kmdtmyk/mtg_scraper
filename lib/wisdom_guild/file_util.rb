@@ -24,6 +24,9 @@ module WisdomGuild
 
     def self.cache_dir
       name = WisdomGuild::NAME
+      if Module.const_defined?('Rails')
+        return Rails.root.join('tmp', name, 'cache').to_s
+      end
       spec = Gem::Specification.find_by_name(name)
       gem_root = spec.gem_dir + "/tmp/#{name}/cache"
     end
