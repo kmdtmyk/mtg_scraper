@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "wisdom_guild/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "wisdom_guild"
+  spec.name          = WisdomGuild::NAME
   spec.version       = WisdomGuild::VERSION
   spec.authors       = ["kmdtmyk"]
   spec.email         = ["email@example.com"]
