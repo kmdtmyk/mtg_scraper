@@ -92,6 +92,14 @@ RSpec.describe 'Card' do
           { name: '猫', english_name: 'Cat' },
           { name: '兵士', english_name: 'Soldier' },
         ])
+
+        card = WisdomGuild::Card.new('SOI207')
+        detail = card.details.first
+        expect(detail.name).to eq('墓モグラ')
+        expect(detail.subtypes).to eq([
+          { name: '', english_name: 'Mole' },
+          { name: 'ビースト', english_name: 'Beast' },
+        ])
       end
 
       it 'levelup' do
@@ -829,6 +837,13 @@ RSpec.describe 'Card' do
       expect(detail.supertypes).to eq([
         { name: '基本' },
         { name: '氷雪' },
+      ])
+
+      card = WisdomGuild::Card.new('TSP280')
+      detail = card.details.first
+      expect(detail.name).to eq('ウルザの工廠')
+      expect(detail.subtypes).to eq([
+        { name: '', english_name: 'Urza’s' },
       ])
     end
 

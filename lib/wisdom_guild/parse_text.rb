@@ -45,9 +45,9 @@ module WisdomGuild
 
       unless subtype_text.nil?
         subtype_text.split('・').each do |subtype|
-          %r{(\S+)\((\S+)\)}.match(subtype)
+          %r{(\S+)?\((\S+)\)}.match(subtype)
           subtypes << {
-            name: Regexp.last_match(1),
+            name: Regexp.last_match(1) || '',
             english_name: Regexp.last_match(2),
           }
         end
