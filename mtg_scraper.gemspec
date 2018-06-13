@@ -1,11 +1,11 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "wisdom_guild/version"
+require "mtg_scraper/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = WisdomGuild::NAME
-  spec.version       = WisdomGuild::VERSION
+  spec.name          = MtgScraper::NAME
+  spec.version       = MtgScraper::VERSION
   spec.authors       = ["kmdtmyk"]
   spec.email         = ["email@example.com"]
 

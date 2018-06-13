@@ -1,10 +1,10 @@
 require 'spec_helper'
-require 'wisdom_guild/card'
+require 'mtg_scraper/wisdom_guild'
 
 RSpec.describe 'Card' do
 
   it 'attributes' do
-    card = WisdomGuild::Card.new('UDS065')
+    card = MtgScraper::WisdomGuild::Card.new('UDS065')
     expect(card.error?).to eq(false)
     expect(card.name).to eq('ファイレクシアの抹殺者')
     expect(card.english_name).to eq('Phyrexian Negator')
@@ -12,7 +12,7 @@ RSpec.describe 'Card' do
   end
 
   it 'to_hash' do
-    card = WisdomGuild::Card.new('UDS065')
+    card = MtgScraper::WisdomGuild::Card.new('UDS065')
     expect(card.to_hash).to eq(
       name: "ファイレクシアの抹殺者",
       english_name: "Phyrexian Negator",
@@ -48,7 +48,7 @@ RSpec.describe 'Card' do
     describe 'Creature' do
       it 'normal' do
 
-        card = WisdomGuild::Card.new('10E039')
+        card = MtgScraper::WisdomGuild::Card.new('10E039')
         expect(card.details.length).to eq(1)
         expect(card.details.first.to_hash).to eq({
           name: 'セラの天使',
@@ -72,20 +72,20 @@ RSpec.describe 'Card' do
           ],
         })
 
-        card = WisdomGuild::Card.new('AVR106')
+        card = MtgScraper::WisdomGuild::Card.new('AVR106')
         detail = card.details.first
         expect(detail.name).to eq('グリセルブランド')
         expect(detail.supertypes).to eq([
           { name: '伝説の' },
         ])
 
-        card = WisdomGuild::Card.new('FUT153')
+        card = MtgScraper::WisdomGuild::Card.new('FUT153')
         detail = card.details.first
         expect(detail.name).to eq('タルモゴイフ')
         expect(detail.power).to eq('*')
         expect(detail.toughness).to eq('1+*')
 
-        card = WisdomGuild::Card.new('M11003')
+        card = MtgScraper::WisdomGuild::Card.new('M11003')
         detail = card.details.first
         expect(detail.name).to eq('アジャニの群れ仲間')
         expect(detail.subtypes).to eq([
@@ -93,7 +93,7 @@ RSpec.describe 'Card' do
           { name: '兵士', english_name: 'Soldier' },
         ])
 
-        card = WisdomGuild::Card.new('SOI207')
+        card = MtgScraper::WisdomGuild::Card.new('SOI207')
         detail = card.details.first
         expect(detail.name).to eq('墓モグラ')
         expect(detail.subtypes).to eq([
@@ -103,7 +103,7 @@ RSpec.describe 'Card' do
       end
 
       it 'levelup' do
-        card = WisdomGuild::Card.new('ROE112')
+        card = MtgScraper::WisdomGuild::Card.new('ROE112')
         expect(card.details.length).to eq(1)
         expect(card.details.first.to_hash).to eq({
           name: 'グール・ドラズの暗殺者',
@@ -130,7 +130,7 @@ RSpec.describe 'Card' do
       end
 
       it 'flip' do
-        card = WisdomGuild::Card.new('CHK070')
+        card = MtgScraper::WisdomGuild::Card.new('CHK070')
         expect(card.details.length).to eq(2)
         expect(card.details[0].to_hash).to eq({
           name: '呪師の弟子',
@@ -179,7 +179,7 @@ RSpec.describe 'Card' do
           ],
         })
 
-        card = WisdomGuild::Card.new('SOK035')
+        card = MtgScraper::WisdomGuild::Card.new('SOK035')
         expect(card.details.length).to eq(2)
         expect(card.details[0].to_hash).to eq({
           name: '上位の空民、エラヨウ',
@@ -227,7 +227,7 @@ RSpec.describe 'Card' do
       end
 
       it 'double_faced' do
-        card = WisdomGuild::Card.new('ISD051')
+        card = MtgScraper::WisdomGuild::Card.new('ISD051')
         expect(card.details.length).to eq(2)
         expect(card.details[0].to_hash).to eq({
           name: '秘密を掘り下げる者',
@@ -277,7 +277,7 @@ RSpec.describe 'Card' do
           ],
         })
 
-        card = WisdomGuild::Card.new('ORI060')
+        card = MtgScraper::WisdomGuild::Card.new('ORI060')
         expect(card.details.length).to eq(2)
         expect(card.details[0].to_hash).to eq({
           name: 'ヴリンの神童、ジェイス',
@@ -333,7 +333,7 @@ RSpec.describe 'Card' do
     end
 
     it 'Instant' do
-      card = WisdomGuild::Card.new('ALA033')
+      card = MtgScraper::WisdomGuild::Card.new('ALA033')
       expect(card.details.length).to eq(1)
       expect(card.details.first.to_hash).to eq({
         name: '取り消し',
@@ -353,14 +353,14 @@ RSpec.describe 'Card' do
         ],
       })
 
-      card = WisdomGuild::Card.new('FUT042')
+      card = MtgScraper::WisdomGuild::Card.new('FUT042')
       detail = card.details.first
       expect(detail.name).to eq('否定の契約')
       expect(detail.colors).to eq([
         { name: '青' },
       ])
 
-      card = WisdomGuild::Card.new('LRW194')
+      card = MtgScraper::WisdomGuild::Card.new('LRW194')
       detail = card.details.first
       expect(detail.name).to eq('タール火')
       expect(detail.types).to eq([
@@ -375,7 +375,7 @@ RSpec.describe 'Card' do
     describe 'Sorcery' do
 
       it 'normal' do
-        card = WisdomGuild::Card.new('THS107')
+        card = MtgScraper::WisdomGuild::Card.new('THS107')
         expect(card.details.length).to eq(1)
         expect(card.details.first.to_hash).to eq({
           name: '思考囲い',
@@ -395,14 +395,14 @@ RSpec.describe 'Card' do
           ],
         })
 
-        card = WisdomGuild::Card.new('TSP048')
+        card = MtgScraper::WisdomGuild::Card.new('TSP048')
         detail = card.details.first
         expect(detail.name).to eq('祖先の幻視')
         expect(detail.colors).to eq([
           { name: '青' },
         ])
 
-        card = WisdomGuild::Card.new('ROE001')
+        card = MtgScraper::WisdomGuild::Card.new('ROE001')
         detail = card.details.first
         expect(detail.name).to eq('全ては塵')
         expect(detail.types).to eq([
@@ -413,7 +413,7 @@ RSpec.describe 'Card' do
           { name: 'エルドラージ', english_name: 'Eldrazi' }
         ])
 
-        card = WisdomGuild::Card.new('M10128')
+        card = MtgScraper::WisdomGuild::Card.new('M10128')
         detail = card.details.first
         expect(detail.name).to eq('燃え立つ調査')
         expect(detail.artists).to eq([
@@ -423,7 +423,7 @@ RSpec.describe 'Card' do
       end
 
       it 'double_faced' do
-        card = WisdomGuild::Card.new('SOI088')
+        card = MtgScraper::WisdomGuild::Card.new('SOI088')
         expect(card.details.length).to eq(2)
         expect(card.details[0].to_hash).to eq({
           name: '驚恐の目覚め',
@@ -473,7 +473,7 @@ RSpec.describe 'Card' do
     describe 'Enchantment' do
 
       it 'normal' do
-        card = WisdomGuild::Card.new('ULG110')
+        card = MtgScraper::WisdomGuild::Card.new('ULG110')
         expect(card.details.length).to eq(1)
         expect(card.details.first.to_hash).to eq({
           name: '怨恨',
@@ -495,14 +495,14 @@ RSpec.describe 'Card' do
           ],
         })
 
-        card = WisdomGuild::Card.new('MIR055')
+        card = MtgScraper::WisdomGuild::Card.new('MIR055')
         detail = card.details.first
         expect(detail.name).to eq('不思議のバザール')
         expect(detail.supertypes).to eq([
           { name: 'ワールド' },
         ])
 
-        card = WisdomGuild::Card.new('MOR058')
+        card = MtgScraper::WisdomGuild::Card.new('MOR058')
         detail = card.details.first
         expect(detail.name).to eq('苦花')
         expect(detail.types).to eq([
@@ -515,7 +515,7 @@ RSpec.describe 'Card' do
       end
 
       it 'double_faced' do
-        card = WisdomGuild::Card.new('XLN191')
+        card = MtgScraper::WisdomGuild::Card.new('XLN191')
         expect(card.details.length).to eq(2)
         expect(card.details[0].to_hash).to eq({
           name: 'イトリモクの成長儀式',
@@ -562,7 +562,7 @@ RSpec.describe 'Card' do
     describe 'Artifact' do
 
       it 'normal' do
-        card = WisdomGuild::Card.new('LRW261')
+        card = MtgScraper::WisdomGuild::Card.new('LRW261')
         expect(card.details.length).to eq(1)
         expect(card.details.first.to_hash).to eq({
           name: 'バネ葉の太鼓',
@@ -582,7 +582,7 @@ RSpec.describe 'Card' do
           ],
         })
 
-        card = WisdomGuild::Card.new('KLD222')
+        card = MtgScraper::WisdomGuild::Card.new('KLD222')
         detail = card.details.first
         expect(detail.name).to eq('金属製の巨像')
         expect(detail.types).to eq([
@@ -593,7 +593,7 @@ RSpec.describe 'Card' do
           { name: '構築物', english_name: 'Construct' },
         ])
 
-        card = WisdomGuild::Card.new('KLD234')
+        card = MtgScraper::WisdomGuild::Card.new('KLD234')
         detail = card.details.first
         expect(detail.name).to eq('領事の旗艦、スカイソブリン')
         expect(detail.supertypes).to eq([
@@ -606,7 +606,7 @@ RSpec.describe 'Card' do
           { name: '機体', english_name: 'Vehicle' },
         ])
 
-        card = WisdomGuild::Card.new('MOR144')
+        card = MtgScraper::WisdomGuild::Card.new('MOR144')
         detail = card.details.first
         expect(detail.name).to eq('黒曜石の戦斧')
         expect(detail.types).to eq([
@@ -620,7 +620,7 @@ RSpec.describe 'Card' do
       end
 
       it 'double_faced' do
-        card = WisdomGuild::Card.new('DKA147')
+        card = MtgScraper::WisdomGuild::Card.new('DKA147')
         expect(card.details.length).to eq(2)
         expect(card.details[0].to_hash).to eq({
           name: '束縛の刃、エルブラス',
@@ -676,7 +676,7 @@ RSpec.describe 'Card' do
     describe 'Planeswalker' do
 
       it 'normal' do
-        card = WisdomGuild::Card.new('M11058')
+        card = MtgScraper::WisdomGuild::Card.new('M11058')
         expect(card.details.length).to eq(1)
         expect(card.details.first.to_hash).to eq({
           name: 'ジェイス・ベレレン',
@@ -701,14 +701,14 @@ RSpec.describe 'Card' do
           ],
         })
 
-        card = WisdomGuild::Card.new('AKH204')
+        card = MtgScraper::WisdomGuild::Card.new('AKH204')
         detail = card.details.first
         expect(detail.name).to eq('自然に仕える者、ニッサ')
         expect(detail.loyalty).to eq("X")
       end
 
       it 'double_faced' do
-        card = WisdomGuild::Card.new('SOI243')
+        card = MtgScraper::WisdomGuild::Card.new('SOI243')
         expect(card.details.length).to eq(2)
         expect(card.details[0].to_hash).to eq({
           name: 'アーリン・コード',
@@ -762,7 +762,7 @@ RSpec.describe 'Card' do
     end
 
     it 'Land' do
-      card = WisdomGuild::Card.new('RIX192')
+      card = MtgScraper::WisdomGuild::Card.new('RIX192')
       expect(card.details.length).to eq(1)
       expect(card.details.first.to_hash).to eq({
         name: '平地',
@@ -786,7 +786,7 @@ RSpec.describe 'Card' do
         ],
       })
 
-      card = WisdomGuild::Card.new('FUT174')
+      card = MtgScraper::WisdomGuild::Card.new('FUT174')
       expect(card.details.length).to eq(1)
       expect(card.details.first.to_hash).to eq({
         name: 'ドライアドの東屋',
@@ -815,7 +815,7 @@ RSpec.describe 'Card' do
         ],
       })
 
-      card = WisdomGuild::Card.new('RTR247')
+      card = MtgScraper::WisdomGuild::Card.new('RTR247')
       detail = card.details.first
       expect(detail.name).to eq('蒸気孔')
       expect(detail.subtypes).to eq([
@@ -823,7 +823,7 @@ RSpec.describe 'Card' do
         { name: '山', english_name: 'Mountain' },
       ])
 
-      card = WisdomGuild::Card.new('CSP145')
+      card = MtgScraper::WisdomGuild::Card.new('CSP145')
       detail = card.details.first
       expect(detail.name).to eq('暗黒の深部')
       expect(detail.supertypes).to eq([
@@ -831,7 +831,7 @@ RSpec.describe 'Card' do
         { name: '氷雪' },
       ])
 
-      card = WisdomGuild::Card.new('CSP151')
+      card = MtgScraper::WisdomGuild::Card.new('CSP151')
       detail = card.details.first
       expect(detail.name).to eq('冠雪の平地')
       expect(detail.supertypes).to eq([
@@ -839,7 +839,7 @@ RSpec.describe 'Card' do
         { name: '氷雪' },
       ])
 
-      card = WisdomGuild::Card.new('TSP280')
+      card = MtgScraper::WisdomGuild::Card.new('TSP280')
       detail = card.details.first
       expect(detail.name).to eq('ウルザの工廠')
       expect(detail.subtypes).to eq([
@@ -850,7 +850,7 @@ RSpec.describe 'Card' do
   end
 
   it 'invalid card name' do
-    card = WisdomGuild::Card.new('invalid_card_name')
+    card = MtgScraper::WisdomGuild::Card.new('invalid_card_name')
     expect(card.error?).to eq(true)
     expect(card.name).to eq(nil)
     expect(card.english_name).to eq(nil)

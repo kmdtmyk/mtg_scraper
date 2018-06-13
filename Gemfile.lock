@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    wisdom_guild (0.0.0)
+    mtg_scraper (0.0.0)
       nokogiri (~> 1.8)
 
 GEM
@@ -31,9 +31,9 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 1.16)
+  mtg_scraper!
   rake (~> 10.0)
   rspec (~> 3.0)
-  wisdom_guild!
 
 BUNDLED WITH
    1.16.1
