@@ -16,11 +16,3 @@ RSpec.describe 'ParseText' do
   end
 
 end
-
-
-
-def foo(str= 567)
-  p str
-end
-foo(123)
-foo
