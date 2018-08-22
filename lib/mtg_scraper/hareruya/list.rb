@@ -1,41 +1,19 @@
 require 'nokogiri'
-require 'mtg_scraper/wisdom_guild/detail'
-require 'mtg_scraper/wisdom_guild/parse_html'
 require 'mtg_scraper/utils/file_util'
 require 'mtg_scraper/utils/html_util'
 
 module MtgScraper
 
-  module WisdomGuild
+  module Hareruya
 
-    class Card
+    class List
 
       @@interval = 5
       @@last_time = nil
 
       def initialize(name)
-        @url = 'http://whisper.wisdom-guild.net/card/' + URI.escape(name)
-        @cache_path = MtgScraper::Utils::FileUtil.cache_dir('wisdom_guild') + "/#{name}.html"
-      end
-
-      def name
-        return nil if error?
-        @name
-      end
-
-      def english_name
-        return nil if error?
-        @english_name
-      end
-
-      def multiverseid
-        return nil if error?
-        @multiverseid
-      end
-
-      def details
-        return nil if error?
-        @details
+        @url = "http://www.hareruyamtg.com/jp/c/#{URI.escape(name)}/"
+        @cache_path = MtgScraper::Utils::FileUtil.cache_dir('hareruya') + "/#{name}.html"
       end
 
       def html
@@ -48,19 +26,12 @@ module MtgScraper
         File.exist?(@cache_path)
       end
 
-      def error?
-        return @error unless @error.nil?
-        parse_html
-        @error
-      end
-
       def to_hash
-        {
-          name: name,
-          english_name: english_name,
-          multiverseid: multiverseid,
-          details: details.map{ |detail| detail.to_hash },
-        }
+        doc = Nokogiri::HTML.parse(html)
+        doc.css('.itemListLine a').each do |item|
+          # p item.css('.itemName').inner_text
+        end
+        []
       end
 
       private

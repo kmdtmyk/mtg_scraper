@@ -2,7 +2,7 @@ require 'fileutils'
 
 module MtgScraper
 
-  module WisdomGuild
+  module Utils
 
     class FileUtil
 
@@ -24,8 +24,7 @@ module MtgScraper
         end
       end
 
-      def self.cache_dir
-        name = WisdomGuild::NAME
+      def self.cache_dir(name)
         if Module.const_defined?('Rails')
           return Rails.root.join('tmp', name, 'cache').to_s
         end

@@ -2,7 +2,7 @@ require 'open-uri'
 
 module MtgScraper
 
-  module WisdomGuild
+  module Utils
 
     class HtmlUtil
 
