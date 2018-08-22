@@ -62,8 +62,8 @@ RSpec.describe 'Card' do
           subtypes: [
             { name: '天使', english_name: 'Angel' },
           ],
-          text: "飛行\n警戒（このクリーチャーは攻撃してもタップしない。）",
-          oracle: "Flying （This creature can't be blocked except by creatures with flying or reach.）\nVigilance （Attacking doesn't cause this creature to tap.）",
+          text: "飛行、警戒",
+          oracle: "Flying, vigilance",
           power: "4",
           toughness: "4",
           flavor_text: "彼女の剣はどんな聖歌隊よりも美しく歌う。",
@@ -388,7 +388,7 @@ RSpec.describe 'Card' do
           ],
           subtypes: [],
           text: "プレイヤー１人を対象とする。そのプレイヤーは手札を公開する。あなたはその中から土地でないカードを１枚選ぶ。そのプレイヤーはそのカードを捨てる。あなたは２点のライフを失う。",
-          oracle: "Target player reveals his or her hand. You choose a nonland card from it. That player discards that card. You lose 2 life.",
+          oracle: "Target player reveals their hand. You choose a nonland card from it. That player discards that card. You lose 2 life.",
           flavor_text: "「知識とは時に重荷となる。解放せよ。お主の恐怖を残らず私に解き放つのだ。」 ――― 悪夢の織り手、アショク.",
           artists: [
             { english_name: "Lucas Graciano" },
@@ -574,8 +574,8 @@ RSpec.describe 'Card' do
             { name: 'アーティファクト' },
           ],
           subtypes: [],
-          text: "(Ｔ),あなたがコントロールするアンタップ状態のクリーチャーを１体タップする：あなたのマナ・プールに、好きな色のマナ１点を加える。",
-          oracle: "{T}, Tap an untapped creature you control: Add one mana of any color to your mana pool.",
+          text: "(Ｔ),あなたがコントロールするアンタップ状態のクリーチャーを１体タップする：好きな色１色のマナ１点を加える。",
+          oracle: "{T}, Tap an untapped creature you control: Add one mana of any color.",
           flavor_text: "午後をかけてトビハゼを試してみた結果、スクラッチにはカワゴイの方がいい騒音を立ててくれるのがわかった。",
           artists: [
             { english_name: "Cyril Van Der Haegen" },

@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="ja">
+<head>
+<link rel="Stylesheet" href="http://www.wisdom-guild.net/css/base.css" type="text/css">
+<link rel="Stylesheet" href="http://www.wisdom-guild.net/css/sprite.css" type="text/css">
+<link rel="Stylesheet" href="http://www.wisdom-guild.net/css/main.css?20141214a" type="text/css">
+<link rel="Stylesheet" href="http://www.wisdom-guild.net/lib/jquery/jquery.css" type="text/css">
+<link rel="Stylesheet" href="http://www.wisdom-guild.net/lib/jquery/jqplot/jqplot.css" type="text/css">
+<link rel="Stylesheet" href="http://www.wisdom-guild.net/lib/jquery/ui/theme/jquery-ui.custom.css?20130708" type="text/css">
+<title>Wisdom Guild</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<META NAME="keywords" CONTENT="Magic,Gathering,MTG,M:TG,card,games,マジック,ギャザリング,カード,ゲーム">
+<META NAME="description" CONTENT="Magic: The Gathering/マジック・ザ・ギャザリング(MTG)の総合情報サイト。カード・データベース（カードリスト、シングルカード価格・値段、新着情報等）を主に提供。">
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-26053346-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+	var DOMAIN = "http://whisper.wisdom-guild.net/";
+	var whisper_autocomplete_url = DOMAIN + "ajax/whisper_autocomplete.php";
+</script>
+<script type="text/javascript" src="http://www.wisdom-guild.net/lib/lib.js"></script>
+<script type="text/javascript" src="http://www.wisdom-guild.net/lib/jquery/jquery.js"></script>
+<script type="text/javascript" src="http://www.wisdom-guild.net/lib/jquery/utility.js?20140309"></script>
+<script type="text/javascript" src="http://www.wisdom-guild.net/lib/jquery/owl.js?20141212"></script>
+<script type="text/javascript" src="http://www.wisdom-guild.net/lib/jquery/wisdom.js?20140120a"></script>
+<script type="text/javascript" src="http://www.wisdom-guild.net/lib/jquery/whisper.js?20130716c"></script>
+<script type="text/javascript" src="http://www.wisdom-guild.net/lib/jquery/effect.js"></script>
+</head>
+<body>
+<div id="root">
+	<div id="top">
+		<div id="top_background"></div>
+		<div id="top_title"><a href="http://www.wisdom-guild.net/"><img src="http://www.wisdom-guild.net/image/title.png" border="0" alt="Wisdom Guild ホーム"></a></div>
+			<form id="search" action="http://whisper.wisdom-guild.net/search.php" method="GET">
+				<ul id="search-tab">
+					<li target="whisper" class="active"><a href="#">カード</a></li>
+					<li target="mtgwiki"><a href="#">Wiki</a></li>
+					<li target="cr"><a href="#">ルール</a></li>
+					<li target="mfactory"><a href="#">デッキ</a></li>
+				</ul>
+				<input type="text" id="search-box" class="whisper-card-suggest" name="q" value="" nouse="0" selectAfter="redirect" />
+				<input type="submit" value="" id="search-button" />
+			</form>
+
+			<div id="top_link_left">
+				<a href="http://www.wisdom-guild.net">トップページ</a> - 
+				<a href="http://whisper.wisdom-guild.net/">カードデータ</a> | 
+				<a href="http://wonder.wisdom-guild.net/">シングル価格</a> | 
+				<a href="http://whisper.wisdom-guild.net/cr/">総合ルール</a> | 
+			</div>
+			<div id="top_link_right">
+				▼ リンク - 
+				<a href="http://www.astral-guild.net/">Astral Guild</a> | 
+				<a href="http://mtgwiki.com/">MTG Wiki</a> | 
+				<a href="http://www.magic-factory.net/">Magic Factory</a> | 　
+				▼ <small><a href="http://www.wisdom-guild.net/ad/">広告掲載に関するお問い合わせ</a></small>
+			</div>
+		<div id="top_ad"><a href="http://ad.owlair.net/click.php?aid=847717009" target="_blank"><img src="http://ad.owlair.net/cache/1743303740.jpg" border="0" alt=""></a></div>
+		<div id="top_msg"></div>
+	</div>
+<div id="main">
+	<div id="leftmenu">
+	</div>
+	<div id="contents_noright">
+		<h1>エラー</h1>
+		<div class="error owl-prompt">
+			ご指定のカードは見つかりませんでした。
+		</div>
+		<div class="owl-prompt-bottom">
+			<p></p>
+		</div>
+	</div>
+</div>
+	<div id="bottom">
+		<div id="copyrights">
+				&copy; 1999-2018 <a href="http://www.wisdom-guild.net">Wisdom Guild</a>, OWLAIR networks, All rights reserved.
+		</div>
+		<a href="http://www.wisdom-guild.net/contact/">管理者連絡先</a> | <a href="http://www.wisdom-guild.net/welcome/rights.php">権利表記</a>
+		（実行時間：3.767 ミリ秒）	</div>
+</div>
+</body>
+</html>
