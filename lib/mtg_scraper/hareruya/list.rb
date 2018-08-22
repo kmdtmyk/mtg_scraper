@@ -1,3 +1,4 @@
+require 'uri'
 require 'nokogiri'
 require 'mtg_scraper/utils/file_util'
 require 'mtg_scraper/utils/html_util'
@@ -13,7 +14,7 @@ module MtgScraper
 
       def initialize(name)
         @url = "http://www.hareruyamtg.com/jp/c/#{URI.escape(name)}/"
-        @cache_path = MtgScraper::Utils::FileUtil.cache_dir('hareruya') + "/#{name}.html"
+        @cache_path = MtgScraper::Utils::FileUtil.cache_path(@url)
       end
 
       def html

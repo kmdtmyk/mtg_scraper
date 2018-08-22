@@ -15,7 +15,7 @@ module MtgScraper
 
       def initialize(name)
         @url = 'http://whisper.wisdom-guild.net/card/' + URI.escape(name)
-        @cache_path = MtgScraper::Utils::FileUtil.cache_dir('wisdom_guild') + "/#{name}.html"
+        @cache_path = MtgScraper::Utils::FileUtil.cache_path(@url)
       end
 
       def name
