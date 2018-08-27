@@ -1,7 +1,4 @@
-require 'spec_helper'
-require 'mtg_scraper/wisdom_guild'
-
-RSpec.describe 'ParseText' do
+RSpec.describe MtgScraper::WisdomGuild::ParseText do
 
   it 'name' do
     expect(MtgScraper::WisdomGuild::ParseText.name("\n\t\t\t\tセラの天使/Serra Angel\n\t\t\t\t（せらのてんし）\t\t\t")).to eq(

@@ -1,7 +1,4 @@
-require 'spec_helper'
-require 'mtg_scraper/wisdom_guild'
-
-RSpec.describe 'Card' do
+RSpec.describe MtgScraper::WisdomGuild::Card do
 
   it 'attributes' do
     card = MtgScraper::WisdomGuild::Card.new('UDS065')
