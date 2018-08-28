@@ -6,6 +6,9 @@ module MtgScraper
 
   class Page
 
+    @@interval = 5
+    @@last_time = nil
+
     def initialize(url)
       @url = url
     end
