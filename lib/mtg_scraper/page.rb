@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'uri'
 require 'mtg_scraper/cache'
 
 module MtgScraper
@@ -17,6 +18,15 @@ module MtgScraper
       return @html unless @html.nil?
       return read_cache if cached?
       fetch_html
+    end
+
+    def parser
+      host = URI.parse(@url).host
+      if host == 'whisper.wisdom-guild.net'
+        WisdomGuild::Card
+      elsif host == 'www.hareruyamtg.com'
+        Hareruya::List
+      end
     end
 
     private
