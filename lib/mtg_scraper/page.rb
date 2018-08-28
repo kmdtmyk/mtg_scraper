@@ -1,11 +1,11 @@
+require 'mtg_scraper/cache'
+
 module MtgScraper
 
-  # Your code goes here...
   class Page
 
     def initialize(url)
       @url = url
-      @cache_path = MtgScraper::Utils::FileUtil.cache_path(@url)
     end
 
     def html
@@ -17,15 +17,15 @@ module MtgScraper
     private
 
       def cached?
-        File.exist?(@cache_path)
+        MtgScraper::Cache.exist?(@url)
       end
 
       def read_cache
-        @html = MtgScraper::Utils::FileUtil.read(@cache_path)
+        @html = MtgScraper::Cache.read(@url)
       end
 
       def write_cache
-        MtgScraper::Utils::FileUtil.write(@cache_path, @html)
+        MtgScraper::Cache.write(@url, @html)
       end
 
       def fetch_html

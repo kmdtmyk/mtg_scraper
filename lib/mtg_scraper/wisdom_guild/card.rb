@@ -1,7 +1,7 @@
 require 'nokogiri'
+require 'mtg_scraper/cache'
 require 'mtg_scraper/wisdom_guild/detail'
 require 'mtg_scraper/wisdom_guild/parse_html'
-require 'mtg_scraper/utils/file_util'
 require 'mtg_scraper/utils/html_util'
 
 module MtgScraper
@@ -15,7 +15,6 @@ module MtgScraper
 
       def initialize(name)
         @url = 'http://whisper.wisdom-guild.net/card/' + URI.escape(name)
-        @cache_path = MtgScraper::Utils::FileUtil.cache_path(@url)
       end
 
       def name
@@ -45,7 +44,7 @@ module MtgScraper
       end
 
       def cached?
-        File.exist?(@cache_path)
+        MtgScraper::Cache.exist?(@url)
       end
 
       def error?
@@ -76,11 +75,11 @@ module MtgScraper
         end
 
         def read_cache
-          @html = MtgScraper::Utils::FileUtil.read(@cache_path)
+          @html = MtgScraper::Cache.read(@url)
         end
 
         def write_cache
-          MtgScraper::Utils::FileUtil.write(@cache_path, @html)
+          MtgScraper::Cache.write(@url, @html)
         end
 
         def fetch_html
