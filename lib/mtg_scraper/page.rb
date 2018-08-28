@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'mtg_scraper/cache'
 
 module MtgScraper

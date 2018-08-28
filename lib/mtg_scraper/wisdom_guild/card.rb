@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'nokogiri'
 require 'mtg_scraper/cache'
 require 'mtg_scraper/wisdom_guild/detail'

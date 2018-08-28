@@ -1,5 +1,7 @@
 require 'uri'
 require 'nokogiri'
+# frozen_string_literal: true
+
 require 'mtg_scraper/cache'
 require 'mtg_scraper/utils/html_util'
 
