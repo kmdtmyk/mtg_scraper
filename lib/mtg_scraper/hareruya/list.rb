@@ -5,25 +5,39 @@ require 'nokogiri'
 module MtgScraper::Hareruya
 
   class List
+    include Enumerable
 
     def initialize(html)
       @html = html
     end
 
+    def each
+      nodes.each do |node|
+        yield parse_node(node)
+      end
+    end
+
     def size
-      doc.css('.itemListLine a').size
+      nodes.size
     end
 
     def [](nth)
-      node = doc.css('.itemListLine a')[nth]
-      return if node.nil?
-      parse_item_name(node.css('.itemName').text)
+      parse_node(nodes[nth])
     end
 
     private
 
       def doc
         Nokogiri::HTML.parse(@html)
+      end
+
+      def nodes
+        doc.css('.itemListLine > a')
+      end
+
+      def parse_node(node)
+        return if node.nil?
+        parse_item_name(node.css('.itemName').text)
       end
 
       def parse_item_name(text)
