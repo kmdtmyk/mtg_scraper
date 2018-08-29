@@ -35,6 +35,12 @@ RSpec.describe MtgScraper::Hareruya::List do
       end
     end
 
+    context 'out of range' do
+      let(:url){ 'http://www.hareruyamtg.com/jp/c/cM19-R/' }
+      let(:nth){ 999 }
+      it{ expect(subject).to eq nil }
+    end
+
   end
 
 end

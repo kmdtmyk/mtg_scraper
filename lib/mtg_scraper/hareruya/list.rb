@@ -16,6 +16,7 @@ module MtgScraper::Hareruya
 
     def [](nth)
       node = doc.css('.itemListLine a')[nth]
+      return if node.nil?
       parse_item_name(node.css('.itemName').text)
     end
 
