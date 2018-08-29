@@ -24,13 +24,30 @@ RSpec.describe MtgScraper::Hareruya::List do
 
     subject{ list[nth] }
 
-    context do
+    context 'ENG' do
       let(:url){ 'http://www.hareruyamtg.com/jp/c/cM19-R/' }
       let(:nth){ 0 }
       it do
         expect(subject).to eq(
           name: '暴君への敵対者、アジャニ',
           english_name: 'Ajani, Adversary of Tyrants',
+          language: 'english',
+          price: 1680,
+          number: '003',
+        )
+      end
+    end
+
+    context 'JPN' do
+      let(:url){ 'http://www.hareruyamtg.com/jp/c/cM19-R/' }
+      let(:nth){ 1 }
+      it do
+        expect(subject).to eq(
+          name: '暴君への敵対者、アジャニ',
+          english_name: 'Ajani, Adversary of Tyrants',
+          language: 'japanese',
+          price: 1780,
+          number: '003',
         )
       end
     end

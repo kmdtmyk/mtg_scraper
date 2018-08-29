@@ -37,16 +37,40 @@ module MtgScraper::Hareruya
 
       def parse_node(node)
         return if node.nil?
-        parse_item_name(node.css('.itemName').text)
+        hash = {}
+        hash.merge!(parse_name_text(node.css('.itemName').text))
+        hash.merge!(parse_price_text(node.css('.itemPrice').text))
+        hash.merge!(parse_goods_attribute(node.attribute('data-goods').value))
       end
 
-      def parse_item_name(text)
-        %r{《([^/]+)/([^/]+)》}.match(text)
-        name = Regexp.last_match(1)
-        english_name = Regexp.last_match(2)
+      def parse_name_text(text)
+        %r{【(.+)】《([^/]+)/([^/]+)》}.match(text)
+        lang = Regexp.last_match(1)
+        name = Regexp.last_match(2)
+        english_name = Regexp.last_match(3)
+        if lang == 'ENG'
+          language = 'english'
+        elsif lang == 'JPN'
+          language = 'japanese'
+        end
         {
           name: name,
           english_name: english_name,
+          language: language,
+        }
+      end
+
+      def parse_price_text(text)
+        price = text.gsub(/[^\d]/, '').to_i
+        {
+          price: price,
+        }
+      end
+
+      def parse_goods_attribute(value)
+        number = value[3..-1].gsub(/[^\d]/, '')[-3..-1]
+        {
+          number: number,
         }
       end
 
