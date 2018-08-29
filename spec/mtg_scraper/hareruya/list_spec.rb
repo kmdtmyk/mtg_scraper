@@ -33,7 +33,6 @@ RSpec.describe MtgScraper::Hareruya::List do
           english_name: 'Ajani, Adversary of Tyrants',
           language: 'english',
           price: 1680,
-          number: '003',
         )
       end
     end
@@ -47,7 +46,6 @@ RSpec.describe MtgScraper::Hareruya::List do
           english_name: 'Ajani, Adversary of Tyrants',
           language: 'japanese',
           price: 1780,
-          number: '003',
         )
       end
     end

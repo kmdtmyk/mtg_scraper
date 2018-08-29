@@ -40,7 +40,6 @@ module MtgScraper::Hareruya
         hash = {}
         hash.merge!(parse_name_text(node.css('.itemName').text))
         hash.merge!(parse_price_text(node.css('.itemPrice').text))
-        hash.merge!(parse_goods_attribute(node.attribute('data-goods').value))
       end
 
       def parse_name_text(text)
@@ -64,13 +63,6 @@ module MtgScraper::Hareruya
         price = text.gsub(/[^\d]/, '').to_i
         {
           price: price,
-        }
-      end
-
-      def parse_goods_attribute(value)
-        number = value[3..-1].gsub(/[^\d]/, '')[-3..-1]
-        {
-          number: number,
         }
       end
 
