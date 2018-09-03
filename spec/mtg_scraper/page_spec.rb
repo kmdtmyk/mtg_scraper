@@ -16,6 +16,11 @@ RSpec.describe MtgScraper::Page do
     end
 
     context do
+      let(:url){ 'http://mtgjson.com/json/M19.json' }
+      it{ expect(subject).to eq MtgScraper::Mtgjson::Set }
+    end
+
+    context do
       let(:url){ 'http://example.com/' }
       it{ expect(subject).to eq nil }
     end

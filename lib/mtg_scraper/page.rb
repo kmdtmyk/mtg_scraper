@@ -26,6 +26,8 @@ module MtgScraper
         WisdomGuild::Card
       elsif host == 'www.hareruyamtg.com'
         Hareruya::List
+      elsif host == 'mtgjson.com'
+        Mtgjson::Set
       end
     end
 
