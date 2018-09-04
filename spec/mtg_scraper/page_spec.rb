@@ -1,6 +1,6 @@
 RSpec.describe MtgScraper::Page do
 
-  describe '.parser' do
+  describe '#parser' do
 
     let(:page){ MtgScraper::Page.new(url) }
     subject{ page.parser }
