@@ -50,6 +50,19 @@ RSpec.describe MtgScraper::Hareruya::List do
       end
     end
 
+    context '予約シングル' do
+      let(:url){ 'http://www.hareruyamtg.com/jp/c/cGRN-R/' }
+      let(:nth){ 0 }
+      it do
+        expect(subject).to eq(
+          name: '報奨密偵',
+          english_name: 'Bounty Agent',
+          language: 'english',
+          price: 200,
+        )
+      end
+    end
+
     context 'out of range' do
       let(:url){ 'http://www.hareruyamtg.com/jp/c/cM19-R/' }
       let(:nth){ 999 }
