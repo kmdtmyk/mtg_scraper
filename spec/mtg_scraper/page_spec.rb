@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe MtgScraper::Page do
 
   describe '#parser' do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe MtgScraper::WisdomGuild::Card do
 
   let(:page){ page = MtgScraper::Page.new(url) }

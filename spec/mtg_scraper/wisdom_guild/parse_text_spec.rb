@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe MtgScraper::WisdomGuild::ParseText do
 
   it 'name' do

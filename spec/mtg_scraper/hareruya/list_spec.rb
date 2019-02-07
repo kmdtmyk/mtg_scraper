@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe MtgScraper::Hareruya::List do
 
   let(:page){ page = MtgScraper::Page.new(url) }
