@@ -7,9 +7,7 @@ require 'mtg_scraper/wisdom_guild/parse_html'
 require 'mtg_scraper/utils/html_util'
 
 module MtgScraper
-
   module WisdomGuild
-
     class Card
 
       def initialize(html)
@@ -64,7 +62,5 @@ module MtgScraper
         end
 
     end
-
   end
-
 end

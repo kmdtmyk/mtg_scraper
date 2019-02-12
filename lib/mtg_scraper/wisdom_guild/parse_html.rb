@@ -4,12 +4,11 @@ require 'nokogiri'
 require 'mtg_scraper/wisdom_guild/parse_text'
 
 module MtgScraper
-
   module WisdomGuild
+    module ParseHtml
+      module_function
 
-    class ParseHtml
-
-      def self.parse(html)
+      def parse(html)
         result = {}
         doc = Nokogiri::HTML.parse(html)
         table = get_detail_table(html)
@@ -22,7 +21,7 @@ module MtgScraper
         result
       end
 
-      def self.parse_header(html)
+      def parse_header(html)
         result = {}
         doc = Nokogiri::HTML.parse(html)
         title_text = doc.css('.wg-title').inner_text
@@ -32,7 +31,7 @@ module MtgScraper
         result
       end
 
-      def self.parse_details(html)
+      def parse_details(html)
         layout = get_layout(html)
         return parse_normal(html) if layout == 'normal'
         return parse_double_faced(html) if layout == 'double_faced'
@@ -41,7 +40,7 @@ module MtgScraper
         return parse_flip(html) if layout == 'flip'
       end
 
-      def self.get_layout(html)
+      def get_layout(html)
         table = get_detail_table(html)
         return 'double_faced' if table.css('th.ddc').length > 0
         return 'split' if table.css('tr:nth-child(1) td').length > 1
@@ -50,22 +49,22 @@ module MtgScraper
         return 'normal'
       end
 
-      def self.get_detail_table(html)
+      def get_detail_table(html)
         doc = Nokogiri::HTML.parse(html)
         doc.css('.wg-whisper-card-detail table')
       end
 
-      def self.parse_normal(html)
+      def parse_normal(html)
         table = get_detail_table(html)
         text_array = table_to_array(table)
         [parse_text_array(text_array)]
       end
 
-      def self.parse_double_faced(html)
+      def parse_double_faced(html)
         parse_double_faced_or_flip(html)
       end
 
-      def self.parse_split(html)
+      def parse_split(html)
         table = get_detail_table(html)
         text_array = table_to_array(table)
         (text_array[0].length - 1).times
@@ -75,7 +74,7 @@ module MtgScraper
           .map{ |array| parse_text_array(array) }
       end
 
-      def self.parse_levelup(html)
+      def parse_levelup(html)
         table = get_detail_table(html)
         text_array = table_to_array(table)
 
@@ -122,16 +121,16 @@ module MtgScraper
         [detail]
       end
 
-      def self.parse_level_text(text)
+      def parse_level_text(text)
         %r{Lv(\S*)}.match(text)
         Regexp.last_match(1)
       end
 
-      def self.parse_flip(html)
+      def parse_flip(html)
         parse_double_faced_or_flip(html)
       end
 
-      def self.get_layout(html)
+      def get_layout(html)
         table = get_detail_table(html)
         return 'double_faced' if table.css('th.ddc').length > 0
         return 'split' if table.css('tr:nth-child(1) td').length > 1
@@ -140,13 +139,13 @@ module MtgScraper
         return 'normal'
       end
 
-      def self.table_to_array(table)
+      def table_to_array(table)
         table.css('tr').map do |tr|
           tr.css('th, td').map{ |td| td.inner_text }
         end
       end
 
-      def self.parse_double_faced_or_flip(html)
+      def parse_double_faced_or_flip(html)
         table = get_detail_table(html)
         text_array = table_to_array(table)
         second_name_index = text_array[1..-1].index{ |name, value| name == 'カード名' } + 1
@@ -156,7 +155,7 @@ module MtgScraper
         ]
       end
 
-      def self.parse_text_array(array)
+      def parse_text_array(array)
         result = {}
         array.each do |name, value|
           if name == 'カード名'
@@ -187,7 +186,5 @@ module MtgScraper
       end
 
     end
-
   end
-
 end

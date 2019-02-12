@@ -3,7 +3,6 @@
 require 'json'
 
 module MtgScraper::Mtgjson
-
   class Set
     include Enumerable
 
@@ -32,5 +31,4 @@ module MtgScraper::Mtgjson
       end
 
   end
-
 end

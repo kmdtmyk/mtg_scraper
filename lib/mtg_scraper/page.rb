@@ -4,7 +4,6 @@ require 'uri'
 require 'mtg_scraper/cache'
 
 module MtgScraper
-
   class Page
 
     @@interval = 5
@@ -57,5 +56,4 @@ module MtgScraper
       end
 
   end
-
 end

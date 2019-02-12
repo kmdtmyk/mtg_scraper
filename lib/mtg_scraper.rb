@@ -8,7 +8,4 @@ require 'mtg_scraper/hareruya'
 require 'mtg_scraper/mtgjson/set'
 
 module MtgScraper
-
-  # Your code goes here...
-
 end

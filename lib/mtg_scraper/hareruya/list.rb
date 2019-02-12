@@ -3,7 +3,6 @@
 require 'nokogiri'
 
 module MtgScraper::Hareruya
-
   class List
     include Enumerable
 
@@ -67,5 +66,4 @@ module MtgScraper::Hareruya
       end
 
   end
-
 end

@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
 module MtgScraper
-
   module WisdomGuild
-
     class Detail
 
       attr_reader :name
@@ -34,7 +32,5 @@ module MtgScraper
       end
 
     end
-
   end
-
 end

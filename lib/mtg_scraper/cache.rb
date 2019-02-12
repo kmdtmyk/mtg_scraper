@@ -5,7 +5,6 @@ require 'uri'
 require 'pathname'
 
 module MtgScraper
-
   class Cache
 
     def self.exist?(url)
@@ -48,5 +47,4 @@ module MtgScraper
     end
 
   end
-
 end

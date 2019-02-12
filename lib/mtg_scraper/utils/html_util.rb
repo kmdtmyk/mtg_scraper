@@ -3,10 +3,9 @@
 require 'open-uri'
 
 module MtgScraper
-
   module Utils
-
-    class HtmlUtil
+    module HtmlUtil
+      module_function
 
       def self.get(url)
         html = open(url) do |f|
@@ -16,7 +15,5 @@ module MtgScraper
       end
 
     end
-
   end
-
 end
