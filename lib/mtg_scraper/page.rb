@@ -19,17 +19,6 @@ module MtgScraper
       fetch_html
     end
 
-    def parser
-      host = URI.parse(@url).host
-      if host == 'whisper.wisdom-guild.net'
-        WisdomGuild::Card
-      elsif host == 'www.hareruyamtg.com'
-        Hareruya::List
-      elsif host == 'mtgjson.com'
-        Mtgjson::Set
-      end
-    end
-
     private
 
       def cached?
