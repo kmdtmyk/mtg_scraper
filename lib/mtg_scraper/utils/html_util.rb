@@ -11,7 +11,7 @@ module MtgScraper
         html = open(url) do |f|
           f.read
         end
-        html
+        html.force_encoding('UTF-8')
       end
 
     end
