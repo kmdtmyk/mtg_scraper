@@ -10,6 +10,10 @@ module MtgScraper::Hareruya
       @html = html
     end
 
+    def card_set_name
+      doc.css('#bread-crumb-list li:nth-child(2) a').text
+    end
+
     def each
       nodes.each do |node|
         yield parse_node(node)

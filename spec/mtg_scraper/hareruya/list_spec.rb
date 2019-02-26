@@ -6,6 +6,17 @@ RSpec.describe MtgScraper::Hareruya::List do
   let(:html){ page.html }
   let(:list){ MtgScraper::Hareruya::List.new(html) }
 
+  describe '#card_set_name' do
+
+    subject{ list.card_set_name }
+
+    context do
+      let(:url){ 'http://www.hareruyamtg.com/jp/c/cM19-R/' }
+      it{ expect(subject).to eq '基本セット2019' }
+    end
+
+  end
+
   describe '#size' do
 
     subject{ list.size }
