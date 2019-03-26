@@ -55,10 +55,12 @@ module MtgScraper::Hareruya
         elsif lang == 'JPN'
           language = 'japanese'
         end
+        basic_land = %w(平地 島 沼 山 森 荒地).include? name
         {
           name: name,
           english_name: english_name,
           language: language,
+          basic_land: basic_land,
         }
       end
 

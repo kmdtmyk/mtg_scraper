@@ -46,6 +46,7 @@ RSpec.describe MtgScraper::Hareruya::List do
           english_name: 'Ajani, Adversary of Tyrants',
           language: 'english',
           price: 1680,
+          basic_land: false,
         )
       end
     end
@@ -59,6 +60,7 @@ RSpec.describe MtgScraper::Hareruya::List do
           english_name: 'Ajani, Adversary of Tyrants',
           language: 'japanese',
           price: 1780,
+          basic_land: false,
         )
       end
     end
@@ -72,6 +74,7 @@ RSpec.describe MtgScraper::Hareruya::List do
           english_name: 'Bounty Agent',
           language: 'english',
           price: 200,
+          basic_land: false,
         )
       end
     end
@@ -80,6 +83,94 @@ RSpec.describe MtgScraper::Hareruya::List do
       let(:url){ 'http://www.hareruyamtg.com/jp/c/cM19-R/' }
       let(:nth){ 999 }
       it{ expect(subject).to eq nil }
+    end
+
+    describe 'basic land' do
+
+      context 'plains' do
+        let(:url){ 'http://www.hareruyamtg.com/jp/c/cRNA-L/' }
+        let(:nth){ 0 }
+        it do
+          expect(subject).to eq(
+            name: '平地',
+            english_name: 'Plains',
+            language: 'english',
+            price: 50,
+            basic_land: true,
+          )
+        end
+      end
+
+      context 'island' do
+        let(:url){ 'http://www.hareruyamtg.com/jp/c/cRNA-L/' }
+        let(:nth){ 2 }
+        it do
+          expect(subject).to eq(
+            name: '島',
+            english_name: 'Island',
+            language: 'english',
+            price: 50,
+            basic_land: true,
+          )
+        end
+      end
+
+      context 'swamp' do
+        let(:url){ 'http://www.hareruyamtg.com/jp/c/cRNA-L/' }
+        let(:nth){ 4 }
+        it do
+          expect(subject).to eq(
+            name: '沼',
+            english_name: 'Swamp',
+            language: 'english',
+            price: 80,
+            basic_land: true,
+          )
+        end
+      end
+
+      context 'mountain' do
+        let(:url){ 'http://www.hareruyamtg.com/jp/c/cRNA-L/' }
+        let(:nth){ 6 }
+        it do
+          expect(subject).to eq(
+            name: '山',
+            english_name: 'Mountain',
+            language: 'english',
+            price: 50,
+            basic_land: true,
+          )
+        end
+      end
+
+      context 'forest' do
+        let(:url){ 'http://www.hareruyamtg.com/jp/c/cRNA-L/' }
+        let(:nth){ 8 }
+        it do
+          expect(subject).to eq(
+            name: '森',
+            english_name: 'Forest',
+            language: 'english',
+            price: 50,
+            basic_land: true,
+          )
+        end
+      end
+
+      context 'wastes' do
+        let(:url){ 'http://www.hareruyamtg.com/jp/c/cOGW-C_p2/' }
+        let(:nth){ 36 }
+        it do
+          expect(subject).to eq(
+            name: '荒地',
+            english_name: 'Wastes',
+            language: 'english',
+            price: 50,
+            basic_land: true,
+          )
+        end
+      end
+
     end
 
   end
