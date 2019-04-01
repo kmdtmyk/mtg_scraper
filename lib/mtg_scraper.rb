@@ -22,7 +22,7 @@ module MtgScraper
     if host == 'whisper.wisdom-guild.net'
       WisdomGuild::Card
     elsif host == 'www.hareruyamtg.com'
-      Hareruya::List
+      Hareruya::List::V1
     elsif host == 'mtgjson.com'
       Mtgjson::Set
     end

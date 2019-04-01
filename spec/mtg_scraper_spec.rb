@@ -21,7 +21,7 @@ RSpec.describe MtgScraper do
 
     context do
       let(:url){ 'http://www.hareruyamtg.com/jp/c/cM19-R/' }
-      it{ expect(subject).to eq MtgScraper::Hareruya::List }
+      it{ expect(subject).to eq MtgScraper::Hareruya::List::V1 }
     end
 
     context do

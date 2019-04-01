@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-RSpec.describe MtgScraper::Hareruya::List do
+RSpec.describe MtgScraper::Hareruya::List::V1 do
 
   let(:page){ page = MtgScraper::Page.new(url) }
   let(:html){ page.html }
-  let(:list){ MtgScraper::Hareruya::List.new(html) }
+  let(:list){ MtgScraper::Hareruya::List::V1.new(html) }
 
   describe '#card_set_name' do
 

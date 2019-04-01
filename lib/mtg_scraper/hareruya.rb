@@ -1,6 +1,3 @@
 # frozen_string_literal: true
 
-require 'mtg_scraper/hareruya/list'
-
-module MtgScraper
-end
+require 'mtg_scraper/hareruya/list/v1'
