@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe MtgScraper::Hareruya::List do
+RSpec.describe MtgScraper::Mtgjson::Set do
 
   let(:page){ page = MtgScraper::Page.new(url) }
   let(:html){ page.html }
