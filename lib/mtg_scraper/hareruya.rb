@@ -1,3 +1,4 @@
 # frozen_string_literal: true
 
 require 'mtg_scraper/hareruya/list/v1'
+require 'mtg_scraper/hareruya/list/v2'
