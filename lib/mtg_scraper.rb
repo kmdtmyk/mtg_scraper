@@ -18,12 +18,13 @@ module MtgScraper
   end
 
   def parser(url)
-    host = URI.parse(url).host
-    if host == 'whisper.wisdom-guild.net'
-      WisdomGuild::Card
-    elsif host == 'www.hareruyamtg.com'
+    if url.match %r(www.hareruyamtg.com/jp/c)
       Hareruya::List::V1
-    elsif host == 'mtgjson.com'
+    elsif url.match %r(www.hareruyamtg.com/ja/products)
+      Hareruya::List::V2
+    elsif url.match %r(whisper.wisdom-guild.net)
+      WisdomGuild::Card
+    elsif url.match %r(mtgjson.com)
       Mtgjson::Set
     end
   end

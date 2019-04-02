@@ -25,6 +25,11 @@ RSpec.describe MtgScraper do
     end
 
     context do
+      let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=188' }
+      it{ expect(subject).to eq MtgScraper::Hareruya::List::V2 }
+    end
+
+    context do
       let(:url){ 'http://mtgjson.com/json/M19.json' }
       it{ expect(subject).to eq MtgScraper::Mtgjson::Set }
     end
