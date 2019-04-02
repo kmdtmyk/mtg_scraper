@@ -32,4 +32,20 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
 
   end
 
+  describe 'total_page' do
+
+    subject{ list.total_page }
+
+    context 'valid page' do
+      let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=188' }
+      it{ expect(subject).to eq 19 }
+    end
+
+    context 'no pagination' do
+      let(:url){ 'https://www.hareruyamtg.com/ja/products/search' }
+      it{ expect(subject).to eq nil }
+    end
+
+  end
+
 end

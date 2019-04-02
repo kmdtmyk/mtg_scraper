@@ -22,6 +22,13 @@ module MtgScraper
           nil
         end
 
+        def total_page
+          match_data = doc.css('.result_pagenum').text.match(/([\d]+)ページ中/)
+          match_data[1].to_i
+        rescue
+          nil
+        end
+
         private
 
           def doc
