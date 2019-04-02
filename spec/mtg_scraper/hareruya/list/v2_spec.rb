@@ -6,6 +6,76 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
   let(:html){ page.html }
   let(:list){ MtgScraper::Hareruya::List::V2.new(html) }
 
+  describe '#each' do
+
+    context do
+      let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=188' }
+      it{ expect(list).to respond_to(:each) }
+    end
+
+  end
+
+  describe '#size' do
+
+    subject{ list.size }
+
+    context do
+      let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=188' }
+      it{ expect(subject).to eq 60 }
+    end
+
+  end
+
+  describe '#[]' do
+
+    context do
+      let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=188' }
+
+      example 'english foil' do
+        expect(list[0]).to eq(
+          name: '恩寵の天使',
+          english_name: 'Angel of Grace',
+          language: 'english',
+          price: 3000,
+          basic_land: false,
+          foil: true,
+          card_set_code: 'RNA',
+        )
+      end
+
+      example 'japanese non-foil' do
+        expect(list[3]).to eq(
+          name: '恩寵の天使',
+          english_name: 'Angel of Grace',
+          language: 'japanese',
+          price: 380,
+          basic_land: false,
+          foil: false,
+          card_set_code: 'RNA',
+        )
+      end
+
+    end
+
+    context do
+      let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=188&page=19' }
+
+      example 'basic land' do
+        expect(list[22]).to eq(
+          name: '平地',
+          english_name: 'Plains',
+          language: 'japanese',
+          price: 80,
+          basic_land: true,
+          foil: false,
+          card_set_code: 'RNA',
+        )
+      end
+
+    end
+
+  end
+
   describe 'category_list' do
 
     subject{ list.category_list }
