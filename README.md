@@ -3,7 +3,7 @@
 ## Gemfile
 
 ```
-gem 'wisdom_guild', git: 'https://github.com/kmdtmyk/wisdom_guild'
+gem 'mtg_scraper', git: 'https://github.com/kmdtmyk/mtg_scraper'
 ```
 
 ## Test
