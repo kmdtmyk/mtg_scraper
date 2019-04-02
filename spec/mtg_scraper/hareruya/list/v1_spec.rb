@@ -47,6 +47,7 @@ RSpec.describe MtgScraper::Hareruya::List::V1 do
           language: 'english',
           price: 1680,
           basic_land: false,
+          card_set_code: 'M19',
         )
       end
     end
@@ -61,6 +62,7 @@ RSpec.describe MtgScraper::Hareruya::List::V1 do
           language: 'japanese',
           price: 1780,
           basic_land: false,
+          card_set_code: 'M19',
         )
       end
     end
@@ -75,6 +77,7 @@ RSpec.describe MtgScraper::Hareruya::List::V1 do
           language: 'english',
           price: 200,
           basic_land: false,
+          card_set_code: 'GRN',
         )
       end
     end
@@ -97,6 +100,7 @@ RSpec.describe MtgScraper::Hareruya::List::V1 do
             language: 'english',
             price: 50,
             basic_land: true,
+            card_set_code: 'RNA',
           )
         end
       end
@@ -111,6 +115,7 @@ RSpec.describe MtgScraper::Hareruya::List::V1 do
             language: 'english',
             price: 50,
             basic_land: true,
+            card_set_code: 'RNA',
           )
         end
       end
@@ -125,6 +130,7 @@ RSpec.describe MtgScraper::Hareruya::List::V1 do
             language: 'english',
             price: 80,
             basic_land: true,
+            card_set_code: 'RNA',
           )
         end
       end
@@ -139,6 +145,7 @@ RSpec.describe MtgScraper::Hareruya::List::V1 do
             language: 'english',
             price: 50,
             basic_land: true,
+            card_set_code: 'RNA',
           )
         end
       end
@@ -153,6 +160,7 @@ RSpec.describe MtgScraper::Hareruya::List::V1 do
             language: 'english',
             price: 50,
             basic_land: true,
+            card_set_code: 'RNA',
           )
         end
       end
@@ -167,6 +175,7 @@ RSpec.describe MtgScraper::Hareruya::List::V1 do
             language: 'english',
             price: 50,
             basic_land: true,
+            card_set_code: 'OGW',
           )
         end
       end
