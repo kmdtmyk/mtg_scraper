@@ -6,6 +6,21 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
   let(:html){ page.html }
   let(:list){ MtgScraper::Hareruya::List::V2.new(html) }
 
+  describe 'category_list' do
+
+    subject{ list.category_list }
+
+    context do
+      let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=188' }
+      it do
+        expect(subject.size).to eq 138
+        expect(subject[1][:name]).to eq 'ラヴニカの献身'
+        expect(subject[1][:id]).to eq 188
+      end
+    end
+
+  end
+
   describe 'next_page_url' do
 
     subject{ list.next_page_url }
