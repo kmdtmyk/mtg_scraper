@@ -46,7 +46,7 @@ module MtgScraper
             card_set_code = Regexp.last_match(1)
           end
 
-          basic_land = %w(平地 島 沼 山 森 荒地).include? name
+          basic_land = CardName.basic_land? name
 
           price_node = node.css('.row.not-first.ng-star-inserted')[0]
           price_text = price_node.text

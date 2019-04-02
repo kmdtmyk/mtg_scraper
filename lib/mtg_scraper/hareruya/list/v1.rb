@@ -57,7 +57,7 @@ module MtgScraper
             elsif lang == 'JPN'
               language = 'japanese'
             end
-            basic_land = %w(平地 島 沼 山 森 荒地).include? name
+            basic_land = CardName.basic_land? name
             if text.match %r{\[(.+)\]}
               card_set_code = Regexp.last_match(1)
             end
