@@ -55,6 +55,11 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
         )
       end
 
+      example 'range' do
+        expect(list[0..2].class).to eq Array
+        expect(list[0..2].size).to eq 3
+      end
+
     end
 
     context do

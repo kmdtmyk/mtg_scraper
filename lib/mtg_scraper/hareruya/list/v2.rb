@@ -23,8 +23,12 @@ module MtgScraper
         end
 
         def [](nth)
-          item_nodes = doc.css('.itemListLine.itemListLine--searched li')
-          parse_node(item_nodes[nth])
+          item_nodes = doc.css('.itemListLine.itemListLine--searched li')[nth]
+          if item_nodes.is_a? Nokogiri::XML::NodeSet
+            item_nodes.map{|node| parse_node(node)}
+          else
+            parse_node(item_nodes)
+          end
         end
 
         def parse_node(node)

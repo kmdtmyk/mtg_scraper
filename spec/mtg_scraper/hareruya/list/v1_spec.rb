@@ -182,6 +182,15 @@ RSpec.describe MtgScraper::Hareruya::List::V1 do
 
     end
 
+    context 'range' do
+      let(:url){ 'http://www.hareruyamtg.com/jp/c/cM19-R/' }
+      let(:nth){ 0..2 }
+      it do
+        expect(subject.class).to eq Array
+        expect(subject.size).to eq 3
+      end
+    end
+
   end
 
 end

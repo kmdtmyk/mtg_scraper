@@ -27,7 +27,12 @@ module MtgScraper
         end
 
         def [](nth)
-          parse_node(nodes[nth])
+          element = nodes[nth]
+          if element.is_a? Nokogiri::XML::NodeSet
+            element.map{|node| parse_node(node) }
+          else
+            parse_node(element)
+          end
         end
 
         private
