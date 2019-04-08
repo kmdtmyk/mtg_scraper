@@ -19,6 +19,11 @@ RSpec.describe MtgScraper::Hareruya do
       it{ expect(subject.class).to eq MtgScraper::Hareruya::List::V2 }
     end
 
+    context do
+      let(:html){ nil }
+      it{ expect(subject).to eq nil }
+    end
+
   end
 
 end

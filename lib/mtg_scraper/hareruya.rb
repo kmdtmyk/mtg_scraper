@@ -8,6 +8,7 @@ module MtgScraper
     module_function
 
     def parse(html)
+      return if html.nil?
       if html.start_with? '<!doctype html>'
         List::V2.new(html)
       else
