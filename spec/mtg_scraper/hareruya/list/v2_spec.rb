@@ -79,6 +79,35 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
 
     end
 
+    context 'reservation' do
+      let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=208' }
+
+      example 'japanese' do
+        expect(list[0]).to eq(
+          name: 'アジャニの群れ仲間',
+          english_name: "Ajani's Pridemate",
+          language: 'japanese',
+          price: 30,
+          basic_land: false,
+          foil: false,
+          card_set_code: 'WAR',
+        )
+      end
+
+      example 'english' do
+        expect(list[1]).to eq(
+          name: 'アジャニの群れ仲間',
+          english_name: "Ajani's Pridemate",
+          language: 'english',
+          price: 30,
+          basic_land: false,
+          foil: false,
+          card_set_code: 'WAR',
+        )
+      end
+
+    end
+
   end
 
   describe 'category_list' do
