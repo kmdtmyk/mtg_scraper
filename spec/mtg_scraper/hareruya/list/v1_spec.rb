@@ -17,6 +17,21 @@ RSpec.describe MtgScraper::Hareruya::List::V1 do
 
   end
 
+  describe '#each' do
+
+    context do
+      let(:url){ 'http://www.hareruyamtg.com/jp/c/cM19-R/' }
+      it{ expect(list).to respond_to(:each) }
+      it do
+        count = 0
+        list.each do |c|
+          count += 1
+        end
+        expect(count).to eq list.size
+      end
+    end
+
+  end
   describe '#size' do
 
     subject{ list.size }
