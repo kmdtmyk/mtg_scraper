@@ -13,7 +13,7 @@ module MtgScraper
         end
 
         def each
-          nodes.each do |node|
+          item_nodes.each do |node|
             yield parse_node(node)
           end
         end

@@ -11,6 +11,13 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
     context do
       let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=188' }
       it{ expect(list).to respond_to(:each) }
+      it do
+        count = 0
+        list.each do |c|
+          count += 1
+        end
+        expect(count).to eq list.size
+      end
     end
 
   end
