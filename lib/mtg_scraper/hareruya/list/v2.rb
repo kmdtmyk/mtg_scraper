@@ -57,7 +57,7 @@ module MtgScraper
           price_text.match %r{¥ ?[\d,]+}
           price = Regexp.last_match(0).gsub(/[^\d]/, '').to_i
 
-          {
+          result = {
             name: name,
             english_name: english_name,
             language: language,
@@ -66,6 +66,12 @@ module MtgScraper
             card_set_code: card_set_code,
             basic_land: basic_land,
           }
+
+          if item_name.match %r{■([^■]+)■}
+            result[:version] = Regexp.last_match(1)
+          end
+
+          result
         end
 
         def category_list

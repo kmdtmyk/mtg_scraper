@@ -91,10 +91,10 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
 
       example 'japanese' do
         expect(list[0]).to eq(
-          name: 'アジャニの群れ仲間',
-          english_name: "Ajani's Pridemate",
+          name: '大いなる創造者、カーン',
+          english_name: 'Karn, the Great Creator',
           language: 'japanese',
-          price: 30,
+          price: 1400,
           basic_land: false,
           foil: false,
           card_set_code: 'WAR',
@@ -103,13 +103,26 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
 
       example 'english' do
         expect(list[1]).to eq(
-          name: 'アジャニの群れ仲間',
-          english_name: "Ajani's Pridemate",
+          name: '大いなる創造者、カーン',
+          english_name: 'Karn, the Great Creator',
           language: 'english',
-          price: 30,
+          price: 1400,
           basic_land: false,
           foil: false,
           card_set_code: 'WAR',
+        )
+      end
+
+      example 'other version' do
+        expect(list[2]).to eq(
+          name: '大いなる創造者、カーン',
+          english_name: 'Karn, the Great Creator',
+          language: 'japanese',
+          price: 2000,
+          basic_land: false,
+          foil: false,
+          card_set_code: 'WAR',
+          version: '絵違い',
         )
       end
 
