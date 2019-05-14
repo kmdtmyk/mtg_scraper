@@ -128,6 +128,37 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
 
     end
 
+    context 'Brothers Yamazaki' do
+      let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=53&page=11' }
+
+      example do
+        expect(list[37]).to eq(
+          name: '山崎兄弟',
+          english_name: 'Brothers Yamazaki',
+          language: 'japanese',
+          price: 150,
+          basic_land: false,
+          foil: false,
+          card_set_code: 'CHK',
+          version: 'A',
+        )
+      end
+
+      example do
+        expect(list[38]).to eq(
+          name: '山崎兄弟',
+          english_name: 'Brothers Yamazaki',
+          language: 'english',
+          price: 50,
+          basic_land: false,
+          foil: false,
+          card_set_code: 'CHK',
+          version: 'B',
+        )
+      end
+
+    end
+
   end
 
   describe 'category_list' do

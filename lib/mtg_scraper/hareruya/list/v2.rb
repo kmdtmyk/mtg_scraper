@@ -67,8 +67,10 @@ module MtgScraper
             basic_land: basic_land,
           }
 
-          if item_name.match %r{■([^■]+)■}
-            result[:version] = Regexp.last_match(1)
+          version = version(item_name)
+
+          unless version.nil?
+            result[:version] = version
           end
 
           result
@@ -102,6 +104,16 @@ module MtgScraper
         end
 
         private
+
+          def version(item_name)
+            if item_name.match %r{■([^■]+)■}
+              return Regexp.last_match(1)
+            end
+
+            if item_name.match %r{(\w)\[CHK\]}
+              return Regexp.last_match(1)
+            end
+          end
 
           def category_id(node)
             link = node.css('a[href*="cardset="]')[0]
