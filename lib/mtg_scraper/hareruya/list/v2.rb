@@ -44,6 +44,8 @@ module MtgScraper
             language = 'japanese'
           end
 
+          token = name.end_with? 'トークン'
+
           foil = item_name.match? %r{【Foil】}
 
           if item_name.match %r{\[(.+)\]}
@@ -67,6 +69,7 @@ module MtgScraper
             foil: foil,
             card_set_code: card_set_code,
             basic_land: basic_land,
+            token: token,
           }
 
           version = version(item_name)

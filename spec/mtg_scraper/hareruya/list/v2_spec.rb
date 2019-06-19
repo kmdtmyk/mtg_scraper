@@ -47,6 +47,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           basic_land: false,
           foil: true,
           card_set_code: 'RNA',
+          token: false,
         )
       end
 
@@ -59,6 +60,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           basic_land: false,
           foil: false,
           card_set_code: 'RNA',
+          token: false,
         )
       end
 
@@ -81,6 +83,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           basic_land: true,
           foil: false,
           card_set_code: 'RNA',
+          token: false,
         )
       end
 
@@ -98,6 +101,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           basic_land: false,
           foil: false,
           card_set_code: 'WAR',
+          token: false,
         )
       end
 
@@ -110,6 +114,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           basic_land: false,
           foil: false,
           card_set_code: 'WAR',
+          token: false,
         )
       end
 
@@ -122,6 +127,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           basic_land: false,
           foil: false,
           card_set_code: 'WAR',
+          token: false,
           version: '絵違い',
         )
       end
@@ -140,6 +146,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           basic_land: false,
           foil: false,
           card_set_code: 'CHK',
+          token: false,
           version: 'A',
         )
       end
@@ -153,6 +160,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           basic_land: false,
           foil: false,
           card_set_code: 'CHK',
+          token: false,
           version: 'B',
         )
       end
@@ -171,6 +179,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           basic_land: false,
           foil: false,
           card_set_code: 'M14',
+          token: true,
         )
       end
 
