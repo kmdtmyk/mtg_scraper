@@ -159,6 +159,23 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
 
     end
 
+    context 'Japanese name only token' do
+      let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=117' }
+
+      example do
+        expect(list[0]).to eq(
+          name: '天使トークン',
+          english_name: nil,
+          language: 'english',
+          price: 60,
+          basic_land: false,
+          foil: false,
+          card_set_code: 'M14',
+        )
+      end
+
+    end
+
   end
 
   describe 'category_list' do

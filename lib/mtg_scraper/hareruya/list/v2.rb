@@ -34,9 +34,9 @@ module MtgScraper
         def parse_node(node)
           item_name = node.css('.itemName').text
 
-          %r{《([^/]+)/([^/]+)》}.match(item_name)
+          %r{《([^/]+)(/([^/]+))?》}.match(item_name)
           name = Regexp.last_match(1)
-          english_name = Regexp.last_match(2)
+          english_name = Regexp.last_match(3)
 
           if item_name.match? %r{【EN】}
             language = 'english'
@@ -47,6 +47,8 @@ module MtgScraper
           foil = item_name.match? %r{【Foil】}
 
           if item_name.match %r{\[(.+)\]}
+            card_set_code = Regexp.last_match(1)
+          elsif item_name.match %r{［(.+)］}
             card_set_code = Regexp.last_match(1)
           end
 
