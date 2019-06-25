@@ -54,6 +54,13 @@ module MtgScraper
             card_set_code = Regexp.last_match(1)
           end
 
+          if card_set_code.end_with? '-PRE'
+            prerelease = true
+            card_set_code = card_set_code.sub('-PRE', '')
+          else
+            prerelease = false
+          end
+
           basic_land = CardName.basic_land? name
 
           price_node = node.css('.row.not-first.ng-star-inserted')[0]
@@ -70,6 +77,7 @@ module MtgScraper
             card_set_code: card_set_code,
             basic_land: basic_land,
             token: token,
+            prerelease: prerelease,
           }
 
           version = version(item_name)

@@ -48,6 +48,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           foil: true,
           card_set_code: 'RNA',
           token: false,
+          prerelease: false,
         )
       end
 
@@ -61,6 +62,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           foil: false,
           card_set_code: 'RNA',
           token: false,
+          prerelease: false,
         )
       end
 
@@ -84,6 +86,26 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           foil: false,
           card_set_code: 'RNA',
           token: false,
+          prerelease: false,
+        )
+      end
+
+    end
+
+    context 'prerelease' do
+      let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=183' }
+
+      example do
+        expect(list[8]).to eq(
+          name: '報奨密偵',
+          english_name: 'Bounty Agent',
+          language: 'english',
+          price: 150,
+          basic_land: false,
+          foil: true,
+          card_set_code: 'GRN',
+          token: false,
+          prerelease: true,
         )
       end
 
@@ -101,6 +123,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           basic_land: false,
           foil: false,
           card_set_code: 'WAR',
+          prerelease: false,
           token: false,
         )
       end
@@ -114,6 +137,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           basic_land: false,
           foil: false,
           card_set_code: 'WAR',
+          prerelease: false,
           token: false,
         )
       end
@@ -128,6 +152,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           foil: false,
           card_set_code: 'WAR',
           token: false,
+          prerelease: false,
           version: '絵違い',
         )
       end
@@ -147,6 +172,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           foil: false,
           card_set_code: 'CHK',
           token: false,
+          prerelease: false,
           version: 'A',
         )
       end
@@ -161,6 +187,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           foil: false,
           card_set_code: 'CHK',
           token: false,
+          prerelease: false,
           version: 'B',
         )
       end
@@ -180,6 +207,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           foil: false,
           card_set_code: 'M14',
           token: true,
+          prerelease: false,
         )
       end
 
@@ -198,6 +226,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           foil: true,
           card_set_code: 'M15',
           token: false,
+          prerelease: false,
         )
 
         expect(list[13]).to eq(
@@ -209,6 +238,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           foil: true,
           card_set_code: 'M15',
           token: false,
+          prerelease: false,
         )
       end
 
