@@ -185,6 +185,35 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
 
     end
 
+    context 'omitted letter' do
+      let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=128&page=18' }
+
+      example do
+        expect(list[12]).to eq(
+          name: '平地',
+          english_name: 'Plains',
+          language: 'japanese',
+          price: 100,
+          basic_land: true,
+          foil: true,
+          card_set_code: 'M15',
+          token: false,
+        )
+
+        expect(list[13]).to eq(
+          name: '平地',
+          english_name: 'Plains',
+          language: 'english',
+          price: 100,
+          basic_land: true,
+          foil: true,
+          card_set_code: 'M15',
+          token: false,
+        )
+      end
+
+    end
+
   end
 
   describe 'category_list' do
