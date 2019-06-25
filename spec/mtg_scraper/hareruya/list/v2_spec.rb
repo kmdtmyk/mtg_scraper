@@ -213,7 +213,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
 
     end
 
-    context 'omitted letter' do
+    context 'omitted letter (Plains)' do
       let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=128&page=18' }
 
       example do
@@ -239,6 +239,39 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           card_set_code: 'M15',
           token: false,
           prerelease: false,
+        )
+      end
+
+    end
+
+    context "omitted letter (Baral's Expertise)" do
+      let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=163&page=2' }
+
+      example do
+        expect(list[58]).to eq(
+          name: 'バラルの巧技',
+          english_name: "Baral's Expertise",
+          language: 'english',
+          price: 100,
+          basic_land: false,
+          foil: true,
+          card_set_code: 'AER',
+          token: false,
+          prerelease: true,
+        )
+      end
+
+      example do
+        expect(list[59]).to eq(
+          name: 'バラルの巧技',
+          english_name: "Baral's Expertise",
+          language: 'japanese',
+          price: 100,
+          basic_land: false,
+          foil: true,
+          card_set_code: 'AER',
+          token: false,
+          prerelease: true,
         )
       end
 
