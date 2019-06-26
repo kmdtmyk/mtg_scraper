@@ -33,7 +33,12 @@ module MtgScraper
 
         def name
           %r{《([^/]+)(/([^/]+))?》}.match(item_name)
-          Regexp.last_match(1)
+          text = Regexp.last_match(1)
+          if text == 'トークン（パンチカード）'
+            'パンチカード'
+          else
+            text
+          end
         end
 
         def english_name
@@ -79,7 +84,7 @@ module MtgScraper
         end
 
         def token?
-          name.end_with? 'トークン'
+          item_name.match? %r{トークン}
         end
 
         def foil?

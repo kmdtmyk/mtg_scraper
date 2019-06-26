@@ -194,85 +194,71 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
 
     end
 
-    context 'Japanese name only token' do
-      let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=117' }
 
-      example do
-        expect(list[0]).to eq(
-          name: '天使トークン',
-          english_name: nil,
-          language: 'english',
-          price: 60,
-          basic_land: false,
-          foil: false,
-          card_set_code: 'M14',
-          token: true,
-          prerelease: false,
-        )
+    describe 'typo' do
+
+      context 'Plains' do
+        let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=128&page=18' }
+
+        example do
+          expect(list[12]).to eq(
+            name: '平地',
+            english_name: 'Plains',
+            language: 'japanese',
+            price: 100,
+            basic_land: true,
+            foil: true,
+            card_set_code: 'M15',
+            token: false,
+            prerelease: false,
+          )
+
+          expect(list[13]).to eq(
+            name: '平地',
+            english_name: 'Plains',
+            language: 'english',
+            price: 100,
+            basic_land: true,
+            foil: true,
+            card_set_code: 'M15',
+            token: false,
+            prerelease: false,
+          )
+        end
+
       end
 
-    end
+      context "Baral's Expertise" do
+        let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=163&page=2' }
 
-    context 'typo (Plains)' do
-      let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=128&page=18' }
+        example do
+          expect(list[58]).to eq(
+            name: 'バラルの巧技',
+            english_name: "Baral's Expertise",
+            language: 'english',
+            price: 100,
+            basic_land: false,
+            foil: true,
+            card_set_code: 'AER',
+            token: false,
+            prerelease: true,
+          )
+        end
 
-      example do
-        expect(list[12]).to eq(
-          name: '平地',
-          english_name: 'Plains',
-          language: 'japanese',
-          price: 100,
-          basic_land: true,
-          foil: true,
-          card_set_code: 'M15',
-          token: false,
-          prerelease: false,
-        )
+        example do
+          expect(list[59]).to eq(
+            name: 'バラルの巧技',
+            english_name: "Baral's Expertise",
+            language: 'japanese',
+            price: 100,
+            basic_land: false,
+            foil: true,
+            card_set_code: 'AER',
+            token: false,
+            prerelease: true,
+          )
+        end
 
-        expect(list[13]).to eq(
-          name: '平地',
-          english_name: 'Plains',
-          language: 'english',
-          price: 100,
-          basic_land: true,
-          foil: true,
-          card_set_code: 'M15',
-          token: false,
-          prerelease: false,
-        )
-      end
-
-    end
-
-    context "typo (Baral's Expertise)" do
-      let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=163&page=2' }
-
-      example do
-        expect(list[58]).to eq(
-          name: 'バラルの巧技',
-          english_name: "Baral's Expertise",
-          language: 'english',
-          price: 100,
-          basic_land: false,
-          foil: true,
-          card_set_code: 'AER',
-          token: false,
-          prerelease: true,
-        )
-      end
-
-      example do
-        expect(list[59]).to eq(
-          name: 'バラルの巧技',
-          english_name: "Baral's Expertise",
-          language: 'japanese',
-          price: 100,
-          basic_land: false,
-          foil: true,
-          card_set_code: 'AER',
-          token: false,
-          prerelease: true,
-        )
       end
 
     end
@@ -306,6 +292,48 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           token: false,
           prerelease: false,
         )
+      end
+
+    end
+
+    describe 'Token' do
+
+      context do
+        let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=117' }
+
+        example do
+          expect(list[0]).to eq(
+            name: '天使トークン',
+            english_name: nil,
+            language: 'english',
+            price: 60,
+            basic_land: false,
+            foil: false,
+            card_set_code: 'M14',
+            token: true,
+            prerelease: false,
+          )
+        end
+
+      end
+
+      context 'Punch card' do
+        let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=167&page=21' }
+
+        example do
+          expect(list[2]).to eq(
+            name: 'パンチカード',
+            english_name: nil,
+            language: 'english',
+            price: 10,
+            basic_land: false,
+            foil: false,
+            card_set_code: 'AKH',
+            token: true,
+            prerelease: false,
+          )
+        end
+
       end
 
     end
