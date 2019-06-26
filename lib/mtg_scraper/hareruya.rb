@@ -2,6 +2,7 @@
 
 require 'mtg_scraper/hareruya/list/v1'
 require 'mtg_scraper/hareruya/list/v2'
+require 'mtg_scraper/hareruya/list/v2_item_parser'
 
 module MtgScraper
   module Hareruya
