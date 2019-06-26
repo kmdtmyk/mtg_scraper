@@ -48,10 +48,9 @@ module MtgScraper
 
           foil = item_name.match? %r{【Foil】}
 
-          if item_name.match %r{\[(.+)\]}
-            card_set_code = Regexp.last_match(1)
-          elsif item_name.match %r{［(.+)］}
-            card_set_code = Regexp.last_match(1)
+          card_set_code = card_set_code(item_name)
+          if card_set_code == 'BOXプロモ' and name == '運命のきずな'
+            card_set_code = 'M19'
           end
 
           if card_set_code.end_with? '-PRE'
@@ -127,6 +126,14 @@ module MtgScraper
               item_name.sub("バラルの功技/Baral's Expertise", "バラルの巧技/Baral's Expertise")
             else
               item_name
+            end
+          end
+
+          def card_set_code(item_name)
+            if item_name.match %r{\[(.+)\]}
+              card_set_code = Regexp.last_match(1)
+            elsif item_name.match %r{［(.+)］}
+              card_set_code = Regexp.last_match(1)
             end
           end
 

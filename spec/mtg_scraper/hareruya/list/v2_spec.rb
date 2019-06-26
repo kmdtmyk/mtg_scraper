@@ -213,7 +213,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
 
     end
 
-    context 'typo Plains' do
+    context 'typo (Plains)' do
       let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=128&page=18' }
 
       example do
@@ -244,7 +244,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
 
     end
 
-    context "typo Baral's Expertise" do
+    context "typo (Baral's Expertise)" do
       let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=163&page=2' }
 
       example do
@@ -272,6 +272,39 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           card_set_code: 'AER',
           token: false,
           prerelease: true,
+        )
+      end
+
+    end
+
+    context 'box promo (Nexus of Fate)' do
+      let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=181&page=5' }
+
+      example do
+        expect(list[42]).to eq(
+          name: '運命のきずな',
+          english_name: 'Nexus of Fate',
+          language: 'english',
+          price: 2480,
+          basic_land: false,
+          foil: true,
+          card_set_code: 'M19',
+          token: false,
+          prerelease: false,
+        )
+      end
+
+      example do
+        expect(list[43]).to eq(
+          name: '運命のきずな',
+          english_name: 'Nexus of Fate',
+          language: 'japanese',
+          price: 2800,
+          basic_land: false,
+          foil: true,
+          card_set_code: 'M19',
+          token: false,
+          prerelease: false,
         )
       end
 
