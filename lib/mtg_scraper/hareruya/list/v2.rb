@@ -32,7 +32,7 @@ module MtgScraper
         end
 
         def parse_node(node)
-          item_name = fix_omitted_letter(node.css('.itemName').text.strip)
+          item_name = fix_typo(node.css('.itemName').text.strip)
 
           %r{《([^/]+)(/([^/]+))?》}.match(item_name)
           name = Regexp.last_match(1)
@@ -118,7 +118,7 @@ module MtgScraper
 
         private
 
-          def fix_omitted_letter(item_name)
+          def fix_typo(item_name)
             # https://www.hareruyamtg.com/ja/products/search?cardset=128&page=18
             if item_name.match? %r{《平地/Plains[^》]}
               item_name.sub('《平地/Plains', '《平地/Plains》')

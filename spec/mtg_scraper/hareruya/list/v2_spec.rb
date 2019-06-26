@@ -213,7 +213,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
 
     end
 
-    context 'omitted letter (Plains)' do
+    context 'typo Plains' do
       let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=128&page=18' }
 
       example do
@@ -244,7 +244,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
 
     end
 
-    context "omitted letter (Baral's Expertise)" do
+    context "typo Baral's Expertise" do
       let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=163&page=2' }
 
       example do
