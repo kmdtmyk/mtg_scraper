@@ -271,6 +271,26 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
 
       end
 
+      context 'Hero of Precinct One' do
+        let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=188&page=1' }
+
+        example do
+          expect(list[42]).to eq(
+            name: '第１管区の勇士',
+            english_name: 'Hero of Precinct One',
+            language: 'english',
+            price: 350,
+            basic_land: false,
+            foil: true,
+            card_set_code: 'RNA',
+            token: false,
+            prerelease: false,
+            version: nil,
+          )
+        end
+
+      end
+
     end
 
     context 'box promo (Nexus of Fate)' do

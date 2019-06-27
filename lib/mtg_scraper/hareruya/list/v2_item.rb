@@ -113,6 +113,8 @@ module MtgScraper
             # https://www.hareruyamtg.com/ja/products/search?cardset=163&page=2
             elsif item_name.match? %r{《バラルの功技/Baral's Expertise》}
               item_name.sub("バラルの功技/Baral's Expertise", "バラルの巧技/Baral's Expertise")
+            elsif item_name.match? %r{第1管区}
+              item_name.sub('第1管区', '第１管区')
             else
               item_name
             end
