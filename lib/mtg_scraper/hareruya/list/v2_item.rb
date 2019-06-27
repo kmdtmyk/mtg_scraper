@@ -66,7 +66,7 @@ module MtgScraper
           if text == 'BOXプロモ' and name == '運命のきずな'
             'M19'
           else
-            text.sub('-PRE', '')
+            text.sub(%r{-(PRE|PW)}, '')
           end
         end
 

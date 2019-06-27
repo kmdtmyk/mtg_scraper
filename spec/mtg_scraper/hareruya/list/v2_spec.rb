@@ -209,6 +209,30 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
 
     end
 
+    describe 'planeswalker deck' do
+
+      context do
+        let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=183&page=14' }
+
+        example do
+          expect(list[10]).to eq(
+            name: '嵐を呼ぶ者、ラル',
+            english_name: 'Ral, Caller of Storms',
+            language: 'english',
+            price: 600,
+            basic_land: false,
+            foil: true,
+            card_set_code: 'GRN',
+            token: false,
+            prerelease: false,
+            version: nil,
+          )
+        end
+
+      end
+
+    end
+
     describe 'typo' do
 
       context 'Plains' do
