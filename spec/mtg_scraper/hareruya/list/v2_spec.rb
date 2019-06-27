@@ -345,37 +345,46 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
 
     end
 
-    context 'box promo (Nexus of Fate)' do
-      let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=181&page=5' }
+    describe 'box promo' do
 
-      example do
-        expect(list[42]).to eq(
-          name: '運命のきずな',
-          english_name: 'Nexus of Fate',
-          language: 'english',
-          price: 2480,
-          basic_land: false,
-          foil: true,
-          card_set_code: 'M19',
-          token: false,
-          prerelease: false,
-          version: nil,
-        )
+      context 'Nexus of Fate' do
+        let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=181&page=5' }
+
+        example do
+          expect(list[42]).to eq(
+            name: '運命のきずな',
+            english_name: 'Nexus of Fate',
+            language: 'english',
+            price: 2480,
+            basic_land: false,
+            foil: true,
+            card_set_code: 'M19',
+            token: false,
+            prerelease: false,
+            version: nil,
+          )
+        end
+
       end
 
-      example do
-        expect(list[43]).to eq(
-          name: '運命のきずな',
-          english_name: 'Nexus of Fate',
-          language: 'japanese',
-          price: 2800,
-          basic_land: false,
-          foil: true,
-          card_set_code: 'M19',
-          token: false,
-          prerelease: false,
-          version: nil,
-        )
+      context 'Tezzeret, Master of the Bridge' do
+        let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=208&page=16' }
+
+        example do
+          expect(list[28]).to eq(
+            name: '橋の主、テゼレット',
+            english_name: 'Tezzeret, Master of the Bridge',
+            language: 'japanese',
+            price: 880,
+            basic_land: false,
+            foil: true,
+            card_set_code: 'WAR',
+            token: false,
+            prerelease: false,
+            version: nil,
+          )
+        end
+
       end
 
     end

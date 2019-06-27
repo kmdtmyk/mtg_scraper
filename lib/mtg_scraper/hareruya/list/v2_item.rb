@@ -63,8 +63,11 @@ module MtgScraper
             text = Regexp.last_match(1)
           end
 
-          if text == 'BOXプロモ' and name == '運命のきずな'
-            'M19'
+          if text == 'BOXプロモ'
+            {
+              '運命のきずな' => 'M19',
+              '橋の主、テゼレット' => 'WAR',
+            }[name]
           else
             text.sub(%r{-(PRE|PW)}, '')
           end
