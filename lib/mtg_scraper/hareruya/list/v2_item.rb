@@ -5,13 +5,13 @@ require 'nokogiri'
 module MtgScraper
   module Hareruya
     module List
-      class V2ItemParser
+      class V2Item
 
         def initialize(node)
           @node = node
         end
 
-        def parse
+        def to_h
           result = {
             name: name,
             english_name: english_name,
