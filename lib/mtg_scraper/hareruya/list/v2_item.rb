@@ -107,6 +107,8 @@ module MtgScraper
           end
 
           def fix_typo(item_name)
+            item_name = item_name.sub('[10ED]', '[10E]')
+
             # https://www.hareruyamtg.com/ja/products/search?cardset=128&page=18
             if item_name.match? %r{《平地/Plains[^》]}
               item_name.sub('《平地/Plains', '《平地/Plains》')

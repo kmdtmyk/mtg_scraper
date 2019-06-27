@@ -235,6 +235,26 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
 
     describe 'typo' do
 
+      context 'Tenth Edition' do
+        let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=67' }
+
+        example do
+          expect(list[0]).to eq(
+            name: '祖神に選ばれし者',
+            english_name: "Ancestor's Chosen",
+            language: 'english',
+            price: 200,
+            basic_land: false,
+            foil: true,
+            card_set_code: '10E',
+            token: false,
+            prerelease: false,
+            version: nil,
+          )
+        end
+
+      end
+
       context 'Plains' do
         let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=128&page=18' }
 
