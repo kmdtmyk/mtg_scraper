@@ -12,7 +12,7 @@ module MtgScraper
         end
 
         def to_h
-          result = {
+          {
             name: name,
             english_name: english_name,
             language: language,
@@ -22,13 +22,8 @@ module MtgScraper
             basic_land: basic_land?,
             token: token?,
             prerelease: prerelease?,
+            version: version,
           }
-
-          unless version.nil?
-            result[:version] = version
-          end
-
-          result
         end
 
         def name

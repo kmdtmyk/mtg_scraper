@@ -49,6 +49,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           card_set_code: 'RNA',
           token: false,
           prerelease: false,
+          version: nil,
         )
       end
 
@@ -63,6 +64,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           card_set_code: 'RNA',
           token: false,
           prerelease: false,
+          version: nil,
         )
       end
 
@@ -87,6 +89,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           card_set_code: 'RNA',
           token: false,
           prerelease: false,
+          version: nil,
         )
       end
 
@@ -106,6 +109,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           card_set_code: 'GRN',
           token: false,
           prerelease: true,
+          version: nil,
         )
       end
 
@@ -125,6 +129,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           card_set_code: 'WAR',
           prerelease: false,
           token: false,
+          version: nil,
         )
       end
 
@@ -139,6 +144,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           card_set_code: 'WAR',
           prerelease: false,
           token: false,
+          version: nil,
         )
       end
 
@@ -211,6 +217,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
             card_set_code: 'M15',
             token: false,
             prerelease: false,
+            version: nil,
           )
 
           expect(list[13]).to eq(
@@ -223,6 +230,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
             card_set_code: 'M15',
             token: false,
             prerelease: false,
+            version: nil,
           )
         end
 
@@ -242,6 +250,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
             card_set_code: 'AER',
             token: false,
             prerelease: true,
+            version: nil,
           )
         end
 
@@ -256,6 +265,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
             card_set_code: 'AER',
             token: false,
             prerelease: true,
+            version: nil,
           )
         end
 
@@ -277,6 +287,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           card_set_code: 'M19',
           token: false,
           prerelease: false,
+          version: nil,
         )
       end
 
@@ -291,6 +302,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           card_set_code: 'M19',
           token: false,
           prerelease: false,
+          version: nil,
         )
       end
 
@@ -312,6 +324,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
             card_set_code: 'M14',
             token: true,
             prerelease: false,
+            version: nil,
           )
         end
 
@@ -331,6 +344,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
             card_set_code: 'AKH',
             token: true,
             prerelease: false,
+            version: nil,
           )
         end
 
