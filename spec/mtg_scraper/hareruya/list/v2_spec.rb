@@ -233,6 +233,30 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
 
     end
 
+    describe 'deck builder set' do
+
+      context do
+        let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=167&page=20' }
+
+        example do
+          expect(list[28]).to eq(
+            name: '森林の地溝',
+            english_name: 'Timber Gorge',
+            language: 'english',
+            price: 10,
+            basic_land: false,
+            foil: false,
+            card_set_code: 'AKH',
+            token: false,
+            prerelease: false,
+            version: nil,
+          )
+        end
+
+      end
+
+    end
+
     describe 'typo' do
 
       context 'Tenth Edition' do

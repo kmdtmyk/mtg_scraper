@@ -69,7 +69,7 @@ module MtgScraper
               '橋の主、テゼレット' => 'WAR',
             }[name]
           else
-            text.sub(%r{-(PRE|PW)}, '')
+            text.sub(%r{-(PRE|PW)等?}, '')
           end
         end
 
