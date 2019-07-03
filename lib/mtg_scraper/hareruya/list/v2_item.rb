@@ -38,7 +38,15 @@ module MtgScraper
 
         def english_name
           %r{《([^/]+)(/([^/]+))?》}.match(item_name)
-          Regexp.last_match(3)&.gsub('’', '\'')
+          text = Regexp.last_match(3)
+          if text.nil?
+            return
+          end
+          text.gsub('’', '\'')
+            .gsub(/,[^ ]/){ |s|
+              # insert space after comma
+              "#{s[0]} #{s[1]}"
+            }
         end
 
         def language

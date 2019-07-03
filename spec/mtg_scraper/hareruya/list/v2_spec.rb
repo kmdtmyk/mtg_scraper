@@ -279,6 +279,26 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
 
       end
 
+      context 'space after comma' do
+        let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=159&page=9' }
+
+        example do
+          expect(list[6]).to eq(
+            name: '紅蓮の俊英、チャンドラ',
+            english_name: "Chandra, Pyrogenius",
+            language: 'english',
+            price: 150,
+            basic_land: false,
+            foil: true,
+            card_set_code: 'KLD',
+            token: false,
+            prerelease: false,
+            version: nil,
+          )
+        end
+
+      end
+
       context 'Tenth Edition' do
         let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=67' }
 
