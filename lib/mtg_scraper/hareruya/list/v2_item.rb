@@ -38,7 +38,7 @@ module MtgScraper
 
         def english_name
           %r{《([^/]+)(/([^/]+))?》}.match(item_name)
-          Regexp.last_match(3)
+          Regexp.last_match(3)&.gsub('’', '\'')
         end
 
         def language

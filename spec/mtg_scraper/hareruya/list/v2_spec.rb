@@ -259,6 +259,26 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
 
     describe 'typo' do
 
+      context 'single quotation 「’」→「\'」' do
+        let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=171&page=2' }
+
+        example do
+          expect(list[15]).to eq(
+            name: 'オケチラ最後の慈悲',
+            english_name: "Oketra's Last Mercy",
+            language: 'japanese',
+            price: 50,
+            basic_land: false,
+            foil: false,
+            card_set_code: 'HOU',
+            token: false,
+            prerelease: false,
+            version: nil,
+          )
+        end
+
+      end
+
       context 'Tenth Edition' do
         let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=67' }
 
