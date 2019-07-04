@@ -51,9 +51,9 @@ module MtgScraper
 
         def language
           if item_name.match? %r{【EN】}
-            language = 'english'
+            language = 'English'
           elsif item_name.match? %r{【JP】}
-            language = 'japanese'
+            language = 'Japanese'
           end
         end
 

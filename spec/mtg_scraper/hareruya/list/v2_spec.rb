@@ -42,7 +42,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
         expect(list[0]).to eq(
           name: '恩寵の天使',
           english_name: 'Angel of Grace',
-          language: 'english',
+          language: 'English',
           price: 3000,
           basic_land: false,
           foil: true,
@@ -57,7 +57,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
         expect(list[3]).to eq(
           name: '恩寵の天使',
           english_name: 'Angel of Grace',
-          language: 'japanese',
+          language: 'Japanese',
           price: 380,
           basic_land: false,
           foil: false,
@@ -82,7 +82,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
         expect(list[22]).to eq(
           name: '平地',
           english_name: 'Plains',
-          language: 'japanese',
+          language: 'Japanese',
           price: 80,
           basic_land: true,
           foil: false,
@@ -102,7 +102,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
         expect(list[8]).to eq(
           name: '報奨密偵',
           english_name: 'Bounty Agent',
-          language: 'english',
+          language: 'English',
           price: 150,
           basic_land: false,
           foil: true,
@@ -122,7 +122,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
         expect(list[0]).to eq(
           name: '大いなる創造者、カーン',
           english_name: 'Karn, the Great Creator',
-          language: 'japanese',
+          language: 'Japanese',
           price: 1400,
           basic_land: false,
           foil: false,
@@ -137,7 +137,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
         expect(list[1]).to eq(
           name: '大いなる創造者、カーン',
           english_name: 'Karn, the Great Creator',
-          language: 'english',
+          language: 'English',
           price: 1400,
           basic_land: false,
           foil: false,
@@ -159,7 +159,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           expect(list[2]).to eq(
             name: '大いなる創造者、カーン',
             english_name: 'Karn, the Great Creator',
-            language: 'japanese',
+            language: 'Japanese',
             price: 2000,
             basic_land: false,
             foil: false,
@@ -179,7 +179,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           expect(list[37]).to eq(
             name: '山崎兄弟',
             english_name: 'Brothers Yamazaki',
-            language: 'japanese',
+            language: 'Japanese',
             price: 150,
             basic_land: false,
             foil: false,
@@ -194,7 +194,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           expect(list[38]).to eq(
             name: '山崎兄弟',
             english_name: 'Brothers Yamazaki',
-            language: 'english',
+            language: 'English',
             price: 50,
             basic_land: false,
             foil: false,
@@ -218,7 +218,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           expect(list[10]).to eq(
             name: '嵐を呼ぶ者、ラル',
             english_name: 'Ral, Caller of Storms',
-            language: 'english',
+            language: 'English',
             price: 600,
             basic_land: false,
             foil: true,
@@ -242,7 +242,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           expect(list[28]).to eq(
             name: '森林の地溝',
             english_name: 'Timber Gorge',
-            language: 'english',
+            language: 'English',
             price: 10,
             basic_land: false,
             foil: false,
@@ -266,7 +266,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           expect(list[15]).to eq(
             name: 'オケチラ最後の慈悲',
             english_name: "Oketra's Last Mercy",
-            language: 'japanese',
+            language: 'Japanese',
             price: 50,
             basic_land: false,
             foil: false,
@@ -286,7 +286,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           expect(list[6]).to eq(
             name: '紅蓮の俊英、チャンドラ',
             english_name: "Chandra, Pyrogenius",
-            language: 'english',
+            language: 'English',
             price: 150,
             basic_land: false,
             foil: true,
@@ -306,7 +306,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           expect(list[0]).to eq(
             name: '祖神に選ばれし者',
             english_name: "Ancestor's Chosen",
-            language: 'english',
+            language: 'English',
             price: 200,
             basic_land: false,
             foil: true,
@@ -326,7 +326,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           expect(list[12]).to eq(
             name: '平地',
             english_name: 'Plains',
-            language: 'japanese',
+            language: 'Japanese',
             price: 100,
             basic_land: true,
             foil: true,
@@ -339,7 +339,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           expect(list[13]).to eq(
             name: '平地',
             english_name: 'Plains',
-            language: 'english',
+            language: 'English',
             price: 100,
             basic_land: true,
             foil: true,
@@ -359,7 +359,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           expect(list[58]).to eq(
             name: 'バラルの巧技',
             english_name: "Baral's Expertise",
-            language: 'english',
+            language: 'English',
             price: 100,
             basic_land: false,
             foil: true,
@@ -374,7 +374,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           expect(list[59]).to eq(
             name: 'バラルの巧技',
             english_name: "Baral's Expertise",
-            language: 'japanese',
+            language: 'Japanese',
             price: 100,
             basic_land: false,
             foil: true,
@@ -394,7 +394,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           expect(list[42]).to eq(
             name: '第１管区の勇士',
             english_name: 'Hero of Precinct One',
-            language: 'english',
+            language: 'English',
             price: 350,
             basic_land: false,
             foil: true,
@@ -418,7 +418,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           expect(list[42]).to eq(
             name: '運命のきずな',
             english_name: 'Nexus of Fate',
-            language: 'english',
+            language: 'English',
             price: 2480,
             basic_land: false,
             foil: true,
@@ -438,7 +438,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           expect(list[28]).to eq(
             name: '橋の主、テゼレット',
             english_name: 'Tezzeret, Master of the Bridge',
-            language: 'japanese',
+            language: 'Japanese',
             price: 880,
             basic_land: false,
             foil: true,
@@ -462,7 +462,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           expect(list[0]).to eq(
             name: '天使トークン',
             english_name: nil,
-            language: 'english',
+            language: 'English',
             price: 60,
             basic_land: false,
             foil: false,
@@ -482,7 +482,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
           expect(list[2]).to eq(
             name: 'パンチカード',
             english_name: nil,
-            language: 'english',
+            language: 'English',
             price: 10,
             basic_land: false,
             foil: false,
