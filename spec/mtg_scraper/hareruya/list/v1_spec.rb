@@ -32,6 +32,7 @@ RSpec.describe MtgScraper::Hareruya::List::V1 do
     end
 
   end
+
   describe '#size' do
 
     subject{ list.size }
@@ -50,13 +51,10 @@ RSpec.describe MtgScraper::Hareruya::List::V1 do
 
   describe '#[]' do
 
-    subject{ list[nth] }
-
     context 'ENG' do
       let(:url){ 'http://www.hareruyamtg.com/jp/c/cM19-R/' }
-      let(:nth){ 0 }
       it do
-        expect(subject).to eq(
+        expect(list[0]).to eq(
           name: '暴君への敵対者、アジャニ',
           english_name: 'Ajani, Adversary of Tyrants',
           language: 'english',
@@ -69,9 +67,8 @@ RSpec.describe MtgScraper::Hareruya::List::V1 do
 
     context 'JPN' do
       let(:url){ 'http://www.hareruyamtg.com/jp/c/cM19-R/' }
-      let(:nth){ 1 }
       it do
-        expect(subject).to eq(
+        expect(list[1]).to eq(
           name: '暴君への敵対者、アジャニ',
           english_name: 'Ajani, Adversary of Tyrants',
           language: 'japanese',
@@ -84,9 +81,8 @@ RSpec.describe MtgScraper::Hareruya::List::V1 do
 
     context '予約シングル' do
       let(:url){ 'http://www.hareruyamtg.com/jp/c/cGRN-R/' }
-      let(:nth){ 0 }
       it do
-        expect(subject).to eq(
+        expect(list[0]).to eq(
           name: '報奨密偵',
           english_name: 'Bounty Agent',
           language: 'english',
@@ -99,17 +95,15 @@ RSpec.describe MtgScraper::Hareruya::List::V1 do
 
     context 'out of range' do
       let(:url){ 'http://www.hareruyamtg.com/jp/c/cM19-R/' }
-      let(:nth){ 999 }
-      it{ expect(subject).to eq nil }
+      it{ expect(list[999]).to eq nil }
     end
 
     describe 'basic land' do
 
       context 'plains' do
         let(:url){ 'http://www.hareruyamtg.com/jp/c/cRNA-L/' }
-        let(:nth){ 0 }
         it do
-          expect(subject).to eq(
+          expect(list[0]).to eq(
             name: '平地',
             english_name: 'Plains',
             language: 'english',
@@ -122,9 +116,8 @@ RSpec.describe MtgScraper::Hareruya::List::V1 do
 
       context 'island' do
         let(:url){ 'http://www.hareruyamtg.com/jp/c/cRNA-L/' }
-        let(:nth){ 2 }
         it do
-          expect(subject).to eq(
+          expect(list[2]).to eq(
             name: '島',
             english_name: 'Island',
             language: 'english',
@@ -137,9 +130,8 @@ RSpec.describe MtgScraper::Hareruya::List::V1 do
 
       context 'swamp' do
         let(:url){ 'http://www.hareruyamtg.com/jp/c/cRNA-L/' }
-        let(:nth){ 4 }
         it do
-          expect(subject).to eq(
+          expect(list[4]).to eq(
             name: '沼',
             english_name: 'Swamp',
             language: 'english',
@@ -152,9 +144,8 @@ RSpec.describe MtgScraper::Hareruya::List::V1 do
 
       context 'mountain' do
         let(:url){ 'http://www.hareruyamtg.com/jp/c/cRNA-L/' }
-        let(:nth){ 6 }
         it do
-          expect(subject).to eq(
+          expect(list[6]).to eq(
             name: '山',
             english_name: 'Mountain',
             language: 'english',
@@ -167,9 +158,8 @@ RSpec.describe MtgScraper::Hareruya::List::V1 do
 
       context 'forest' do
         let(:url){ 'http://www.hareruyamtg.com/jp/c/cRNA-L/' }
-        let(:nth){ 8 }
         it do
-          expect(subject).to eq(
+          expect(list[8]).to eq(
             name: '森',
             english_name: 'Forest',
             language: 'english',
@@ -182,9 +172,8 @@ RSpec.describe MtgScraper::Hareruya::List::V1 do
 
       context 'wastes' do
         let(:url){ 'http://www.hareruyamtg.com/jp/c/cOGW-C_p2/' }
-        let(:nth){ 36 }
         it do
-          expect(subject).to eq(
+          expect(list[36]).to eq(
             name: '荒地',
             english_name: 'Wastes',
             language: 'english',
@@ -199,10 +188,9 @@ RSpec.describe MtgScraper::Hareruya::List::V1 do
 
     context 'range' do
       let(:url){ 'http://www.hareruyamtg.com/jp/c/cM19-R/' }
-      let(:nth){ 0..2 }
       it do
-        expect(subject.class).to eq Array
-        expect(subject.size).to eq 3
+        expect(list[0..2].class).to eq Array
+        expect(list[0..2].size).to eq 3
       end
     end
 
