@@ -57,7 +57,7 @@ RSpec.describe MtgScraper::Hareruya::List::V1 do
         expect(list[0]).to eq(
           name: '暴君への敵対者、アジャニ',
           english_name: 'Ajani, Adversary of Tyrants',
-          language: 'english',
+          language: 'English',
           price: 1680,
           basic_land: false,
           card_set_code: 'M19',
@@ -71,7 +71,7 @@ RSpec.describe MtgScraper::Hareruya::List::V1 do
         expect(list[1]).to eq(
           name: '暴君への敵対者、アジャニ',
           english_name: 'Ajani, Adversary of Tyrants',
-          language: 'japanese',
+          language: 'Japanese',
           price: 1780,
           basic_land: false,
           card_set_code: 'M19',
@@ -85,7 +85,7 @@ RSpec.describe MtgScraper::Hareruya::List::V1 do
         expect(list[0]).to eq(
           name: '報奨密偵',
           english_name: 'Bounty Agent',
-          language: 'english',
+          language: 'English',
           price: 200,
           basic_land: false,
           card_set_code: 'GRN',
@@ -106,7 +106,7 @@ RSpec.describe MtgScraper::Hareruya::List::V1 do
           expect(list[0]).to eq(
             name: '平地',
             english_name: 'Plains',
-            language: 'english',
+            language: 'English',
             price: 50,
             basic_land: true,
             card_set_code: 'RNA',
@@ -120,7 +120,7 @@ RSpec.describe MtgScraper::Hareruya::List::V1 do
           expect(list[2]).to eq(
             name: '島',
             english_name: 'Island',
-            language: 'english',
+            language: 'English',
             price: 50,
             basic_land: true,
             card_set_code: 'RNA',
@@ -134,7 +134,7 @@ RSpec.describe MtgScraper::Hareruya::List::V1 do
           expect(list[4]).to eq(
             name: '沼',
             english_name: 'Swamp',
-            language: 'english',
+            language: 'English',
             price: 80,
             basic_land: true,
             card_set_code: 'RNA',
@@ -148,7 +148,7 @@ RSpec.describe MtgScraper::Hareruya::List::V1 do
           expect(list[6]).to eq(
             name: '山',
             english_name: 'Mountain',
-            language: 'english',
+            language: 'English',
             price: 50,
             basic_land: true,
             card_set_code: 'RNA',
@@ -162,7 +162,7 @@ RSpec.describe MtgScraper::Hareruya::List::V1 do
           expect(list[8]).to eq(
             name: '森',
             english_name: 'Forest',
-            language: 'english',
+            language: 'English',
             price: 50,
             basic_land: true,
             card_set_code: 'RNA',
@@ -176,7 +176,7 @@ RSpec.describe MtgScraper::Hareruya::List::V1 do
           expect(list[36]).to eq(
             name: '荒地',
             english_name: 'Wastes',
-            language: 'english',
+            language: 'English',
             price: 50,
             basic_land: true,
             card_set_code: 'OGW',
