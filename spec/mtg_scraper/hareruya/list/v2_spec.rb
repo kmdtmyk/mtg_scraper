@@ -497,6 +497,30 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
 
     end
 
+    describe 'Price does not exist' do
+
+      context do
+        let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=208&foilFlg[0]=0&page=3' }
+
+        example do
+          expect(list[15]).to eq(
+            name: 'ケイヤ式幽体化',
+            english_name: "Kaya's Ghostform",
+            language: 'Japanese',
+            price: nil,
+            basic_land: false,
+            foil: false,
+            card_set_code: 'WAR',
+            token: false,
+            prerelease: false,
+            version: nil,
+          )
+        end
+
+      end
+
+    end
+
   end
 
   describe 'category_list' do

@@ -58,6 +58,7 @@ module MtgScraper
         end
 
         def price
+          return unless node.text.match? %r{¥ [\d,]+}
           price_node = node.css('.row.not-first.ng-star-inserted')[0]
           text = price_node.text
           text.match %r{¥ ?[\d,]+}
