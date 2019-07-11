@@ -33,6 +33,22 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
 
   end
 
+  describe '#params' do
+
+    subject{ list.params }
+
+    context 'cardset' do
+      let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=208' }
+      it{ expect(subject).to eq( card_set_name: '灯争大戦' ) }
+    end
+
+    context 'empty query' do
+      let(:url){ 'https://www.hareruyamtg.com/ja/products/search' }
+      it{ expect(subject).to eq( {} ) }
+    end
+
+  end
+
   describe '#[]' do
 
     context do

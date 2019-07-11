@@ -22,6 +22,16 @@ module MtgScraper
           item_nodes.size
         end
 
+        def params
+          result = {}
+
+          unless selected_card_set_name.nil?
+            result[:card_set_name] = selected_card_set_name
+          end
+
+          result
+        end
+
         def [](nth)
           item_nodes = doc.css('.itemListLine.itemListLine--searched li')[nth]
           if item_nodes.is_a? Nokogiri::XML::NodeSet
@@ -85,6 +95,13 @@ module MtgScraper
 
           def item_nodes
             doc.css('.itemListLine.itemListLine--searched li')
+          end
+
+          def selected_card_set_name
+            @selected_card_set_name ||= begin
+              node = doc.css('#front_product_search_cardset option[selected]')
+              node.text if node.any?
+            end
           end
 
       end
