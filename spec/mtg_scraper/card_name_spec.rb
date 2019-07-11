@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe CardName do
+RSpec.describe MtgScraper::CardName do
 
   describe 'basic_land?' do
 
@@ -20,7 +20,7 @@ RSpec.describe CardName do
         'Wastes',
       ]
       names.each do |name|
-        expect(CardName.basic_land?(name)).to eq true
+        expect(MtgScraper::CardName.basic_land?(name)).to eq true
       end
     end
 
@@ -31,7 +31,7 @@ RSpec.describe CardName do
         nil,
       ]
       names.each do |name|
-        expect(CardName.basic_land?(name)).to eq false
+        expect(MtgScraper::CardName.basic_land?(name)).to eq false
       end
     end
 
