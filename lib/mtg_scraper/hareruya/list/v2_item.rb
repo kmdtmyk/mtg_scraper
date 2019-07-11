@@ -98,7 +98,7 @@ module MtgScraper
         end
 
         def foil?
-          item_name.match? %r{【Foil】}
+          item_name.match? /【foil】/i
         end
 
         def version

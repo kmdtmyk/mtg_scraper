@@ -423,6 +423,26 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
 
       end
 
+      context 'foil (lowercase)' do
+        let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=167&foilFlg[0]=1' }
+
+        example do
+          expect(list[9]).to eq(
+            name: '選定の司祭',
+            english_name: 'Anointer Priest',
+            language: 'Japanese',
+            price: 100,
+            basic_land: false,
+            foil: true,
+            card_set_code: 'AKH',
+            token: false,
+            prerelease: false,
+            version: nil,
+          )
+        end
+
+      end
+
     end
 
     describe 'box promo' do
