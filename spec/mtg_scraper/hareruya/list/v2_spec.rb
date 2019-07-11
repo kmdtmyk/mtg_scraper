@@ -513,7 +513,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
 
     end
 
-    describe 'Price does not exist' do
+    describe 'Missing price' do
 
       context do
         let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=208&foilFlg[0]=0&page=3' }
@@ -524,6 +524,30 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
             english_name: "Kaya's Ghostform",
             language: 'Japanese',
             price: nil,
+            basic_land: false,
+            foil: false,
+            card_set_code: 'WAR',
+            token: false,
+            prerelease: false,
+            version: nil,
+          )
+        end
+
+      end
+
+    end
+
+    describe 'Missing card set code' do
+
+      context do
+        let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=208&foilFlg[0]=0&page=10' }
+
+        example do
+          expect(list[24]).to eq(
+            name: '捨て身の突進',
+            english_name: "Desperate Lunge",
+            language: 'English',
+            price: 30,
             basic_land: false,
             foil: false,
             card_set_code: 'WAR',

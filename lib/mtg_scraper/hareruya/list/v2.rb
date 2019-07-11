@@ -71,7 +71,7 @@ module MtgScraper
         private
 
           def parse_node(node)
-            V2Item.new(node).to_h
+            V2Item.new(node, self).to_h
           end
 
           def category_id(node)

@@ -7,8 +7,9 @@ module MtgScraper
     module List
       class V2Item
 
-        def initialize(node)
+        def initialize(node, list)
           @node = node
+          @list = list
         end
 
         def to_h
@@ -72,7 +73,9 @@ module MtgScraper
             text = Regexp.last_match(1)
           end
 
-          if text == 'BOXプロモ'
+          if text.nil?
+            CardSet.code_from_name @list.params[:card_set_name]
+          elsif text == 'BOXプロモ'
             {
               '運命のきずな' => 'M19',
               '橋の主、テゼレット' => 'WAR',

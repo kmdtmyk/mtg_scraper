@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'card_name'
+require 'card_set'
 require 'mtg_scraper/version'
 require 'mtg_scraper/page'
 require 'mtg_scraper/cache'
