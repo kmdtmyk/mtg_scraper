@@ -132,6 +132,8 @@ module MtgScraper
               item_name.sub("バラルの功技/Baral's Expertise", "バラルの巧技/Baral's Expertise")
             elsif item_name.match? %r{第1管区}
               item_name.sub('第1管区', '第１管区')
+            elsif item_name.match? %r{パルヘリオンII}
+              item_name.sub('パルヘリオンII', 'パルヘリオンⅡ')
             else
               item_name
             end

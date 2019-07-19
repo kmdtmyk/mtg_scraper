@@ -403,6 +403,26 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
 
       end
 
+      context 'Parhelion II' do
+        let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=208&colors%5B%5D=1&rarity%5B%5D=3' }
+
+        example do
+          expect(list[8]).to eq(
+            name: 'パルヘリオンⅡ',
+            english_name: 'Parhelion II',
+            language: 'Japanese',
+            price: 30,
+            basic_land: false,
+            foil: false,
+            card_set_code: 'WAR',
+            token: false,
+            prerelease: false,
+            version: nil,
+          )
+        end
+
+      end
+
       context 'Hero of Precinct One' do
         let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=188&page=1' }
 
