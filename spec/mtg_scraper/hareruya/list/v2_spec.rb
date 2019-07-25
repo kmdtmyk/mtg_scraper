@@ -625,15 +625,33 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
 
   describe 'category_list' do
 
-    subject{ list.category_list }
+    let(:category_list){ list.category_list }
 
     context do
       let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=188' }
-      it do
-        expect(subject.size).to eq 138
-        expect(subject[1][:name]).to eq 'ラヴニカの献身'
-        expect(subject[1][:id]).to eq 188
+
+      example 'size' do
+        expect(category_list.size).to eq 138
       end
+
+      example 'Ravnica Allegiance' do
+        category = category_list.find do |category|
+          category[:name] == 'ラヴニカの献身'
+        end
+        expect(category[:id]).to eq 188
+        expect(category[:name]).to eq 'ラヴニカの献身'
+        expect(category[:code]).to eq 'RNA'
+      end
+
+      example 'Duel deck' do
+        category = category_list.find do |category|
+          category[:name].include? 'デュエルデッキ'
+        end
+        expect(category[:id]).to eq nil
+        expect(category[:name]).to eq '■デュエルデッキ■'
+        expect(category[:code]).to eq nil
+      end
+
     end
 
   end
