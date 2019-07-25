@@ -23,13 +23,13 @@ module MtgScraper
         end
 
         def params
-          result = {}
-
-          unless selected_card_set_name.nil?
-            result[:card_set_name] = selected_card_set_name
+          @params ||= begin
+            result = {}
+            unless selected_card_set_name.nil?
+              result[:card_set_name] = selected_card_set_name
+            end
+            result
           end
-
-          result
         end
 
         def [](nth)

@@ -74,7 +74,10 @@ module MtgScraper
           end
 
           if text.nil? or text.include? 'プロモ'
-            CardSet.code_from_name @list.params[:card_set_name]
+            category = @list.category_list.find do |category|
+              category[:name] == @list.params[:card_set_name]
+            end
+            category[:code]
           else
             text.sub(%r{-(PRE|PW)等?}, '')
           end

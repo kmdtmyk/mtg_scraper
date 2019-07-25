@@ -2,7 +2,6 @@
 
 require 'mtg_scraper/cache'
 require 'mtg_scraper/card_name'
-require 'mtg_scraper/card_set'
 require 'mtg_scraper/hareruya'
 require 'mtg_scraper/page'
 require 'mtg_scraper/version'
