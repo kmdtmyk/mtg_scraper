@@ -188,6 +188,26 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
 
       end
 
+      context 'Bundle Promo' do
+        let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=213&colors%5B%5D=4&rarity%5B%5D=3' }
+
+        example do
+          expect(list[8]).to eq(
+            name: 'チャンドラの調圧器',
+            english_name: "Chandra's Regulator",
+            language: 'English',
+            price: 400,
+            basic_land: false,
+            foil: true,
+            card_set_code: 'M20',
+            token: false,
+            prerelease: false,
+            version: 'Bundleプロモ',
+          )
+        end
+
+      end
+
       context 'Brothers Yamazaki' do
         let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=53&page=11' }
 

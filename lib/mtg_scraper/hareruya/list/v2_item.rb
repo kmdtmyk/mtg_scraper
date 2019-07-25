@@ -73,13 +73,8 @@ module MtgScraper
             text = Regexp.last_match(1)
           end
 
-          if text.nil?
+          if text.nil? or text.include? 'プロモ'
             CardSet.code_from_name @list.params[:card_set_name]
-          elsif text == 'BOXプロモ'
-            {
-              '運命のきずな' => 'M19',
-              '橋の主、テゼレット' => 'WAR',
-            }[name]
           else
             text.sub(%r{-(PRE|PW)等?}, '')
           end
@@ -98,7 +93,8 @@ module MtgScraper
         end
 
         def foil?
-          item_name.match? /【foil】/i
+          item_name.match? /【foil】/i or
+          version == 'Bundleプロモ'
         end
 
         def version
@@ -108,6 +104,10 @@ module MtgScraper
 
           if item_name.match %r{(\w)\[CHK\]}
             return Regexp.last_match(1)
+          end
+
+          if item_name.include? '[Bundleプロモ]'
+            return 'Bundleプロモ'
           end
         end
 
