@@ -43,11 +43,7 @@ module MtgScraper
 
         def category_list
           doc.css('.category_menu .category_key').map do |node|
-            {
-              id: category_id(node),
-              name: category_name(node),
-              code: category_code(node),
-            }
+            V2Category.new(node).to_h
           end
         end
 
@@ -73,32 +69,6 @@ module MtgScraper
 
           def parse_node(node)
             V2Item.new(node, self).to_h
-          end
-
-          def category_id(node)
-            link = node.css('a[href*="cardset="]')[0]
-            href = link[:href]
-            match_data = href.match(/cardset=([\d]+)/)
-            id = match_data[1].to_i
-          rescue
-            nil
-          end
-
-          def category_name(node)
-            name = node.css('h5').text.strip
-          rescue
-            nil
-          end
-
-          def category_code(node)
-            box_node = node.css('li.category_tree2_').find do |node|
-              node.text.include? 'パック・ボックス'
-            end
-            url = node.css('a').attr('href').text
-            params = URI::decode_www_form(URI.parse(url).query).to_h
-            params['product'][1..-2]
-          rescue
-            nil
           end
 
           def doc
