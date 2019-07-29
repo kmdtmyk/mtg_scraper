@@ -531,7 +531,7 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
 
     describe 'Token' do
 
-      context do
+      context 'token' do
         let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=117' }
 
         example do
@@ -543,6 +543,66 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
             basic_land: false,
             foil: false,
             card_set_code: 'M14',
+            token: true,
+            prerelease: false,
+            version: nil,
+          )
+        end
+
+      end
+
+      context 'Check list card' do
+        let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=181&rarity=7' }
+
+        example do
+          expect(list[10]).to eq(
+            name: 'チェックリストカード',
+            english_name: nil,
+            language: 'Japanese',
+            price: 30,
+            basic_land: false,
+            foil: false,
+            card_set_code: 'M19',
+            token: true,
+            prerelease: false,
+            version: nil,
+          )
+        end
+
+      end
+
+      context 'Planeswalker emblem' do
+        let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=179&rarity=7' }
+
+        example do
+          expect(list[9]).to eq(
+            name: 'プレインズウォーカーエンブレム（ヤヤ・バラード）',
+            english_name: nil,
+            language: 'English',
+            price: 30,
+            basic_land: false,
+            foil: false,
+            card_set_code: 'DOM',
+            token: true,
+            prerelease: false,
+            version: nil,
+          )
+        end
+
+      end
+
+      context 'Poison counter' do
+        let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=93&rarity=7' }
+
+        example do
+          expect(list[10]).to eq(
+            name: '毒カウンター',
+            english_name: nil,
+            language: 'English',
+            price: 50,
+            basic_land: false,
+            foil: false,
+            card_set_code: 'SOM',
             token: true,
             prerelease: false,
             version: nil,

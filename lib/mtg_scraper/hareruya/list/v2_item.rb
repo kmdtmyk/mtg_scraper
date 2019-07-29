@@ -92,7 +92,8 @@ module MtgScraper
         end
 
         def token?
-          item_name.match? %r{トークン}
+          item_name.match? %r{トークン} or
+          english_name.nil?
         end
 
         def foil?
