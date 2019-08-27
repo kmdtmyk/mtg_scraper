@@ -208,6 +208,26 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
 
       end
 
+      context 'Promotion Card' do
+        let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=213&colors%5B0%5D=4&page=2' }
+
+        example do
+          expect(list[23]).to eq(
+            name: '炎の一掃',
+            english_name: "Flame Sweep",
+            language: 'Japanese',
+            price: 400,
+            basic_land: false,
+            foil: true,
+            card_set_code: 'M20',
+            token: false,
+            prerelease: false,
+            version: 'プロモーション・カード',
+          )
+        end
+
+      end
+
       context 'Brothers Yamazaki' do
         let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=53&page=11' }
 

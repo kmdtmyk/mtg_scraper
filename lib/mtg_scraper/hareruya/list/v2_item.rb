@@ -73,7 +73,7 @@ module MtgScraper
             text = Regexp.last_match(1)
           end
 
-          if text.nil? or text.include? 'プロモ'
+          if text.nil? or text.include? 'プロモ' or text == 'PRM'
             category = @list.category_list.find do |category|
               category[:name] == @list.params[:card_set_name]
             end
@@ -98,7 +98,8 @@ module MtgScraper
 
         def foil?
           item_name.match? /【foil】/i or
-          version == 'Bundleプロモ'
+          version == 'Bundleプロモ' or
+          version == 'プロモーション・カード'
         end
 
         def version
@@ -112,6 +113,10 @@ module MtgScraper
 
           if item_name.include? '[Bundleプロモ]'
             return 'Bundleプロモ'
+          end
+
+          if item_name.include? '[PRM]'
+            return 'プロモーション・カード'
           end
         end
 
