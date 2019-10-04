@@ -313,6 +313,30 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
 
     end
 
+    describe 'brawl deck' do
+
+      context do
+        let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=219&rarity=3' }
+
+        example do
+          expect(list[59]).to eq(
+            name: 'フェアリーの陣形',
+            english_name: 'Faerie Formation',
+            language: 'Japanese',
+            price: 2000,
+            basic_land: false,
+            foil: false,
+            card_set_code: 'ELD',
+            token: false,
+            prerelease: false,
+            version: nil,
+          )
+        end
+
+      end
+
+    end
+
     describe 'typo' do
 
       context 'single quotation 「’」→「\'」' do

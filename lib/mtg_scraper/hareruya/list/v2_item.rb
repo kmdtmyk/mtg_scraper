@@ -79,7 +79,7 @@ module MtgScraper
             end
             category[:code]
           else
-            text.sub(%r{-(PRE|PW)等?}, '')
+            text.sub(%r{-(PRE|PW|BRAWL)等?}, '')
           end
         end
 
