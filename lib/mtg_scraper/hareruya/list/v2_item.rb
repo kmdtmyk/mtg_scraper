@@ -78,6 +78,8 @@ module MtgScraper
               category[:name] == @list.params[:card_set_name]
             end
             category[:code]
+          elsif text == 'PWCS'
+            'PRM'
           else
             text.sub(%r{-(PRE|PW|BRAWL)等?}, '')
           end

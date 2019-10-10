@@ -228,6 +228,26 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
 
       end
 
+      context 'Promotion Card (PWCS)' do
+        let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=188&colors[]=2&rarity[]=2' }
+
+        example do
+          expect(list[20]).to eq(
+            name: 'プテラマンダー',
+            english_name: "Pteramander",
+            language: 'Japanese',
+            price: 1800,
+            basic_land: false,
+            foil: true,
+            card_set_code: 'PRM',
+            token: false,
+            prerelease: false,
+            version: nil,
+          )
+        end
+
+      end
+
       context 'Brothers Yamazaki' do
         let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=53&page=11' }
 
