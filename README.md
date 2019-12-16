@@ -1,3 +1,5 @@
+[![Test](https://github.com/kmdtmyk/mtg_scraper/workflows/Test/badge.svg)](https://github.com/kmdtmyk/mtg_scraper/actions)
+
 ## Installation
 
 ```ruby
