@@ -593,6 +593,45 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
 
     end
 
+    describe 'Clash Pack' do
+
+      context 'Prognostic Sphinx' do
+        let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=120&colors[]=2&page=2' }
+
+        example do
+          expect(list[32]).to eq(
+            name: '予知するスフィンクス',
+            english_name: 'Prognostic Sphinx',
+            language: 'Japanese',
+            price: 50,
+            basic_land: false,
+            foil: true,
+            card_set_code: 'THS',
+            token: false,
+            prerelease: false,
+            version:'対戦キット',
+          )
+        end
+
+        example do
+          expect(list[33]).to eq(
+            name: '予知するスフィンクス',
+            english_name: 'Prognostic Sphinx',
+            language: 'English',
+            price: 50,
+            basic_land: false,
+            foil: true,
+            card_set_code: 'THS',
+            token: false,
+            prerelease: false,
+            version:'対戦キット',
+          )
+        end
+
+      end
+
+    end
+
     describe 'Token' do
 
       context 'token' do

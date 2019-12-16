@@ -73,7 +73,7 @@ module MtgScraper
             text = Regexp.last_match(1)
           end
 
-          if text.nil? or text.include? 'プロモ' or text == 'PRM'
+          if text.nil? or text.include? 'プロモ' or text == 'PRM' or text == '対戦キット'
             category = @list.category_list.find do |category|
               category[:name] == @list.params[:card_set_name]
             end
@@ -115,6 +115,10 @@ module MtgScraper
 
           if item_name.include? '[Bundleプロモ]'
             return 'Bundleプロモ'
+          end
+
+          if item_name.include? '[対戦キット]'
+            return '対戦キット'
           end
 
           if item_name.include? '[PRM]'
