@@ -20,6 +20,18 @@ RSpec.describe MtgScraper::Hareruya::List::V2 do
       end
     end
 
+    context 'test product_a product_b class' do
+      let(:url){ 'https://www.hareruyamtg.com/ja/products/search?cardset=219' }
+      it{ expect(list).to respond_to(:each) }
+      it do
+        count = 0
+        list.each do |c|
+          count += 1
+        end
+        expect(count).to eq list.size
+      end
+    end
+
   end
 
   describe '#size' do
